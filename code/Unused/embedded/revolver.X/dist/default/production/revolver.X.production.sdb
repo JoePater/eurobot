@@ -1,0 +1,186 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1826 ]
+[d frameptr 6 ]
+"10 /opt/microchip/xc8/v2.10/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 /opt/microchip/xc8/v2.10/pic/sources/c99/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 /opt/microchip/xc8/v2.10/pic/sources/c99/pic/__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"7 /home/joe/MPLABXProjects/revolver.X/i2c.c
+[v _i2cISR i2cISR `(v  1 e 1 0 ]
+"28
+[v _handleWrite handleWrite `(v  1 e 1 0 ]
+"33
+[v _checkData checkData `(v  1 e 1 0 ]
+"55
+[v _handleRead handleRead `(v  1 e 1 0 ]
+"52 /home/joe/MPLABXProjects/revolver.X/main.c
+[v _ISR ISR `II(v  1 e 1 0 ]
+"58
+[v _main main `(v  1 e 1 0 ]
+"351 /opt/microchip/xc8/v2.10/pic/include/pic16f1826.h
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+[s S43 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"508
+[u S52 . 1 `S43 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES52  1 e 1 @13 ]
+"660
+[v _TMR0 TMR0 `VEuc  1 e 1 @21 ]
+"1080
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1142
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1204
+[v _PIE1 PIE1 `VEuc  1 e 1 @145 ]
+"1311
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
+"1562
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1895
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2706
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2758
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3361
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
+"3431
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
+"3469
+[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @530 ]
+"3545
+[v _SSP1STAT SSP1STAT `VEuc  1 e 1 @532 ]
+[s S114 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"3567
+[u S123 . 1 `S114 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES123  1 e 1 @532 ]
+"3667
+[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
+[s S166 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"3696
+[s S175 . 1 `uc 1 SSPM 1 0 :4:0 
+]
+[u S177 . 1 `S166 1 . 1 0 `S175 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES177  1 e 1 @533 ]
+"3871
+[v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @534 ]
+[s S145 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"3893
+[u S154 . 1 `S145 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES154  1 e 1 @534 ]
+"3993
+[v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @535 ]
+[s S93 . 1 `uc 1 DHEN 1 0 :1:0 
+`uc 1 AHEN 1 0 :1:1 
+`uc 1 SBCDE 1 0 :1:2 
+`uc 1 SDAHT 1 0 :1:3 
+`uc 1 BOEN 1 0 :1:4 
+`uc 1 SCIE 1 0 :1:5 
+`uc 1 PCIE 1 0 :1:6 
+`uc 1 ACKTIM 1 0 :1:7 
+]
+"4015
+[u S102 . 1 `S93 1 . 1 0 ]
+[v _SSP1CON3bits SSP1CON3bits `VES102  1 e 1 @535 ]
+"6211
+[v _SSP1IF SSP1IF `VEb  1 e 0 @139 ]
+"43 /home/joe/MPLABXProjects/revolver.X/main.c
+[v _harr harr `[5]uc  1 e 5 0 ]
+"45
+[v _i2c_settings i2c_settings `uc  1 e 1 0 ]
+"47
+[v _flagUp flagUp `uc  1 e 1 0 ]
+"58
+[v _main main `(v  1 e 1 0 ]
+{
+"115
+[v main@h h `*.4uc  1 a 1 5 ]
+"114
+[v main@i_89 i `i  1 a 2 7 ]
+"85
+[v main@i i `uc  1 a 1 6 ]
+"89
+[v main@lataClosed lataClosed `uc  1 a 1 4 ]
+"83
+[v main@flag flag `uc  1 a 1 3 ]
+"125
+} 0
+"52
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"56
+} 0
+"7 /home/joe/MPLABXProjects/revolver.X/i2c.c
+[v _i2cISR i2cISR `(v  1 e 1 0 ]
+{
+"8
+[v i2cISR@d d `uc  1 a 1 9 ]
+"26
+} 0
+"28
+[v _handleWrite handleWrite `(v  1 e 1 0 ]
+{
+[v handleWrite@d d `uc  1 a 1 wreg ]
+[v handleWrite@d d `uc  1 a 1 wreg ]
+[v handleWrite@d d `uc  1 a 1 7 ]
+"31
+} 0
+"33
+[v _checkData checkData `(v  1 e 1 0 ]
+{
+[v checkData@s s `uc  1 a 1 wreg ]
+"37
+[v checkData@h h `*.4uc  1 a 1 5 ]
+"35
+[v checkData@holderSel holderSel `uc  1 a 1 3 ]
+"34
+[v checkData@stat stat `uc  1 a 1 2 ]
+"33
+[v checkData@s s `uc  1 a 1 wreg ]
+[v checkData@s s `uc  1 a 1 4 ]
+"53
+} 0
+"55
+[v _handleRead handleRead `(v  1 e 1 0 ]
+{
+"56
+[v handleRead@holderSel holderSel `uc  1 a 1 2 ]
+"58
+} 0

@@ -1,0 +1,11 @@
+12/03/20 - Need to test arena(done), route, system.
+-Print route
+-Create text-based mode for main loop
+	note: Each cycle, print current status, ask for position
+	note: command to skip to cycle where write is allowed?
+	note: need to improve mechanisms debug input
+	note: command to see mechanisms+arena?
+-Carry out tests for each scenario
+
+
+Thread for updating bitmap that is detached when buoys changed and joined when buoys needed
