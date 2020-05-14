@@ -27,7 +27,89 @@ module partK1(h=97-5,mh=47-5){
         
         translate([15-3,19,mh-6.3])cube([28,12,12.6]);
     }
+    
 }
+module partK1a(h=92,mh=42){
+    w=4;
+    difference(){
+        union(){
+            cube([15,50,47]);
+            translate([0,20,0])cube([h+10,20,12]);
+            translate([h-18-w,40,0])cube([32,10,12]);
+        }
+        //bolts
+        translate([0,5,12])rotate([0,90,0])
+        cylinder(r=2.25,h=15,$fn=25);
+        translate([0,5,42])rotate([0,90,0])
+        cylinder(r=2.25,h=15,$fn=25);
+        translate([0,45,12])rotate([0,90,0])
+        cylinder(r=2.25,h=15,$fn=25);
+        translate([0,45,42])rotate([0,90,0])
+        cylinder(r=2.25,h=15,$fn=25);
+        
+        translate([20,25,0])cylinder(r=2.25,h=12,$fn=25);
+        translate([20,35,0])cylinder(r=2.25,h=12,$fn=25);
+        
+        translate([h-25-w,25,0])cylinder(r=2.25,h=12,$fn=25);
+        translate([h-13-w,25,0])cylinder(r=2.25,h=12,$fn=25);
+        translate([h-13-w,45,0])cylinder(r=2.25,h=12,$fn=25);
+        //other
+        translate([h,20,17])rotate([-90,0,0])
+        cylinder(r=7.8,h=30,$fn=50);
+    }
+}
+module partK1b(h=92,mh=42){
+    w=4;
+    difference(){
+        union(){
+            translate([15,20,12])cube([mh-6.2,20,w]);
+            translate([mh-6.2-w,20,12])cube([12.4+2*w,20,10+w]);
+            translate([mh+6.2+w,20,12])cube([h-26.2-mh-w,20,w]);
+            translate([h-18-w,20,12])cube([10.2+w,30,w]);
+            translate([h-8-w,20,12+w])cube([18+w,30,11]);
+        }
+        //bolts
+        translate([20,25,12])cylinder(r=2.25,h=w,$fn=25);
+        translate([20,35,12])cylinder(r=2.25,h=w,$fn=25);
+        
+        translate([h-25-w,25,12])cylinder(r=2.25,h=w,$fn=25);
+        translate([h-13-w,25,12])cylinder(r=2.25,h=w,$fn=25);
+        translate([h-13-w,45,12])cylinder(r=2.25,h=w,$fn=25);
+        //other
+        translate([mh-6.2,20,12])cube([12.4,20,10]);
+        
+        translate([h,20,17])rotate([-90,0,0])
+        cylinder(r=7.8,h=30,$fn=50);
+    }
+}
+module partK1c(h=92,mh=42){
+    w=4;
+    m2h = mh+2;
+    difference(){
+        union(){
+            translate([15,20,12+w])cube([mh-21.2-w,20,w]);
+            translate([mh-6.2-w*2,20,12+w])
+            cube([12.4+w*4,20,20+w]);
+            translate([mh+6.2+2*w,20,12+w])
+            cube([h-14.2-mh-3*w,20,w]);
+            translate([h-18-w,20,12+w])cube([10,30,w]);
+        }
+        //bolts
+        translate([20,25,12+w])cylinder(r=2.25,h=w,$fn=25);
+        translate([20,35,12+w])cylinder(r=2.25,h=w,$fn=25);
+        
+        translate([h-25-w,25,12+w])cylinder(r=2.25,h=w,$fn=25);
+        translate([h-13-w,25,12+w])cylinder(r=2.25,h=w,$fn=25);
+        translate([h-13-w,45,12+w])cylinder(r=2.25,h=w,$fn=25);
+        //other
+        translate([mh-6.2-w,20,12+w])cube([12.4+w*2,20,5+w]);
+        translate([mh-6.2-w*2,20,22+2*w])cube([5,20,6+w]);
+        translate([m2h-6.2,20,22+w])cube([12.4,20,10]);
+    }
+}
+partK1a();
+partK1b();
+partK1c();
 module partK2(){
     //holds motor in place for lifter
     difference(){
@@ -48,16 +130,19 @@ module partU(){
     //front wheel holder
     difference(){
         union(){
-            cube([54,12,8]);
-            cube([16,38,8]);
-            translate([8,30,8])cylinder(r=8,h=19,$fn=40);
+            cube([22,30,10]);
+            translate([6,30,0])cube([16,30,10]);
+            translate([14,52,-12-4*2+8])
+            cylinder(r=8,h=12+4*2-8,$fn=50);
         }
-        translate([8,30,0])cylinder(r=3.9,h=8+19,$fn=40);
-        translate([48,6,0])cylinder(r=2.25,h=18,$fn=25);
-        translate([18,6,0])cylinder(r=2.25,h=18,$fn=25);
+        translate([14,52,-12-4*2+8])
+        cylinder(r=3.9,h=22,$fn=50);
+        translate([5,5,0])cylinder(r=2.25,h=10,$fn=25);
+        translate([17,5,0])cylinder(r=2.25,h=10,$fn=25);
+        translate([17,25,0])cylinder(r=2.25,h=10,$fn=25);
     }
 }
-
+translate([92-25-4-5,20,12+2*4])partU();
 
 
 
@@ -139,7 +224,7 @@ module partH(){
     }
 }
 
-//hello
+
 
 module partB1(h=7,l=32,w=28,d=20){
     //claw pivot holder thing
