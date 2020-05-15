@@ -168,19 +168,6 @@ module partI2(b=47,c=25.5){
 module partI3(c=25.5){
     //cap, holds motor and pivot for claw
     d = 19;
-    /*difference(){
-        cube([36,25,13]);
-        
-        translate([31-c,0,13])rotate([-90,0,0])
-        cylinder(r=2.15,h=25,$fn=25);
-        translate([31-c,8,13])rotate([-90,0,0])
-        cylinder(r=4,h=3.3,$fn=25);
-        
-        translate([31-c+d-6.2,0,13-10])cube([12.4,25,20]);
-        
-        translate([36-22,5,0])cylinder(r=2.25,h=13,$fn=20);
-        translate([36-22,20,0])cylinder(r=2.25,h=13,$fn=20);
-    }*/
     difference(){
         cube([40,33,13]);
         
@@ -197,15 +184,12 @@ module partI3(c=25.5){
         translate([22,20,0])cylinder(r=2.25,h=13,$fn=25);
     }
 }
-module clawLift1(){
-    liftGears();
-    translate([-13,15,8+0.2])partI2();
-    translate([-13,15,47+0.4])partI3();
-}//clawLift1();
-module clawLift2(){
-    clawBase();
-    translate([92,16-0.2,17])rotate([90,-90,0])clawLift1();
-}clawLift2();
+
+
+
+
+
+
 module partJ(){
     //little gear for cup rotater
     difference(){
@@ -222,18 +206,19 @@ module partH(){
         cylinder(r=2.25,h=5,$fn=20);
     }
 }
-
-
-
 module partB1(h=7,l=32,w=28,d=20){
     //claw pivot holder thing
     difference(){
         cube([l,w,h]);
-        translate([6,0,h])rotate([-90,0,0])cylinder(h=w,r=2.1,$fn=30);
-        translate([6,5,h])rotate([-90,0,0])cylinder(h=3.2,r=5,$fn=30);
+        translate([6,0,h])rotate([-90,0,0])
+        cylinder(h=w,r=2.1,$fn=30);
+        translate([6,5,h])rotate([-90,0,0])
+        cylinder(h=3.2,r=5,$fn=30);
         
-        translate([d+6,0,h])rotate([-90,0,0])cylinder(h=w,r=2.1,$fn=30);
-        translate([d+6,5,h])rotate([-90,0,0])cylinder(h=3.2,r=5,$fn=30);
+        translate([d+6,0,h])rotate([-90,0,0])
+        cylinder(h=w,r=2.1,$fn=30);
+        translate([d+6,5,h])rotate([-90,0,0])
+        cylinder(h=3.2,r=5,$fn=30);
         
         translate([16,22,0])cylinder(h=h,r=2.25,$fn=20);        
         translate([16,22,0])cone1();
@@ -248,14 +233,21 @@ module clawR(a=50,b=25){
                 cube([6,45,6]);
                 translate([-5,25,0])cube([5,10,6]);
             }
-            linear_extrude(6)translate([10,35+a,0])rotate(155)arc(36.8,39.8,65);
-            translate([10,85,0])linear_extrude(11.5,scale=1+(18/72/10)){
-                rotate([0,0,-27])translate([-33-5.5,-5,0])square([5.5,5]);
-                rotate([0,0,-10])translate([-36-2.5,-2.5,0])square([2.5,5]);
-                rotate([0,0,55])translate([-36-6,-2.5,0])square([6,5]);
+            linear_extrude(6)translate([10,35+a,0])
+            rotate(155)arc(36.8,39.8,65);
+            translate([10,85,0])
+            linear_extrude(11.5,scale=1+(18/72/10)){
+                rotate(-27)translate([-33-5.5,-5])
+                square([5.5,5]);
+                rotate(-10)translate([-36-2.5,-2.5])
+                square([2.5,5]);
+                rotate(55)translate([-36-6,-2.5])
+                square([6,5]);
             }
-            translate([-21,-6,0])rotate([0,0,15])cube([25,25,6]);
-            translate([4,14,1.5])rotate([0,90,0])cylinder(r=2.1,h=4,$fn=30);
+            translate([-21,-6,0])rotate([0,0,15])
+            cube([25,25,6]);
+            translate([4,14,1.5])rotate([0,90,0])
+            cylinder(r=2.1,h=4,$fn=30);
         }
         cylinder(r=2.25,h=6,$fn=20);
         translate([0,b,0])cylinder(r=2.15,h=6,$fn=20);
@@ -274,13 +266,19 @@ module clawL(a=50,b=25){
                 cube([6,45,6]);
                 translate([-5,20,0])cube([5,10,6]);
             }
-            linear_extrude(6)translate([10,35+a,0])rotate(155)arc(36.8,39.8,65);
-            translate([10,85,0])linear_extrude(11.5,scale=1+(18/72/10)){
-                rotate([0,0,-27])translate([-33-5.5,-5,0])square([5.5,5]);
-                rotate([0,0,-10])translate([-36-2.5,-2.5,0])square([2.5,5]);
-                rotate([0,0,55])translate([-36-6,-2.5,0])square([6,5]);
+            linear_extrude(6)translate([10,35+a,0])
+            rotate(155)arc(36.8,39.8,65);
+            translate([10,85,0])
+            linear_extrude(11.5,scale=1+(18/72/10)){
+                rotate(-27)translate([-33-5.5,-5])
+                square([5.5,5]);
+                rotate(-10)translate([-36-2.5,-2.5])
+                square([2.5,5]);
+                rotate(55)translate([-36-6,-2.5])
+                square([6,5]);
             }
-            translate([4,14,1.5])rotate([0,90,0])cylinder(r=2.1,h=4,$fn=30);
+            translate([4,14,1.5])rotate([0,90,0])
+            cylinder(r=2.1,h=4,$fn=30);
         }
         cylinder(r=2.25,h=6,$fn=20);
         translate([0,b,0])cylinder(r=2.15,h=6,$fn=20);
@@ -320,6 +318,38 @@ module clawLa(){
         translate([10.9,-5,3.5])rotate([0,-60,0])cube([2,5,2]);
     }
 }
+module bothClaws(){
+    clawL();
+    translate([20,0,0])clawR();
+    translate([39,31,8])rotate([90,0,-15])clawLa();
+    translate([-16,46,6+0.2])clawRa();
+}//bothClaws();
+module clawPalm(){
+    translate([-6,-7.1,0])rotate([-90,0,0])partB1();
+    mirror([0,1,0])translate([-6,-7.1,0])rotate([-90,0,0])partB1();
+    translate([0,0,0.2])bothClaws();
+}//clawPalm();
+module clawWrist(){
+    clawPalm();
+    translate([10,-7.2,-22])rotate([90,0,0])partH();
+}//clawWrist();
+module clawForearm(){
+    liftGears();
+    translate([-13,15,8+0.2])partI2();
+    translate([-13,15,47+0.4])partI3();
+    translate([17.5,2.5,47.3])rotate([0,90,180])
+    translate([-10,0,22])clawWrist();
+    translate([-2.5,14.5,52.2])rotate([90,0,0])partJ();
+}//clawForearm();
+module clawArm(){
+    clawBase();
+    translate([92,16-0.2,17])rotate([90,-90,0])clawForearm();
+}clawArm();
+module clawLift2(){
+    clawBase();
+    translate([92,16-0.2,17])rotate([90,-90,0])clawLift1();
+}//clawLift2();
+
 module partX(){
     //spring raiser for claw
     difference(){
