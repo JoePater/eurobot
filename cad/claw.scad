@@ -1,35 +1,8 @@
 include <utils.scad>;
 //include <gear.scad>;
 
-module partK1(h=97-5,mh=47-5){
-    //big base for claw
-    difference(){
-        union(){
-            cube([40+7,50,15]);
-            translate([0,25-6,0])cube([40,12,h-10]);
-            translate([0,6,h-10])cube([40,25,18]);
-            translate([0,6,mh-20])cube([15-3,13,40]);
-        }
-        translate([5+7,5,0])cylinder(r=2.25,h=15,$fn=20);
-        translate([35+7,5,0])cylinder(r=2.25,h=15,$fn=20);
-        translate([5+7,45,0])cylinder(r=2.25,h=15,$fn=20);
-        translate([35+7,45,0])cylinder(r=2.25,h=15,$fn=20);
-        
-        translate([25,36,h-10])cylinder(r=2.25,h=20,$fn=20);
-        translate([5,36,h-10])cylinder(r=2.25,h=20,$fn=20);
-        
-        translate([20-3,6,h])rotate([-90,0,0])cylinder(r=2.25,h=25,$fn=20);
-        
-        translate([0,6+5,mh-15])rotate([0,90,0])
-        cylinder(r=2.25,h=15,$fn=20);
-        translate([0,6+5,mh+15])rotate([0,90,0])
-        cylinder(r=2.25,h=15,$fn=20);
-        
-        translate([15-3,19,mh-6.3])cube([28,12,12.6]);
-    }
-    
-}
 module partK1a(h=92,mh=42){
+    //base of arm
     w=4;
     difference(){
         union(){
@@ -59,11 +32,13 @@ module partK1a(h=92,mh=42){
     }
 }
 module partK1b(h=92,mh=42){
+    //middle layer of arm
     w=4;
+    m2d=18;
     difference(){
         union(){
-            translate([15,20,12])cube([mh-6.2,20,w]);
-            translate([mh-6.2-w,20,12])cube([12.4+2*w,20,10+w]);
+            translate([15+0.2,20,12])cube([mh-6.2-0.2,20,w]);
+            translate([mh-6.2-w,20,12])cube([12.4+2*w,20,m2d]);
             translate([mh+6.2+w,20,12])cube([h-26.2-mh-w,20,w]);
             translate([h-18-w,20,12])cube([10.2+w,30,w]);
             translate([h-8-w,20,12+w])cube([18+w,30,11]);
@@ -83,16 +58,19 @@ module partK1b(h=92,mh=42){
     }
 }
 module partK1c(h=92,mh=42){
+    //top layer of arm
     w=4;
-    m2h = mh+2;
+    m2d = 18;
+    m2h = h-sqrt(pow(h-mh,2)-pow(m2d,2));
+    echo(m2h);
     difference(){
         union(){
-            translate([15,20,12+w])cube([mh-21.2-w,20,w]);
+            translate([15+0.2,20,12+w])cube([mh-21.2-w-0.2,20,w]);
             translate([mh-6.2-w*2,20,12+w])
-            cube([12.4+w*4,20,20+w]);
+            cube([12.4+w*4,20,m2d+10]);
             translate([mh+6.2+2*w,20,12+w])
-            cube([h-14.2-mh-3*w,20,w]);
-            translate([h-18-w,20,12+w])cube([10,30,w]);
+            cube([h-14.2-mh-3*w-0.2,20,w]);
+            translate([h-18-w,20,12+w])cube([10-0.2,30,w]);
         }
         //bolts
         translate([20,25,12+w])cylinder(r=2.25,h=w,$fn=25);
@@ -102,38 +80,20 @@ module partK1c(h=92,mh=42){
         translate([h-13-w,25,12+w])cylinder(r=2.25,h=w,$fn=25);
         translate([h-13-w,45,12+w])cylinder(r=2.25,h=w,$fn=25);
         //other
-        translate([mh-6.2-w,20,12+w])cube([12.4+w*2,20,5+w]);
-        translate([mh-6.2-w*2,20,22+2*w])cube([5,20,6+w]);
-        translate([m2h-6.2,20,22+w])cube([12.4,20,10]);
-    }
-}
-partK1a();
-partK1b();
-partK1c();
-module partK2(){
-    //holds motor in place for lifter
-    difference(){
-        cube([40,13,15]);
-        translate([5,5,0])cylinder(r=2.25,h=15,$fn=20);
-        translate([35,5,0])cylinder(r=2.25,h=15,$fn=20);
-        translate([20-6.3,0,5])cube([12.6,13,10]);
-    }
-}
-module partK3(){
-    //little gear for lifter
-    difference(){
-        translate([0,0,3])gear(5,8,6,0);
-        linear_extrude(6)motorHole(0.1);
+        translate([mh-6.2-w-0.2,20,12+w])
+        cube([12.4+w*2+0.4,20,m2d-w]);
+        translate([mh-6.2-w*2,20,12+m2d+w])cube([5,20,20]);
+        translate([m2h-6.2,20,12+m2d])cube([12.4,20,10]);
     }
 }
 module partU(){
     //front wheel holder
     difference(){
         union(){
-            cube([22,30,10]);
-            translate([6,30,0])cube([16,30,10]);
+            cube([22-0.2,30,10]);
+            translate([6,30,0])cube([16-0.2,30,10]);
             translate([14,52,-12-4*2+8])
-            cylinder(r=8,h=12+4*2-8,$fn=50);
+            cylinder(r=8-0.2,h=12+4*2-8,$fn=50);
         }
         translate([14,52,-12-4*2+8])
         cylinder(r=3.9,h=22,$fn=50);
@@ -142,58 +102,73 @@ module partU(){
         translate([17,25,0])cylinder(r=2.25,h=10,$fn=25);
     }
 }
-translate([92-25-4-5,20,12+2*4])partU();
-
-
-
+module clawBase(){
+    partK1a();
+    translate([0,0,0.2])partK1b();
+    translate([0,0,0.4])partK1c();
+    translate([92-25-4-5,20,12+2*4+0.6])partU();
+}//clawBase();
+module partK2(){
+    //little gear for lifter
+    difference(){
+        translate([0,0,3])gear(5,8,6,0);
+        linear_extrude(6)motorHole(0.1);
+    }
+}
 module partI1(a=15){
     //big gear for claw
     difference(){
         translate([0,0,-4])cylinder(r=10,h=12,$fn=40);
         translate([0,0,-4])cylinder(r=2.15,h=12,$fn=20);
+        translate([0,0,-4])cylinder(r=4,h=3.5,$fn=6);
     }
     difference(){
-        union(){
-            
-            translate([0,0,4])gear(5,55,8,4.5);
-        }
+        translate([0,0,4])gear(5,55,8,4.5);
+        
         cylinder(r=2.15,h=8,$fn=20);
         translate([-150,-150,0])cube([300,140,8]);
         translate([-150,-150,0])cube([140,300,8]);
-        //translate([-1,a+5])circle(r=2.25,$fn=20);
         translate([-1,a+15,0])cylinder(r=2.25,h=8,$fn=20);
         translate([19,a+5,0])cylinder(r=2.25,h=8,$fn=20);
         translate([19,a+15,0])cylinder(r=2.25,h=8,$fn=20);
     }
 }
-module partI2(b=35+12,c=25.5){
+module liftGears(){
+    m2d = 18;
+    m2h = sqrt(pow(50,2)-pow(m2d,2));
+    partI1();
+    translate([0,50,0])partK2();
+    translate([m2d,m2h,0])partK2();
+}
+module partI2(b=47,c=25.5){
     //ataches claw to lifting gear
     linear_extrude(8)difference(){
         translate([0,0])square([25+12,20]);
-            
-        //translate([5,5])circle(r=2.25,$fn=20);
+
         translate([12,15])circle(r=2.25,$fn=20);
         translate([20+12,5])circle(r=2.25,$fn=20);
         translate([20+12,15])circle(r=2.25,$fn=20);
     }
-    cube([12,10,b-6-8]);
+    cube([12,10,33]);
     difference(){
-        translate([0,0,b-6-8])cube([36,25,6]);
+        translate([0,0,29])cube([40,33,10]);
         
-        translate([5+c,0,b-8])rotate([-90,0,0])
-        cylinder(r=2.15,h=25,$fn=25);
-        translate([5+c,8,b-8])rotate([-90,0,0])
-        cylinder(r=4,h=3.3,$fn=25);
+        translate([30.5,0,39])rotate([-90,0,0])
+        cylinder(r=4,h=33,$fn=25);
+        translate([30.5,10,39])rotate([-90,0,0])
+        cylinder(r=8,h=5.2,$fn=25);
+        translate([30.5,25,39])rotate([-90,0,0])
+        cylinder(r=8,h=5.2,$fn=25);
         
-        translate([22,5,b-8-6])cylinder(r=2.25,h=6,$fn=20);
-        translate([22,20,b-8-6])cylinder(r=2.25,h=6,$fn=20);
+        translate([22,5,29])cylinder(r=2.25,h=10,$fn=20);
+        translate([22,20,29])cylinder(r=2.25,h=10,$fn=20);
        
     }
 }
 module partI3(c=25.5){
     //cap, holds motor and pivot for claw
     d = 19;
-    difference(){
+    /*difference(){
         cube([36,25,13]);
         
         translate([31-c,0,13])rotate([-90,0,0])
@@ -205,8 +180,32 @@ module partI3(c=25.5){
         
         translate([36-22,5,0])cylinder(r=2.25,h=13,$fn=20);
         translate([36-22,20,0])cylinder(r=2.25,h=13,$fn=20);
+    }*/
+    difference(){
+        cube([40,33,13]);
+        
+        translate([30.5,0,0])rotate([-90,0,0])
+        cylinder(r=4,h=33,$fn=25);
+        translate([30.5,10,0])rotate([-90,0,0])
+        cylinder(r=8,h=5.2,$fn=25);
+        translate([30.5,25,0])rotate([-90,0,0])
+        cylinder(r=8,h=5.2,$fn=25);
+        
+        translate([30.5-d-6.2,0,0])cube([12.4,33,10]);
+        
+        translate([22,5,0])cylinder(r=2.25,h=13,$fn=25);
+        translate([22,20,0])cylinder(r=2.25,h=13,$fn=25);
     }
 }
+module clawLift1(){
+    liftGears();
+    translate([-13,15,8+0.2])partI2();
+    translate([-13,15,47+0.4])partI3();
+}//clawLift1();
+module clawLift2(){
+    clawBase();
+    translate([92,16-0.2,17])rotate([90,-90,0])clawLift1();
+}clawLift2();
 module partJ(){
     //little gear for cup rotater
     difference(){
