@@ -1,3 +1,5 @@
+include <utils.scad>
+
 module a(){
     circle(r=80,$fn=80);
 }
@@ -128,3 +130,76 @@ module servoTest(){
         }
     }
 }
+
+
+module bigGear(){
+    difference(){
+        union(){
+            translate([0,0,2.5])gear(5,50,5,0);
+            cylinder(r=47/2+5,h=15,$fn=80);
+        }
+        translate([0,0,2])cylinder(r=47/2+0.1,h=13,$fn=80);
+        cylinder(r=2.25,h=2,$fn=30);
+        intersection(){
+            translate([3,-6,0])cube([5,12,2]);
+            cylinder(r=7.5,h=5,$fn=50);
+        }
+    }
+}//bigGear();
+
+module baseA(){
+    difference(){
+        union(){
+            cube([40,32,6]);
+            translate([5,16+3,6])rotate([90,0,0])
+            linear_extrude(6)polygon(points=[
+            [0,0],[0,40],[35,0]]);
+            translate([0,0,6])cube([5,32,40]);
+        }
+        translate([5,5,0])cube([30,4.5,6]);
+        translate([5,27-4.5,0])cube([30,4.5,6]);
+        translate([0,16-2,0])cube([2.5,4,46]);
+        
+        translate([0,6,6])cube([5,4.5,12]);
+        translate([0,26-4.5,6])cube([5,4.5,12]);
+        translate([0,6,30])cube([5,4.5,12]);
+        translate([0,26-4.5,30])cube([5,4.5,12]);
+    }
+}//baseA();
+    
+module baseB(){
+   difference(){
+      union(){
+         cylinder(r=25/2-0.1,h=16,$fn=60);
+         translate([0,-16,0])cube([30,32,4]);
+      }
+      translate([0,0,4])cylinder(r=8,h=12,$fn=50);
+      cylinder(r=5,h=4,$fn=40);
+      
+      translate([-0.5,15.5/2,4])cylinder(r=4,h=16,$fn=30);
+      translate([-0.5,15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+      translate([-0.5,-15.5/2,4])cylinder(r=4,h=16,$fn=30);
+      translate([-0.5,-15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+      
+      translate([-0.5+24,15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+      translate([-0.5+24,-15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+   }
+}//baseB();
+
+module baseAB(){
+    baseA();
+    translate([-0.2,16,12.5])rotate([0,-90,0])
+    baseB();
+}//baseAB();
+
+module baseABG(){
+    baseAB();
+    translate([-5-14-0.4,16,12.5])rotate([0,90,0])
+    bigGear();
+}baseABG();
+
+
+
+
+
+
