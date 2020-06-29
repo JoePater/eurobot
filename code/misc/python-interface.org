@@ -1,0 +1,180 @@
+* Python interface for robot v0.3
+** Modules
+*** move
+**** move.drive(speed,t=-1,sync=False)
+Moves in a straight line for ~t~ seconds.
+~speed~ is from -100 (backwards at full speed) to 100 (forwards at full
+speed). A negative value of ~t~ results in movement without a time
+limit.
+
+When ~sync~ is false, the function runs asynchronously, meaning it
+returns immediately and finishes the time delay in another
+thread. When ~sync~ is true, the function will only return once the time
+delay has finished.
+**** move.rotate(speed,t=-1,sync=False)
+Rotates anticlockwise (from above) for ~t~ seconds.  Negative ~speed~
+results in clockwise rotation, and negative ~t~ results in rotation
+without a time limit.
+
+~sync~ behaves the same as in the previous function.
+**** move.speed()
+Returns current speed of drive motors.
+**** move.movType()
+Returns current movement type - 0 for not moving, 1 for driving in a
+straight line, 2 for rotating
+**** move.wait()
+Wait for any movement to finish. This can be called at any point after
+an asynchronous call to move.drive() or move.rotate(), and will return
+only once the corresponding movement is finished. If the movement will
+never finish (i.e. it was called with a negative value of t) the
+function will return False, else it will return True.
+*** revolver
+**** revolver.freeCount()
+Returns number of free slots in revolver
+**** revolver.redCount()
+Returns number of red buoys in revolver
+**** revolver.greenCount()
+Returns number of green buoys in revolver
+**** revolver.isFull()
+True if the revolver is full
+**** revolver.isEmpty()
+True if the revolver is empty
+**** revolver.currentFull()
+True if the current revolver slot is full
+**** revolver.goToFreeSpace(sync=False)
+Rotates the revolver towards a free space, returning True if free
+spaces were found and False if there were no free spaces.
+
+When ~sync~ is true, the function won't return until the revolver has
+finished rotating. When ~sync~ is false, the function will continue
+running in a separate thread until it reaches its desired location.
+
+NOTE: It is important that the claw is both EMPTY and the RIGHT WAY
+UP, or that the revolver is empty, before this function is called. If
+this isn't the case, then a buoy in the revolver could collide with
+the claw. It is also important that all holders should be CLAMPED
+except for the target holder which should be OPEN. This is to ensure
+that the revolver stops at the right place.
+**** revolver.goToRed(sync=False)
+Same as revolver.goToFreeSpace(), except that it goes to a slot
+containing a red buoy.
+**** revolver.goToGreen(sync=False)
+Same as revolver.goToFreeSpace(), except that it goes to a slot
+containing a green buoy.
+**** revolver.grab(isRed,sync=True)
+Makes the current holder slot grab a cup. ~isRed~ should be True if the
+buoy is red, False if it is green and None if there is no buoy being
+picked up.
+
+When ~sync~ is True, the function won't return until the buoy has been
+grabbed. Otherwise, the function will return immediately and the
+grabbing will continue in the background.
+**** revolver.release(sync=True)
+Makes current holder slot release. ~sync~ works the same as in the
+previous function.
+
+NOTE: The current slot should either be empty, or the claw should be
+the RIGHT WAY UP, LIFTED UP and CLAMPED to ensure that a buoy isn't
+dropped.
+**** revolver.finishedRotating()
+True if rotating has finished
+**** revolver.waitRotate()
+Only returns once the revolver has finished rotating
+**** revolver.finishedGrabbing()
+True if revolver has finished grabbing buoy
+**** revolver.waitGrab()
+Only returns once the revolver has finished all grabbing/releasing
+*** claw
+**** claw.isUp()
+True if the claw is currently fully up
+**** claw.isRightWayUp()
+True if the claw is the right way up
+**** claw.isGrabbed()
+True if the claw is grabbed
+**** claw.goDown(sync=False)
+Makes the claw lower itself down so that it is open and down (in that
+order), returning True on success and False on failure. It assumes
+that the claw is already the right way up.
+
+This function ensures that the claw is ready to grab a new buoy. Note
+that it does not ensure that it is safe to rotate the revolver; if a
+buoy has just been dropped, you need to reverse a bit to ensure that
+it isn't in the way.
+**** claw.grab(sync=False)
+Makes the claw grab. Returns False on failure, otherwise True.
+**** claw.color()
+Tests the color of the RGB sensor. "red" indicates a red buoy, "green"
+indicates a green buoy and "blue" indicates empty.
+**** claw.turnRightWayUp(sync=False)
+Turns the claw the right way up, ready to grab stray buoys.
+
+NOTE: This function should only be called when the claw is both down
+(or half way down) and closed
+**** claw.turnUpsideDown(sync=False)
+Turns the claw upside down, ready to grab edge buoys.
+
+NOTE: This function should only be called when the claw is both down
+(or half way down) and closed.
+**** claw.lift(sync=False)
+Lifts the claw up.
+
+NOTE: This function should only be called when the claw is the right
+way up.
+**** claw.liftHalfway(sync=False)
+Lifts claw part way up. This is useful for rotating a buoy, which
+can't be done when fully down (since the buoy would scrape along the
+floor) and can't be done when fully up (since the claw can't be
+rotated when fully up as it would hit the revolver).
+**** claw.release(sync=False)
+Releases claw.
+**** claw.isLifting()
+Returns true if the claw is currently either lifting or lowering.
+**** claw.waitLift()
+Returns once the claw has finished either lifting or lowering.
+**** claw.isRotating()
+Returns true if the claw is currently rotating (i.e. between right way
+up and upside down)
+**** claw.waitRotate()
+Returns once the claw has finished rotating.
+**** claw.isGrabbing()
+Returns true if the claw is currently either grabbing or releasing.
+**** claw.waitGrab()
+Returns once the claw has finished either grabbing or releasing.
+**** claw.isMoving()
+Returns true if any part of the claw is moving.
+**** claw.waitMove()
+Returns once the claw has finished moving.
+*** flag
+**** flag.raise(delay=-1)
+Raises the flag after ~delay~ seconds
+*** location
+**** location.position()
+Returns tuple of (x,y) coordinates of robot in mm, with (0,0) as top
+left of diagram.
+**** location.bearing()
+Returns bearing in degrees of robot, with North as pointing towards
+big beacon tower (top of diagram).
+**** location.object(obj)
+Returns an (x,y) tuple containing the coordinates of the object given
+by the string ~obj~. The possible values for ~obj~ are:
+**** location.team()
+Returns the team for the current match - 0 for yellow, 1 for blue
+*** route
+**** route.goto(target,sync=True)
+Goes to the coordinates specified by the tuple target, which should
+contain ~(x,y)~. If ~sync~ is True, the function will only
+return once it has finished following the route. Else, it will
+continue in a background thread. Calling ~route.goto()~ while a
+previous asynchronous ~route.goto()~ is still running will discard the
+previous route.
+
+Returns false if there is no route or there was a problem.
+**** route.arrived()
+Returns true if the route currently being followed has finished, else
+returns false.
+**** route.waitArrived()
+Returns once the route currently being followed has finished. Returns
+true on success and false on failure.
+**** route.orientation(bearing,sync=True)
+Makes robot rotate to ~bearing~
+

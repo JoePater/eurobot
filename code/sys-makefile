@@ -1,4 +1,0 @@
-system-test: system.o route.o robot.o mechanisms.o scheduledevent.o system-test.o geometry.o region.o bitmap.o claw.o revolver.o fairways.o arena.o arenabject.o constants.o
-	g++ -o system-test system.o route.o robot.o mechanisms.o scheduledevent.o system-test.o geometry.o region.o bitmap.o claw.o revolver.o fairways.o arena.o arenaobject.o constants.o
-
-
