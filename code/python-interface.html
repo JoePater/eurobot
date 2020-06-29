@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-06-29 Mon 18:02 -->
+<!-- 2020-06-29 Mon 18:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -246,16 +246,16 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd4e3b14">1. Python interface for robot V0.2</a>
+<li><a href="#org2ad2cc2">1. Python interface for robot v0.3</a>
 <ul>
-<li><a href="#org9420d54">1.1. Modules</a>
+<li><a href="#org0a65d1a">1.1. Modules</a>
 <ul>
-<li><a href="#org2463124">1.1.1. move</a></li>
-<li><a href="#orgc7e89da">1.1.2. revolver</a></li>
-<li><a href="#org77061c5">1.1.3. claw</a></li>
-<li><a href="#org5ff0f55">1.1.4. flag</a></li>
-<li><a href="#org387d41e">1.1.5. location</a></li>
-<li><a href="#org0c4fe58">1.1.6. route</a></li>
+<li><a href="#orgd185b98">1.1.1. move</a></li>
+<li><a href="#org13ad39d">1.1.2. revolver</a></li>
+<li><a href="#org64eceb3">1.1.3. claw</a></li>
+<li><a href="#org29d10fa">1.1.4. flag</a></li>
+<li><a href="#orgb375c9e">1.1.5. location</a></li>
+<li><a href="#org9e931e4">1.1.6. route</a></li>
 </ul>
 </li>
 </ul>
@@ -263,20 +263,20 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd4e3b14" class="outline-2">
-<h2 id="orgd4e3b14"><span class="section-number-2">1</span> Python interface for robot V0.2</h2>
+<div id="outline-container-org2ad2cc2" class="outline-2">
+<h2 id="org2ad2cc2"><span class="section-number-2">1</span> Python interface for robot v0.3</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org9420d54" class="outline-3">
-<h3 id="org9420d54"><span class="section-number-3">1.1</span> Modules</h3>
+<div id="outline-container-org0a65d1a" class="outline-3">
+<h3 id="org0a65d1a"><span class="section-number-3">1.1</span> Modules</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org2463124" class="outline-4">
-<h4 id="org2463124"><span class="section-number-4">1.1.1</span> move</h4>
+<div id="outline-container-orgd185b98" class="outline-4">
+<h4 id="orgd185b98"><span class="section-number-4">1.1.1</span> move</h4>
 <div class="outline-text-4" id="text-1-1-1">
 </div>
 <ol class="org-ol">
-<li><a id="org4764bfb"></a>move.drive(speed,t=-1,sync=False)<br />
+<li><a id="org4265dcc"></a>move.drive(speed,t=-1,sync=False)<br />
 <div class="outline-text-5" id="text-1-1-1-1">
 <p>
 Moves in a straight line for <code>t</code> seconds.
@@ -293,7 +293,7 @@ delay has finished.
 </p>
 </div>
 </li>
-<li><a id="org988411f"></a>move.rotate(speed,t=-1,sync=False)<br />
+<li><a id="org36aba6a"></a>move.rotate(speed,t=-1,sync=False)<br />
 <div class="outline-text-5" id="text-1-1-1-2">
 <p>
 Rotates anticlockwise (from above) for <code>t</code> seconds.  Negative <code>speed</code>
@@ -306,14 +306,14 @@ without a time limit.
 </p>
 </div>
 </li>
-<li><a id="orgddcaa91"></a>move.speed()<br />
+<li><a id="org9efb6f6"></a>move.speed()<br />
 <div class="outline-text-5" id="text-1-1-1-3">
 <p>
 Returns current speed of drive motors.
 </p>
 </div>
 </li>
-<li><a id="orgc06c53f"></a>move.movType()<br />
+<li><a id="org8bf3c14"></a>move.movType()<br />
 <div class="outline-text-5" id="text-1-1-1-4">
 <p>
 Returns current movement type - 0 for not moving, 1 for driving in a
@@ -321,7 +321,7 @@ straight line, 2 for rotating
 </p>
 </div>
 </li>
-<li><a id="orgf0d4cbd"></a>move.wait()<br />
+<li><a id="org67fbb8b"></a>move.wait()<br />
 <div class="outline-text-5" id="text-1-1-1-5">
 <p>
 Wait for any movement to finish. This can be called at any point after
@@ -334,54 +334,54 @@ function will return False, else it will return True.
 </li>
 </ol>
 </div>
-<div id="outline-container-orgc7e89da" class="outline-4">
-<h4 id="orgc7e89da"><span class="section-number-4">1.1.2</span> revolver</h4>
+<div id="outline-container-org13ad39d" class="outline-4">
+<h4 id="org13ad39d"><span class="section-number-4">1.1.2</span> revolver</h4>
 <div class="outline-text-4" id="text-1-1-2">
 </div>
 <ol class="org-ol">
-<li><a id="org1c17e4b"></a>revolver.freeCount()<br />
+<li><a id="org7245a4b"></a>revolver.freeCount()<br />
 <div class="outline-text-5" id="text-1-1-2-1">
 <p>
 Returns number of free slots in revolver
 </p>
 </div>
 </li>
-<li><a id="orgbf8615e"></a>revolver.redCount()<br />
+<li><a id="orgcaa94a5"></a>revolver.redCount()<br />
 <div class="outline-text-5" id="text-1-1-2-2">
 <p>
 Returns number of red buoys in revolver
 </p>
 </div>
 </li>
-<li><a id="org0d87b7e"></a>revolver.greenCount()<br />
+<li><a id="org7bf151d"></a>revolver.greenCount()<br />
 <div class="outline-text-5" id="text-1-1-2-3">
 <p>
 Returns number of green buoys in revolver
 </p>
 </div>
 </li>
-<li><a id="org667bb25"></a>revolver.isFull()<br />
+<li><a id="orgb6dd2d1"></a>revolver.isFull()<br />
 <div class="outline-text-5" id="text-1-1-2-4">
 <p>
 True if the revolver is full
 </p>
 </div>
 </li>
-<li><a id="orgfd364fd"></a>revolver.isEmpty()<br />
+<li><a id="org27e9f7b"></a>revolver.isEmpty()<br />
 <div class="outline-text-5" id="text-1-1-2-5">
 <p>
 True if the revolver is empty
 </p>
 </div>
 </li>
-<li><a id="org6fd2d4e"></a>revolver.currentFull()<br />
+<li><a id="orga826335"></a>revolver.currentFull()<br />
 <div class="outline-text-5" id="text-1-1-2-6">
 <p>
 True if the current revolver slot is full
 </p>
 </div>
 </li>
-<li><a id="orge8f6f5c"></a>revolver.goToFreeSpace(sync=False)<br />
+<li><a id="org684a43b"></a>revolver.goToFreeSpace(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-2-7">
 <p>
 Rotates the revolver towards a free space, returning True if free
@@ -402,7 +402,7 @@ the claw.
 </p>
 </div>
 </li>
-<li><a id="org17cad0e"></a>revolver.goToRed(sync=False)<br />
+<li><a id="orgc9da8aa"></a>revolver.goToRed(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-2-8">
 <p>
 Same as revolver.goToFreeSpace(), except that it goes to a slot
@@ -410,7 +410,7 @@ containing a red buoy.
 </p>
 </div>
 </li>
-<li><a id="orgef72222"></a>revolver.goToGreen(sync=False)<br />
+<li><a id="org5850194"></a>revolver.goToGreen(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-2-9">
 <p>
 Same as revolver.goToFreeSpace(), except that it goes to a slot
@@ -418,7 +418,7 @@ containing a green buoy.
 </p>
 </div>
 </li>
-<li><a id="orga697653"></a>revolver.grab(isRed,sync=True)<br />
+<li><a id="org511abde"></a>revolver.grab(isRed,sync=True)<br />
 <div class="outline-text-5" id="text-1-1-2-10">
 <p>
 Makes the current holder slot grab a cup. <code>isRed</code> should be True if the
@@ -432,7 +432,7 @@ grabbing will continue in the background.
 </p>
 </div>
 </li>
-<li><a id="orgde163a0"></a>revolver.release(sync=True)<br />
+<li><a id="orgc5c68f4"></a>revolver.release(sync=True)<br />
 <div class="outline-text-5" id="text-1-1-2-11">
 <p>
 Makes current holder slot release. <code>sync</code> works the same as in the
@@ -446,28 +446,28 @@ WAY UP, LIFTED UP and CLAMPED to ensure that a buoy isn't dropped.
 </p>
 </div>
 </li>
-<li><a id="orgb96279b"></a>revolver.finishedRotating()<br />
+<li><a id="org07149f0"></a>revolver.finishedRotating()<br />
 <div class="outline-text-5" id="text-1-1-2-12">
 <p>
 True if rotating has finished
 </p>
 </div>
 </li>
-<li><a id="org071dcb7"></a>revolver.waitRotate()<br />
+<li><a id="org748f194"></a>revolver.waitRotate()<br />
 <div class="outline-text-5" id="text-1-1-2-13">
 <p>
 Only returns once the revolver has finished rotating
 </p>
 </div>
 </li>
-<li><a id="orgca330d9"></a>revolver.finishedGrabbing()<br />
+<li><a id="org4b317d5"></a>revolver.finishedGrabbing()<br />
 <div class="outline-text-5" id="text-1-1-2-14">
 <p>
 True if revolver has finished grabbing buoy
 </p>
 </div>
 </li>
-<li><a id="org84fdb4b"></a>revolver.waitGrab()<br />
+<li><a id="org6856393"></a>revolver.waitGrab()<br />
 <div class="outline-text-5" id="text-1-1-2-15">
 <p>
 Only returns once the revolver has finished all grabbing/releasing
@@ -476,33 +476,33 @@ Only returns once the revolver has finished all grabbing/releasing
 </li>
 </ol>
 </div>
-<div id="outline-container-org77061c5" class="outline-4">
-<h4 id="org77061c5"><span class="section-number-4">1.1.3</span> claw</h4>
+<div id="outline-container-org64eceb3" class="outline-4">
+<h4 id="org64eceb3"><span class="section-number-4">1.1.3</span> claw</h4>
 <div class="outline-text-4" id="text-1-1-3">
 </div>
 <ol class="org-ol">
-<li><a id="orgca0666e"></a>claw.isUp()<br />
+<li><a id="orgddf3ee4"></a>claw.isUp()<br />
 <div class="outline-text-5" id="text-1-1-3-1">
 <p>
 True if the claw is currently fully up
 </p>
 </div>
 </li>
-<li><a id="orga5e32ab"></a>claw.isRightWayUp()<br />
+<li><a id="org190abe0"></a>claw.isRightWayUp()<br />
 <div class="outline-text-5" id="text-1-1-3-2">
 <p>
 True if the claw is the right way up
 </p>
 </div>
 </li>
-<li><a id="orgd4868c0"></a>claw.isGrabbed()<br />
+<li><a id="org1fc879f"></a>claw.isGrabbed()<br />
 <div class="outline-text-5" id="text-1-1-3-3">
 <p>
 True if the claw is grabbed
 </p>
 </div>
 </li>
-<li><a id="org0229e03"></a>claw.goDown(sync=False)<br />
+<li><a id="org27c6aaf"></a>claw.goDown(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-3-4">
 <p>
 Makes the claw lower itself down so that it is open and down (in that
@@ -518,14 +518,14 @@ it isn't in the way.
 </p>
 </div>
 </li>
-<li><a id="orgd66d93b"></a>claw.grab(sync=False)<br />
+<li><a id="orgd9adf72"></a>claw.grab(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-3-5">
 <p>
 Makes the claw grab. Returns False on failure, otherwise True.
 </p>
 </div>
 </li>
-<li><a id="orgc55186f"></a>claw.color()<br />
+<li><a id="org64f8331"></a>claw.color()<br />
 <div class="outline-text-5" id="text-1-1-3-6">
 <p>
 Tests the color of the RGB sensor. "red" indicates a red buoy, "green"
@@ -533,7 +533,7 @@ indicates a green buoy and "blue" indicates empty.
 </p>
 </div>
 </li>
-<li><a id="org390dce3"></a>claw.turnRightWayUp(sync=False)<br />
+<li><a id="org239cb45"></a>claw.turnRightWayUp(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-3-7">
 <p>
 Turns the claw the right way up, ready to grab stray buoys.
@@ -545,7 +545,7 @@ NOTE: This function should only be called when the claw is both down
 </p>
 </div>
 </li>
-<li><a id="org122596c"></a>claw.turnUpsideDown(sync=False)<br />
+<li><a id="orgcf6d8c7"></a>claw.turnUpsideDown(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-3-8">
 <p>
 Turns the claw upside down, ready to grab edge buoys.
@@ -557,7 +557,7 @@ NOTE: This function should only be called when the claw is both down
 </p>
 </div>
 </li>
-<li><a id="org55d91c8"></a>claw.lift(sync=False)<br />
+<li><a id="orgeaf9db2"></a>claw.lift(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-3-9">
 <p>
 Lifts the claw up.
@@ -569,7 +569,7 @@ way up.
 </p>
 </div>
 </li>
-<li><a id="org3b14abc"></a>claw.liftHalfway(sync=False)<br />
+<li><a id="org959889e"></a>claw.liftHalfway(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-3-10">
 <p>
 Lifts claw part way up. This is useful for rotating a buoy, which
@@ -579,28 +579,28 @@ rotated when fully up as it would hit the revolver).
 </p>
 </div>
 </li>
-<li><a id="orgfdd27a1"></a>claw.release(sync=False)<br />
+<li><a id="org0a5211e"></a>claw.release(sync=False)<br />
 <div class="outline-text-5" id="text-1-1-3-11">
 <p>
 Releases claw.
 </p>
 </div>
 </li>
-<li><a id="orga2f701e"></a>claw.isLifting()<br />
+<li><a id="org6794a61"></a>claw.isLifting()<br />
 <div class="outline-text-5" id="text-1-1-3-12">
 <p>
 Returns true if the claw is currently either lifting or lowering.
 </p>
 </div>
 </li>
-<li><a id="orgef1c626"></a>claw.waitLift()<br />
+<li><a id="org3871587"></a>claw.waitLift()<br />
 <div class="outline-text-5" id="text-1-1-3-13">
 <p>
 Returns once the claw has finished either lifting or lowering.
 </p>
 </div>
 </li>
-<li><a id="orgf33395a"></a>claw.isRotating()<br />
+<li><a id="org8eb6d80"></a>claw.isRotating()<br />
 <div class="outline-text-5" id="text-1-1-3-14">
 <p>
 Returns true if the claw is currently rotating (i.e. between right way
@@ -608,35 +608,35 @@ up and upside down)
 </p>
 </div>
 </li>
-<li><a id="org3a2a258"></a>claw.waitRotate()<br />
+<li><a id="org87f34cf"></a>claw.waitRotate()<br />
 <div class="outline-text-5" id="text-1-1-3-15">
 <p>
 Returns once the claw has finished rotating.
 </p>
 </div>
 </li>
-<li><a id="orga040ef3"></a>claw.isGrabbing()<br />
+<li><a id="orgdf9842a"></a>claw.isGrabbing()<br />
 <div class="outline-text-5" id="text-1-1-3-16">
 <p>
 Returns true if the claw is currently either grabbing or releasing.
 </p>
 </div>
 </li>
-<li><a id="orgcbebbb3"></a>claw.waitGrab()<br />
+<li><a id="org123de79"></a>claw.waitGrab()<br />
 <div class="outline-text-5" id="text-1-1-3-17">
 <p>
 Returns once the claw has finished either grabbing or releasing.
 </p>
 </div>
 </li>
-<li><a id="org8aecde5"></a>claw.isMoving()<br />
+<li><a id="org6fe4ab0"></a>claw.isMoving()<br />
 <div class="outline-text-5" id="text-1-1-3-18">
 <p>
 Returns true if any part of the claw is moving.
 </p>
 </div>
 </li>
-<li><a id="orgffd822c"></a>claw.waitMove()<br />
+<li><a id="org46c0138"></a>claw.waitMove()<br />
 <div class="outline-text-5" id="text-1-1-3-19">
 <p>
 Returns once the claw has finished moving.
@@ -645,12 +645,12 @@ Returns once the claw has finished moving.
 </li>
 </ol>
 </div>
-<div id="outline-container-org5ff0f55" class="outline-4">
-<h4 id="org5ff0f55"><span class="section-number-4">1.1.4</span> flag</h4>
+<div id="outline-container-org29d10fa" class="outline-4">
+<h4 id="org29d10fa"><span class="section-number-4">1.1.4</span> flag</h4>
 <div class="outline-text-4" id="text-1-1-4">
 </div>
 <ol class="org-ol">
-<li><a id="org76c046d"></a>flag.raise(delay=-1)<br />
+<li><a id="org8754c31"></a>flag.raise(delay=-1)<br />
 <div class="outline-text-5" id="text-1-1-4-1">
 <p>
 Raises the flag after <code>delay</code> seconds
@@ -659,12 +659,12 @@ Raises the flag after <code>delay</code> seconds
 </li>
 </ol>
 </div>
-<div id="outline-container-org387d41e" class="outline-4">
-<h4 id="org387d41e"><span class="section-number-4">1.1.5</span> location</h4>
+<div id="outline-container-orgb375c9e" class="outline-4">
+<h4 id="orgb375c9e"><span class="section-number-4">1.1.5</span> location</h4>
 <div class="outline-text-4" id="text-1-1-5">
 </div>
 <ol class="org-ol">
-<li><a id="org9525c8a"></a>location.position()<br />
+<li><a id="org34fb90b"></a>location.position()<br />
 <div class="outline-text-5" id="text-1-1-5-1">
 <p>
 Returns tuple of (x,y) coordinates of robot in mm, with (0,0) as top
@@ -672,7 +672,7 @@ left of diagram.
 </p>
 </div>
 </li>
-<li><a id="orgfa8a47d"></a>location.bearing()<br />
+<li><a id="orgb7bb7e8"></a>location.bearing()<br />
 <div class="outline-text-5" id="text-1-1-5-2">
 <p>
 Returns bearing in degrees of robot, with North as pointing towards
@@ -680,7 +680,7 @@ big beacon tower (top of diagram).
 </p>
 </div>
 </li>
-<li><a id="org106ca14"></a>location.object(obj)<br />
+<li><a id="org7a04869"></a>location.object(obj)<br />
 <div class="outline-text-5" id="text-1-1-5-3">
 <p>
 Returns an (x,y) tuple containing the coordinates of the object given
@@ -688,7 +688,7 @@ by the string <code>obj</code>. The possible values for <code>obj</code> are:
 </p>
 </div>
 </li>
-<li><a id="orgb58c39b"></a>location.team()<br />
+<li><a id="org4c8ee7a"></a>location.team()<br />
 <div class="outline-text-5" id="text-1-1-5-4">
 <p>
 Returns the team for the current match - 0 for yellow, 1 for blue
@@ -697,67 +697,45 @@ Returns the team for the current match - 0 for yellow, 1 for blue
 </li>
 </ol>
 </div>
-<div id="outline-container-org0c4fe58" class="outline-4">
-<h4 id="org0c4fe58"><span class="section-number-4">1.1.6</span> route</h4>
+<div id="outline-container-org9e931e4" class="outline-4">
+<h4 id="org9e931e4"><span class="section-number-4">1.1.6</span> route</h4>
 <div class="outline-text-4" id="text-1-1-6">
 </div>
 <ol class="org-ol">
-<li><a id="org836c4a4"></a>route.find(start,end)<br />
+<li><a id="orgef38891"></a>route.goto(target,sync=True)<br />
 <div class="outline-text-5" id="text-1-1-6-1">
 <p>
-Finds route between <code>start</code> and <code>end</code>, where <code>start</code> and <code>end</code> are tuples of
-(x,y) coordinates. Returns a Route object.
-</p>
-</div>
-</li>
-<li><a id="orgce8b038"></a>Route class<br />
-<div class="outline-text-5" id="text-1-1-6-2">
-<p>
-A class representing a route between two points.
-</p>
-
-<p>
-Its only attribute is <code>Route.valid</code>, which is True if the route is a
-valid route and False if it isn't (i.e. there is no viable route
-between the two points). This should always be checked for a route
-returned from route.find().
-</p>
-</div>
-</li>
-<li><a id="org4bcad04"></a>route.follow(r,sync=True)<br />
-<div class="outline-text-5" id="text-1-1-6-3">
-<p>
-Follows a Route object <code>r</code>. If <code>sync</code> is True, the function will only
+Goes to the coordinates specified by the tuple target, which should
+contain <code>(x,y)</code>. If <code>sync</code> is True, the function will only
 return once it has finished following the route. Else, it will
-continue in a background thread. Calling route.follow() while a
-previous asynchronous route.follow is still running will discard the
+continue in a background thread. Calling <code>route.goto()</code> while a
+previous asynchronous <code>route.goto()</code> is still running will discard the
 previous route.
 </p>
 
 <p>
-If run synchronously, this function returns True on success and False
-on failure.
+Returns false if there is no route or there was a problem.
 </p>
 </div>
 </li>
-<li><a id="org3afdc1e"></a>route.arrived()<br />
-<div class="outline-text-5" id="text-1-1-6-4">
+<li><a id="orgcf46c99"></a>route.arrived()<br />
+<div class="outline-text-5" id="text-1-1-6-2">
 <p>
 Returns true if the route currently being followed has finished, else
 returns false.
 </p>
 </div>
 </li>
-<li><a id="org84d6a04"></a>route.waitArrived()<br />
-<div class="outline-text-5" id="text-1-1-6-5">
+<li><a id="orgaa3fe0f"></a>route.waitArrived()<br />
+<div class="outline-text-5" id="text-1-1-6-3">
 <p>
 Returns once the route currently being followed has finished. Returns
 true on success and false on failure.
 </p>
 </div>
 </li>
-<li><a id="orga93c846"></a>route.orientation(bearing,sync=True)<br />
-<div class="outline-text-5" id="text-1-1-6-6">
+<li><a id="org0c23a0f"></a>route.orientation(bearing,sync=True)<br />
+<div class="outline-text-5" id="text-1-1-6-4">
 <p>
 Makes robot rotate to <code>bearing</code>
 </p>
@@ -770,7 +748,7 @@ Makes robot rotate to <code>bearing</code>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Joe Pater</p>
-<p class="date">Created: 2020-06-29 Mon 18:02</p>
+<p class="date">Created: 2020-06-29 Mon 18:10</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

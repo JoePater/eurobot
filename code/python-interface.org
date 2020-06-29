@@ -1,4 +1,4 @@
-* Python interface for robot V0.2
+* Python interface for robot v0.3
 ** Modules
 *** move
 **** move.drive(speed,t=-1,sync=False)
@@ -157,25 +157,15 @@ by the string ~obj~. The possible values for ~obj~ are:
 **** location.team()
 Returns the team for the current match - 0 for yellow, 1 for blue
 *** route
-**** route.find(start,end)
-Finds route between ~start~ and ~end~, where ~start~ and ~end~ are tuples of
-(x,y) coordinates. Returns a Route object.
-**** Route class
-A class representing a route between two points.
-
-Its only attribute is ~Route.valid~, which is True if the route is a
-valid route and False if it isn't (i.e. there is no viable route
-between the two points). This should always be checked for a route
-returned from route.find().
-**** route.follow(r,sync=True)
-Follows a Route object ~r~. If ~sync~ is True, the function will only
+**** route.goto(target,sync=True)
+Goes to the coordinates specified by the tuple target, which should
+contain ~(x,y)~. If ~sync~ is True, the function will only
 return once it has finished following the route. Else, it will
-continue in a background thread. Calling route.follow() while a
-previous asynchronous route.follow is still running will discard the
+continue in a background thread. Calling ~route.goto()~ while a
+previous asynchronous ~route.goto()~ is still running will discard the
 previous route.
 
-If run synchronously, this function returns True on success and False
-on failure.
+Returns false if there is no route or there was a problem.
 **** route.arrived()
 Returns true if the route currently being followed has finished, else
 returns false.
