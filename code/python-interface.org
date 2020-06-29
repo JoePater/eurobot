@@ -154,7 +154,6 @@ big beacon tower (top of diagram).
 **** location.object(obj)
 Returns an (x,y) tuple containing the coordinates of the object given
 by the string ~obj~. The possible values for ~obj~ are:
-***** TODO write this list
 **** location.team()
 Returns the team for the current match - 0 for yellow, 1 for blue
 *** route
