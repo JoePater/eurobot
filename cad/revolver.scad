@@ -267,6 +267,9 @@ module holderA(){
         translate([-3,0,0])cube([3,20,20]);
         translate([30,0,0])cube([3,20,20]);
         translate([30,7.5,11.5+8])cube([6,5,10]);
+        
+        translate([30-3,0,15])rotate([-90,0,0])
+        cylinder(r=1,h=20,$fn=25);
     }
 }//holderA();
 
@@ -281,17 +284,6 @@ module holderB(){
         cylinder(r=1.75,h=3+4.5+4,$fn=25);
     }
 }//holderB();
-
-module holderB2(){
-    //gear with lever
-    holderB();
-    rotate([0,0,10])difference(){
-        union(){
-            translate([4,-4,7.5])cube([30,8,4]);
-        }
-        translate([4+30-5,0,7.5])cylinder(r=1.75,h=4,$fn=25);
-    }
-}//holderB2();
 
 module holderC(){
     //slider cover
@@ -326,36 +318,26 @@ module holderC(){
     }
 }//holderC();
 
-module holderD1(){
-    //link for lever
-    difference(){
-        cube([20,8,3]);
-        translate([4,4,0])cylinder(r=1.75,h=4,$fn=25);
-        translate([16,4,0])cylinder(r=1.75,h=4,$fn=25);
+module holderD(){
+    //cam for pushing arm
+    render()rotate([0,0,160])difference(){
+        scale([1,0.7,1])translate([3,0,0])
+        cylinder(r=10,h=6,$fn=40);
+        cylinder(r=2.3,h=6,$fn=30);
+        translate([8,0,0])cylinder(r=1,h=6,$fn=25);
+        translate([8,0,0])cylinder(r=2,h=3,$fn=30);
     }
-}
-
-module holderD2(){
-    //servo cap for lever
-    difference(){
-        union(){
-            cube([10,20,3]);
-            translate([5,5,3])cylinder(r=5,h=6,$fn=30);
-        }
-        translate([5,15,0])cylinder(h=3,r=1.75,$fn=20);
-        translate([5,5,6])cylinder(h=6,r=2.4,$fn=20);
-    }
-}
+}//holderD();
 
 module holderABC(){
-    holderA();
+    translate([-3,0,0])holderA();
     dy=4;
     dx=19;
     ds=10.2;
     translate([dx,-10-dy,0])rotate([0,0,180/15])
     holderB();
     translate([dx,dy+10,0])rotate([0,0,180/15])
-    holderB2();
+    holderB();
     holderC();
 }//holderABC();
 
@@ -369,16 +351,86 @@ module holderABCD(){
     holderABC2();
     translate([-44.7,27.4,4])rotate([0,0,100])
     translate([-16,-4,0])holderD1();
-    translate([-42.5,15.6,1])rotate([0,0,-30])
-    translate([-5,-15,0])holderD2();
 }
 
 module holderABCD2(){
-    for(i=[0,72,144,216,288]){
-        rotate([0,0,i])
-        translate([70,0,0])holderABCD();
+    for(i=[0,90,180,270]){
+        union(){
+        rotate([0,0,i]){
+        translate([70,0,0])holderABC2();
+        translate([25,-20,0])rotate([90,0,-30])union(){
+            cube([27,23,12]);
+            translate([27.2,7,6])rotate([0,90,0])
+            holderD();
+        }}
     }
-}holderABCD2();
+    }
+    
+}//holderABCD2();
+
+module stopperA(){
+    //base
+    difference(){
+        union(){
+            cube([35,30,4]);
+            cube([8,30,45]);
+            //translate([0,15-2,0])cube([25,4,45]);
+        }
+        translate([0,15-10,32])cube([8,20,8]);
+        
+        translate([13,5,0])cylinder(r=2.25,h=4,$fn=25);
+        translate([30,5,0])cylinder(r=2.25,h=4,$fn=25);
+        translate([13,25,0])cylinder(r=2.25,h=4,$fn=25);
+        translate([30,25,0])cylinder(r=2.25,h=4,$fn=25);
+        
+        translate([0,5,25])rotate([0,90,0])
+        cylinder(r=2.25,h=8,$fn=25);
+        translate([0,25,25])rotate([0,90,0])
+        cylinder(r=2.25,h=8,$fn=25);
+    }
+}stopperA();
+
+module stopperB(){
+    //underside of base
+    h = 20;
+    //translate([16,15,3])cylinder(r1=6,r2=0,h=6,$fn=30);
+    difference(){
+        cube([25,30,h+3]);
+        translate([10,0,3])cube([15,30,h]);
+        translate([5,5,0])cylinder(r=2.25,h=30,$fn=25);
+        translate([5,25,0])cylinder(r=2.25,h=30,$fn=25);
+        translate([16,15,0])cylinder(r=2.25,h=3,$fn=25);
+    }
+}translate([23+8.2,0,20])rotate([0,-90,0])
+stopperB();
+
+module stopperC(){
+    //moving bit
+    d = 4;
+    b = 3;
+    difference(){
+        union(){
+            linear_extrude(7.8)polygon(points=[
+                [0,0],[d+b,9.9-3],[b,9.9-3],
+                [b,9.9+3],[d+b,9.9+3],[0,19.8]
+            ]);
+            translate([-8,0,0])cube([8,19.8,7.8]);
+            translate([-8-3,-3,0])cube([3,6,7.8]);
+            translate([-8-3,17,0])cube([3,6,7.8]);
+            translate([-8,9.9,3.9])rotate([0,-90,0])
+            cylinder(r1=3.9,r2=0,h=3.9,$fn=30);
+        }
+    }
+}translate([0,5.1+19.8,32.1])rotate([0,0,180])stopperC();
+
+
+
+
+
+
+
+
+
 
 
 
