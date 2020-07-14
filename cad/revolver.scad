@@ -131,21 +131,28 @@ module servoTest(){
     }
 }
 
+module bigGearHoles(){
+    for(a=[0:7]){
+        rotate([0,0,22.5+45*a])translate([33,0,0])
+        cylinder(r=2.25,h=5,$fn=25);
+    }
+    for(a=[0:3]){
+        rotate([0,0,90*a])translate([38,0,0])
+        cylinder(r=1.75,h=5,$fn=30);
+    }
+}
 
 module bigGear(){
     difference(){
         union(){
-            translate([0,0,2.5])gear(5,50,5,0);
+            translate([0,0,2.5])gear(5,55,5,0);
             cylinder(r=47/2+5,h=15,$fn=80);
         }
         translate([0,0,2])cylinder(r=47/2+0.1,h=13,$fn=80);
-        cylinder(r=2.25,h=2,$fn=30);
-        intersection(){
-            translate([3,-6,0])cube([5,12,2]);
-            cylinder(r=7.5,h=5,$fn=50);
-        }
+        cylinder(r=7.5,h=5,$fn=50);
+        bigGearHoles();
     }
-}//bigGear();
+}rotate([180,0,0])bigGear();
 
 module baseA(){
     difference(){
@@ -329,6 +336,44 @@ module holderD(){
     }
 }//holderD();
 
+module holderE(){
+    dy=4;
+    dx=19;
+    a=atan((dy+10)/dx);
+    d=sqrt(pow(dy+10,2)+pow(dx,2));
+    //base plate for individual grabber
+    difference(){linear_extrude(4)difference(){
+        polygon(points=[
+            [20,0],[27,16],[80,32.5],[88,31],[92,25.7],
+            [92,-25.7],[88,-31],[50,-40],[35,-50],[15,-25]
+        ]);
+        
+        rotate([0,0,22.5])translate([33,0,0])
+        circle(r=2.25,$fn=30);
+        rotate([0,0,-22.5])translate([33,0,0])
+        circle(r=2.25,$fn=30);
+        
+        translate([70,0,0]){
+            for(i=[0:2]){
+                rotate(i*120+a)translate([d,0])
+                circle(r=1.75,$fn=25);
+                rotate(i*120+120-a)translate([d,0])
+                circle(r=1.75,$fn=25);
+                rotate(i*120+60)translate([32,0])
+                circle(r=1.75,$fn=25);
+            }
+
+        }
+    }
+    linear_extrude(2)translate([70,0]){
+    rotate(120+a)translate([d,0])
+    circle(r=3,$fn=25);
+    rotate(240-a)translate([d,0])
+    circle(r=3,$fn=25);
+    }
+}
+}//render()holderE();
+
 module holderABC(){
     translate([-3,0,0])holderA();
     dy=4;
@@ -353,7 +398,7 @@ module holderABCD(){
     translate([-16,-4,0])holderD1();
 }
 
-module holderABCD2(){
+module holderAll(){
     for(i=[0,90,180,270]){
         union(){
         rotate([0,0,i]){
@@ -362,11 +407,13 @@ module holderABCD2(){
             cube([27,23,12]);
             translate([27.2,7,6])rotate([0,90,0])
             holderD();
-        }}
+        }
+        translate([0,0,-4.5])holderE();
+        }
     }
     }
     
-}//holderABCD2();
+}translate([0,0,5])holderAll();
 
 module stopperA(){
     //base
@@ -388,7 +435,7 @@ module stopperA(){
         translate([0,25,25])rotate([0,90,0])
         cylinder(r=2.25,h=8,$fn=25);
     }
-}stopperA();
+}//stopperA();
 
 module stopperB(){
     //underside of base
@@ -401,8 +448,8 @@ module stopperB(){
         translate([5,25,0])cylinder(r=2.25,h=30,$fn=25);
         translate([16,15,0])cylinder(r=2.25,h=3,$fn=25);
     }
-}translate([23+8.2,0,20])rotate([0,-90,0])
-stopperB();
+}//translate([23+8.2,0,20])rotate([0,-90,0])
+//stopperB();
 
 module stopperC(){
     //moving bit
@@ -421,7 +468,7 @@ module stopperC(){
             cylinder(r1=3.9,r2=0,h=3.9,$fn=30);
         }
     }
-}translate([0,5.1+19.8,32.1])rotate([0,0,180])stopperC();
+}//translate([0,5.1+19.8,32.1])rotate([0,0,180])stopperC();
 
 
 
