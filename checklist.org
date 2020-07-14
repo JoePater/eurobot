@@ -1,0 +1,7 @@
+* Robot parts
+** Lighthouse
+Battery pack
+Battery charger
+** Robot
+Battery bag
+battery
