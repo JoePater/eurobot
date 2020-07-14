@@ -27,6 +27,7 @@ NOTE: times for French places are in French time and times for English places ar
 Total cost: £330.20 + 300.50EU ~ £600
 ** Hotels
 [[https://www.expedia.co.uk/Mouilleron-Le-Captif-Hotels-Premiere-Classe-La-Roche-Sur-Yon.h13074395.Hotel-Information?ICMCID=Meta.tripa.Expedia_UK-DM&ICMDTL=htl.13074395.taid.481698...testslice..clickid.XvXPDQokGR0AAunOhcEAAAE8_2020-10-28_2020-11-01_1593167629968.AUDID..defdate.0.bucket.CPA&chain=&chkin=28%2F10%2F2020&chkout=1%2F11%2F2020&daysInFuture=&destType=MARKET&destination=Mouilleron-le-Captif%2C%20Vendee%20%28department%29%2C%20France&group=&guestRating=&hotelName=&latLong=&mctc=9&misId=&poi=&pwaDialog=roomInfo-201370954&pwa_ts=1593167632235&referrerUrl=aHR0cHM6Ly93d3cuZXhwZWRpYS5jby51ay9Ib3RlbC1TZWFyY2g%3D&regionId=6094893&rm1=a3&roomIndex=&selected=13074395&selectedRatePlan=206756831&selectedRoomType=201370954&semdtl=&sort=RECOMMENDED&stayLength=&theme=&useRewards=false&userIntent=&x_pwa=1][Expedia hotel]] - £108
+<<<<<<< HEAD
 
 4 nights
 
