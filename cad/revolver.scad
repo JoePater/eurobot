@@ -152,7 +152,7 @@ module bigGear(){
         cylinder(r=7.5,h=5,$fn=50);
         bigGearHoles();
     }
-}rotate([180,0,0])bigGear();
+}//rotate([180,0,0])bigGear();
 
 module baseA(){
     difference(){
@@ -236,13 +236,13 @@ module baseC(){
 
 module baseCG(){
     baseC();
-    a=270;
+    a=90;
     translate([-14,34+8*sin(a),23+8*cos(a)])rotate([0,-90,0])
     littleGear();
 }//baseCG();
 
 module baseAll(){
-    translate([0,35,0])baseCG();
+    translate([0,-75,0])baseCG();
     baseABG();
 }//baseAll();
 
@@ -295,7 +295,7 @@ module holderB(){
 module holderC(){
     //slider cover
     dy=4;
-    dx=19;
+    dx=19.5;
     ds=10.2;
     a=atan((dy+10)/dx);
     d=sqrt(pow(dy+10,2)+pow(dx,2));
@@ -320,14 +320,17 @@ module holderC(){
         cylinder(r=1.75,h=7,$fn=25);
         rotate([0,0,120-a])translate([d,0,0])
         cylinder(r=1.75,h=7,$fn=25);
-        rotate([0,0,60])translate([32,0,0])
+        
+        rotate([0,0,60])translate([32.5,0,0])
+        cylinder(r=1.75,h=7,$fn=25);
+        rotate([0,0,60])translate([11,0,0])
         cylinder(r=1.75,h=7,$fn=25);
     }
 }//holderC();
 
 module holderD(){
     //cam for pushing arm
-    render()rotate([0,0,160])difference(){
+    rotate([0,0,160])difference(){
         scale([1,0.7,1])translate([3,0,0])
         cylinder(r=10,h=6,$fn=40);
         cylinder(r=2.3,h=6,$fn=30);
@@ -338,46 +341,47 @@ module holderD(){
 
 module holderE(){
     dy=4;
-    dx=19;
+    dx=19.5;
     a=atan((dy+10)/dx);
     d=sqrt(pow(dy+10,2)+pow(dx,2));
     //base plate for individual grabber
-    difference(){linear_extrude(4)difference(){
-        polygon(points=[
-            [20,0],[27,16],[80,32.5],[88,31],[92,25.7],
-            [92,-25.7],[88,-31],[50,-40],[35,-50],[15,-25]
-        ]);
-        
+    difference(){
+        linear_extrude(4){
+            polygon(points=[
+                [20,0],[27,16],[40,24],[61,36],
+                [88,31],[105,11],
+                [105,-11],[88,-31],[50,-40],[35,-50],[15,-25]
+            ]);
+        }
         rotate([0,0,22.5])translate([33,0,0])
-        circle(r=2.25,$fn=30);
+        cylinder(r=2.25,h=4,$fn=30);
         rotate([0,0,-22.5])translate([33,0,0])
-        circle(r=2.25,$fn=30);
-        
+        cylinder(r=2.25,h=4,$fn=30);
+            
         translate([70,0,0]){
             for(i=[0:2]){
-                rotate(i*120+a)translate([d,0])
-                circle(r=1.75,$fn=25);
-                rotate(i*120+120-a)translate([d,0])
-                circle(r=1.75,$fn=25);
-                rotate(i*120+60)translate([32,0])
-                circle(r=1.75,$fn=25);
+                rotate([0,0,i*120+a])translate([d,0,0])
+                cylinder(r1=3.5,r2=1.75,h=4,$fn=25);
+                rotate(i*120+120-a)translate([d,0,0])
+                cylinder(r1=3.5,r2=1.75,h=4,$fn=25);
+                 
+                rotate([0,0,i*120+60])translate([32.5,0,0])
+                cylinder(r1=3.5,r2=1.75,h=4,$fn=25);
+                rotate([0,0,i*120+60])translate([11,0,0])
+                cylinder(r1=3.5,r2=1.75,h=4,$fn=25);
             }
 
         }
     }
-    linear_extrude(2)translate([70,0]){
-    rotate(120+a)translate([d,0])
-    circle(r=3,$fn=25);
-    rotate(240-a)translate([d,0])
-    circle(r=3,$fn=25);
-    }
-}
-}//render()holderE();
+    linear_extrude(10)polygon(points=[
+        [40,-46.5],[35,-50],[25.5,-38]
+    ]);
+}holderE();
 
 module holderABC(){
     translate([-3,0,0])holderA();
     dy=4;
-    dx=19;
+    dx=19.5;
     ds=10.2;
     translate([dx,-10-dy,0])rotate([0,0,180/15])
     holderB();
@@ -403,7 +407,7 @@ module holderAll(){
         union(){
         rotate([0,0,i]){
         translate([70,0,0])holderABC2();
-        translate([25,-20,0])rotate([90,0,-30])union(){
+        translate([25,-24,0])rotate([90,0,-30])union(){
             cube([27,23,12]);
             translate([27.2,7,6])rotate([0,90,0])
             holderD();
@@ -413,22 +417,24 @@ module holderAll(){
     }
     }
     
-}translate([0,0,5])holderAll();
+}//translate([0,0,5])holderAll();
 
 module stopperA(){
     //base
     difference(){
         union(){
-            cube([35,30,4]);
+            cube([45,30,4]);
             cube([8,30,45]);
             //translate([0,15-2,0])cube([25,4,45]);
         }
         translate([0,15-10,32])cube([8,20,8]);
         
+        translate([13,5-2.25,0])cube([27,4.5,h]);
+        translate([13,25-2.25,0])cube([27,4.5,h]);
         translate([13,5,0])cylinder(r=2.25,h=4,$fn=25);
-        translate([30,5,0])cylinder(r=2.25,h=4,$fn=25);
+        translate([40,5,0])cylinder(r=2.25,h=4,$fn=25);
         translate([13,25,0])cylinder(r=2.25,h=4,$fn=25);
-        translate([30,25,0])cylinder(r=2.25,h=4,$fn=25);
+        translate([40,25,0])cylinder(r=2.25,h=4,$fn=25);
         
         translate([0,5,25])rotate([0,90,0])
         cylinder(r=2.25,h=8,$fn=25);
@@ -468,7 +474,8 @@ module stopperC(){
             cylinder(r1=3.9,r2=0,h=3.9,$fn=30);
         }
     }
-}//translate([0,5.1+19.8,32.1])rotate([0,0,180])stopperC();
+}//translate([0,5.1+19.8,32.1])rotate([0,0,180])
+//stopperC();
 
 
 
