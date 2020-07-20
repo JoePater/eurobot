@@ -1,0 +1,66 @@
+* Logistics
+** Travel
+NOTE: times for French places are in French time and times for English places are in GMT
+
+| Start                           | End                    | Transport   | Leaves at |  Arrives at | Cost         | Website          |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| Coventry pool medow bus station | Victoria coach station | Coach       |      3:35 |        6:20 | £16.60       | thetrainline.com |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| Victoria station                | St Pancreas            | Underground |           |   6:50-7:30 | £5.00 * 3    |                  |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| St Pancreas                     | Paris Gard du Nord     | Eurostar    |     10:24 |       13:47 | £44.50 * 3   | eurostar.com     |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| Paris Gard du Nord              | La Roche Sur-yon       | Train       |     14:48 |       17:56 | 40.50 * 3 EU | oui.sncf         |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| La Roche Sur-Yon                | La Roche Sur-Yon       | Bus         |           |             | 7 * 5 EU     | impulsyon.fr     |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| La Roche Sur-Yon                | Paris Gard du Nord     | Train       |     16:14 |       19:12 | 48.00 * 3 EU | oui.sncf         |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| Paris Gard du Nord              | St Pancreas            | Eurostar    |     21:13 |       22:39 | £44.50 * 3   | eurostar.com     |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| St Pancreas                     | Victoria               | Underground |           | 23:00-23:20 | £5 * 3       |                  |
+|---------------------------------+------------------------+-------------+-----------+-------------+--------------+------------------|
+| Victoria                        | Coventry               | Coach       |     23:30 |       02:05 | £16.60       | thetrainline.com |
+
+We will get a coach from coventry to London at 3:35 am on Wednesday
+28th October. We will get the underground from the coach stop to St
+Pancreas station, from which we will get the Eurostar to Paris. We
+will then get a train from Paris to La Roche Sur-Yon, and get a bus to
+our hotel (perhaps dropping off the robot at the competition location
+and setting up our booth first). The bus service has a 'tribe ticket'
+(probably a slight mistranslation) that lets small groups use the
+entire network for the day for 7 euros, which we will get each day to
+travel between our hotel and the competition. The last day of the
+competition is Saturday 31st October. The next day, we will have most
+of the day free, then at around 4pm we will get our train back to
+Paris, then the eurostar to St Pancreas, underground to Victoria,
+coach to Coventry, arriving at around 2am in the morning.
+
+Details for the actual event can be found at 
+[[https://translate.googleusercontent.com/translate_c?depth=1&hl=en&pto=aue&rurl=translate.google.com&sl=auto&sp=nmt4&tl=en&u=https://www.coupederobotique.fr/infos-pratiques/acces/&usg=ALkJrhhGRMZ5UHuTaCowErEjVxrqrYVTvg][this website]]
+
+Total cost: £330.20 + 300.50EU ~ £600
+** Hotels
+[[https://www.expedia.co.uk/Mouilleron-Le-Captif-Hotels-Premiere-Classe-La-Roche-Sur-Yon.h13074395.Hotel-Information?ICMCID=Meta.tripa.Expedia_UK-DM&ICMDTL=htl.13074395.taid.481698...testslice..clickid.XvXPDQokGR0AAunOhcEAAAE8_2020-10-28_2020-11-01_1593167629968.AUDID..defdate.0.bucket.CPA&chain=&chkin=28%2F10%2F2020&chkout=1%2F11%2F2020&daysInFuture=&destType=MARKET&destination=Mouilleron-le-Captif%2C%20Vendee%20%28department%29%2C%20France&group=&guestRating=&hotelName=&latLong=&mctc=9&misId=&poi=&pwaDialog=roomInfo-201370954&pwa_ts=1593167632235&referrerUrl=aHR0cHM6Ly93d3cuZXhwZWRpYS5jby51ay9Ib3RlbC1TZWFyY2g%3D&regionId=6094893&rm1=a3&roomIndex=&selected=13074395&selectedRatePlan=206756831&selectedRoomType=201370954&semdtl=&sort=RECOMMENDED&stayLength=&theme=&useRewards=false&userIntent=&x_pwa=1][Expedia hotel]] - £108
+
+4 nights
+
+1 * room with 3 * single beds
+
+Two beds side by side with a bunk bed above
+
+Free wifi
+
+Breakfast buffet for extra £44
+
+Total cost: £108 (+£44)
+** Entry fees
+50EU for membership
+
+150EU for entry
+
+Total cost: 200EU
+** Total cost
+Total: £482.20 + 500.50EU ~ £932.20
+
+Cost per person: £311

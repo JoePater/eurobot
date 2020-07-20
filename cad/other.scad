@@ -1,3 +1,4 @@
+use <utils.scad>
 use <gear.scad>
 
 module partQ1(){
@@ -60,7 +61,7 @@ module partT3(){
         }
         linear_extrude(12)dmotorHole();
     }
-}
+}partT3();
 module partT4(){
     //motor holder for drive
     difference(){
