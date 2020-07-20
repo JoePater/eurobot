@@ -1,5 +1,5 @@
 include <utils.scad>
-
+/*
 module a(){
     circle(r=80,$fn=80);
 }
@@ -130,7 +130,7 @@ module servoTest(){
         }
     }
 }
-
+*/
 module bigGearHoles(){
     for(a=[0:7]){
         rotate([0,0,22.5+45*a])translate([33,0,0])
@@ -155,6 +155,7 @@ module bigGear(){
 }//rotate([180,0,0])bigGear();
 
 module baseA(){
+    //base
     difference(){
         union(){
             cube([40,32,6]);
@@ -175,22 +176,23 @@ module baseA(){
 }//baseA();
     
 module baseB(){
-   difference(){
-      union(){
-         cylinder(r=25/2-0.1,h=16,$fn=60);
-         translate([0,-16,0])cube([30,32,4]);
-      }
-      translate([0,0,4])cylinder(r=8,h=12,$fn=50);
-      cylinder(r=5,h=4,$fn=40);
+    //funny cylinder thing
+    difference(){
+        union(){
+            cylinder(r=25/2-0.1,h=16,$fn=60);
+            translate([0,-16,0])cube([30,32,4]);
+        }
+        translate([0,0,4])cylinder(r=8,h=12,$fn=50);
+        cylinder(r=5,h=4,$fn=40);
       
-      translate([-0.5,15.5/2,4])cylinder(r=4,h=16,$fn=30);
-      translate([-0.5,15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
-      translate([-0.5,-15.5/2,4])cylinder(r=4,h=16,$fn=30);
-      translate([-0.5,-15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+        translate([-0.5,15.5/2,4])cylinder(r=4,h=16,$fn=30);
+        translate([-0.5,15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+        translate([-0.5,-15.5/2,4])cylinder(r=4,h=16,$fn=30);
+        translate([-0.5,-15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
       
-      translate([-0.5+24,15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
-      translate([-0.5+24,-15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
-   }
+        translate([-0.5+24,15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+        translate([-0.5+24,-15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+    }
 }//baseB();
 
 module baseAB(){
@@ -330,9 +332,9 @@ module holderC(){
 
 module holderD(){
     //cam for pushing arm
-    rotate([0,0,160])difference(){
-        scale([1,0.7,1])translate([3,0,0])
-        cylinder(r=10,h=6,$fn=40);
+    rotate([0,0,0])difference(){
+        scale([1,0.5,1])translate([4,0,0])
+        cylinder(r=12,h=6,$fn=40);
         cylinder(r=2.3,h=6,$fn=30);
         translate([8,0,0])cylinder(r=1,h=6,$fn=25);
         translate([8,0,0])cylinder(r=2,h=3,$fn=30);
@@ -376,7 +378,7 @@ module holderE(){
     linear_extrude(10)polygon(points=[
         [40,-46.5],[35,-50],[25.5,-38]
     ]);
-}holderE();
+}//holderE();
 
 module holderABC(){
     translate([-3,0,0])holderA();
@@ -464,18 +466,18 @@ module stopperC(){
     difference(){
         union(){
             linear_extrude(7.8)polygon(points=[
-                [0,0],[d+b,9.9-3],[b,9.9-3],
-                [b,9.9+3],[d+b,9.9+3],[0,19.8]
+                [0,0],[d+b,9.8-3],[b,9.8-3],
+                [b,9.8+3],[d+b,9.8+3],[0,19.6]
             ]);
-            translate([-8,0,0])cube([8,19.8,7.8]);
+            translate([-8,0,0])cube([8,19.6,7.8]);
             translate([-8-3,-3,0])cube([3,6,7.8]);
             translate([-8-3,17,0])cube([3,6,7.8]);
-            translate([-8,9.9,3.9])rotate([0,-90,0])
+            translate([-8,9.8,3.9])rotate([0,-90,0])
             cylinder(r1=3.9,r2=0,h=3.9,$fn=30);
         }
     }
 }//translate([0,5.1+19.8,32.1])rotate([0,0,180])
-//stopperC();
+stopperC();
 
 
 
