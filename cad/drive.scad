@@ -98,11 +98,11 @@ module wheel(){
             translate([0,0,12+3])gear(5,24,6,0);
             translate([0,0,18+3])gear(5,15,6,0);
         }
-        cylinder(r=8,h=5,$fn=50);
-        translate([0,0,19])cylinder(r=8,h=5,$fn=50);
+        cylinder(r=8.05,h=5,$fn=50);
+        translate([0,0,19])cylinder(r=8.05,h=5,$fn=50);
         translate([0,0,5])cylinder(r1=8,r2=0,h=8,$fn=50);
     }
-}//translate([l/2,18+25,0])rotate([90,0,0])wheel();
+}translate([l/2,18+25,0])rotate([90,0,0])wheel();
 
 module motorGear(){
     difference(){
@@ -112,7 +112,7 @@ module motorGear(){
         translate([0,8,0])cylinder(r1=4,r2=1.75,h=5,$fn=25);
         translate([0,-8,0])cylinder(r1=4,r2=1.75,h=5,$fn=25);
     }
-}translate([d,0,0])motorGear();
+}//translate([d,0,0])motorGear();
 
 module rotaryGear(){
     difference(){

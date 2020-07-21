@@ -6,16 +6,16 @@ def dropBouy(location, colour):
     if route.arrived():
         count = lambda colour: return revolver.greenCount() if colour == "green" else revolver.redCount()
         for n in count:
-        lambda colour: return revolver.goToGreen() if colour == "green" else revolver.goToRed()
-        if revolver.finishedRotating():
-            claw.turnRightWayUp()
-            claw.grab()
-            if claw.isGrabbed():
-                claw.goDown()
-                #claw.turnRightWayUp
-                claw.turnUpsideDown()
-                claw.release()
-                return True
+            lambda colour: return revolver.goToGreen() if colour == "green" else revolver.goToRed()
+            if revolver.finishedRotating():
+                claw.turnRightWayUp()
+                claw.grab()
+                if claw.isGrabbed():
+                    claw.goDown()
+                    #claw.turnRightWayUp
+                    claw.turnUpsideDown()
+                    claw.release()
+                    return True
 def startDrop():
     if revolver.isFull():
         if dropBouy((1650, 1065), green):

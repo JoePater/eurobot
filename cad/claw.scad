@@ -35,7 +35,7 @@ module partK1a(h=92,mh=42){
         translate([h+10-6,50,0])cube([4,3,5]);
         translate([35+2,40,0])cube([4,3,5]);
     }
-}//partK1a();
+}!partK1a();
 module partK1b(h=92,mh=42){
     //middle layer of arm
     w=4;

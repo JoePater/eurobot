@@ -179,7 +179,7 @@ module baseB(){
     //funny cylinder thing
     difference(){
         union(){
-            cylinder(r=25/2-0.1,h=16,$fn=60);
+            cylinder(r=25/2,h=16,$fn=60);
             translate([0,-16,0])cube([30,32,4]);
         }
         translate([0,0,4])cylinder(r=8,h=12,$fn=50);
@@ -191,7 +191,9 @@ module baseB(){
         translate([-0.5,-15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
       
         translate([-0.5+24,15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+        translate([-0.5+24,15.5/2,2])cylinder(r=3.5,h=4,$fn=30);
         translate([-0.5+24,-15.5/2,0])cylinder(r=2.25,h=4,$fn=30);
+        translate([-0.5+24,-15.5/2,2])cylinder(r=3.5,h=4,$fn=30);
     }
 }//baseB();
 
@@ -244,9 +246,9 @@ module baseCG(){
 }//baseCG();
 
 module baseAll(){
-    translate([0,-75,0])baseCG();
-    baseABG();
-}//baseAll();
+    translate([0,-75-16,0])baseCG();
+    translate([0,-16,0])baseABG();
+}!baseAll();
 
 module photoGuide(){
     difference(){
@@ -461,15 +463,15 @@ module stopperB(){
 
 module stopperC(){
     //moving bit
-    d = 4;
-    b = 3;
+    d = 3;
+    b = 4;
     difference(){
         union(){
             linear_extrude(7.8)polygon(points=[
-                [0,0],[d+b,9.8-3],[b,9.8-3],
-                [b,9.8+3],[d+b,9.8+3],[0,19.6]
+                [3,0],[d+b,9.8-3],[b,9.8-3],
+                [b,9.8+3],[d+b,9.8+3],[3,19.6]
             ]);
-            translate([-8,0,0])cube([8,19.6,7.8]);
+            translate([-8,0,0])cube([11,19.6,7.8]);
             translate([-8-3,-3,0])cube([3,6,7.8]);
             translate([-8-3,17,0])cube([3,6,7.8]);
             translate([-8,9.8,3.9])rotate([0,-90,0])
