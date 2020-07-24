@@ -166,14 +166,14 @@ module baseA(){
         }
         translate([5,5,0])cube([30,4.5,6]);
         translate([5,27-4.5,0])cube([30,4.5,6]);
-        translate([0,16-2,0])cube([2.5,4,46]);
+        translate([0,16,0])cylinder(r=4,h=46,$fn=40);
         
         translate([0,6,6])cube([5,4.5,12]);
         translate([0,26-4.5,6])cube([5,4.5,12]);
         translate([0,6,30])cube([5,4.5,12]);
         translate([0,26-4.5,30])cube([5,4.5,12]);
     }
-}//baseA();
+}baseA();
     
 module baseB(){
     //funny cylinder thing
@@ -248,7 +248,7 @@ module baseCG(){
 module baseAll(){
     translate([0,-75-16,0])baseCG();
     translate([0,-16,0])baseABG();
-}!baseAll();
+}//baseAll();
 
 module photoGuide(){
     difference(){
@@ -479,7 +479,7 @@ module stopperC(){
         }
     }
 }//translate([0,5.1+19.8,32.1])rotate([0,0,180])
-stopperC();
+//stopperC();
 
 
 
