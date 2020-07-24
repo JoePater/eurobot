@@ -1,0 +1,39 @@
+* Rotary encoder and ultrasound code
+** I2C interface
+*** Write
+Writes always set the rotary encoder number for the next read.
+*** Read
+Reads read the ticks, as a signed char, since the last read. It also
+increments the current rotary encoder
+** RE numbers
+0 is the left wheel
+1 is the right wheel
+** Timers
+Timer 1 is used for ultrasound.  To start US: 
+
+-Set pulse pin 
+
+-Clear timer 1
+
+-CCP1 in compare mode will interrupt when timer reaches
+ TIMER_PULSE_STOP
+
+-The update_us() function repeatedly checks the echo pin, setting the
+ distance when it ends
+
+-update_us() waits until timer 1 reaches TIMER_RESET, then repeats
+** Pins
+*** PORTC
+RC0 - pulse pin 0
+RC1 - echo pin 0
+RC2 - pulse pin 1
+RC3 - echo pin 1
+*** PORTA
+RA0 - pin A 0 (left)
+RA1 - pin B 0 (left)
+RA2 - pin A 1 (right)
+RA3 - pin B 1 (right)
+RA4 - i2c SCL
+RA5 - i2c SDA
+
+
