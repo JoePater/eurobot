@@ -1,5 +1,5 @@
-#ifndef "US_H"
-#define "US_H"
+#ifndef US_H
+#define US_H
 
 #define NUM_US 2
 
