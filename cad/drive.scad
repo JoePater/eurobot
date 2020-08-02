@@ -84,7 +84,7 @@ module baseC(front=true){
             linear_extrude(3)baseHoles();
         }
     }
-}translate([0,0,5.2])baseC(fr);
+}//translate([0,0,5.2])baseC(fr);
 
 module baseD(){
     //clamps wheel from other side
@@ -129,11 +129,11 @@ module rotaryGear(){
     difference(){
         translate([0,0,2.5])gear(5,13,5,0);
         difference(){
-            cylinder(r=3,h=5,$fn=40);
-            translate([1.5,-3,0])cube([2,6,5]);
+            cylinder(r=3.1,h=5,$fn=40);
+            translate([1.6,-3,0])cube([2,6,5]);
         }
     }
-}//translate([rd,0,0])rotaryGear();
+}translate([rd,0,0])rotaryGear();
 
 
 
