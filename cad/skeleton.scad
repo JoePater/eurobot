@@ -1,3 +1,4 @@
+use <utils.scad>
 
 /*
 y-axis is front panel
@@ -9,14 +10,10 @@ module fakeClaw(){
     translate([-15,-45-36,41])difference(){
         cube([15,50,47]);
         //bolts
-        translate([0,5,12])rotate([0,90,0])
-        cylinder(r=2.25,h=15,$fn=25);
-        translate([0,5,42])rotate([0,90,0])
-        cylinder(r=2.25,h=15,$fn=25);
-        translate([0,45,12])rotate([0,90,0])
-        cylinder(r=2.25,h=15,$fn=25);
-        translate([0,45,42])rotate([0,90,0])
-        cylinder(r=2.25,h=15,$fn=25);
+        translate([0,5,12])rotate([0,90,0])blt(15);
+        translate([0,5,42])rotate([0,90,0])blt(15);
+        translate([0,45,12])rotate([0,90,0])blt(15);
+        translate([0,45,42])rotate([0,90,0])blt(15);
     }
 }fakeClaw();
 d=38;
@@ -52,9 +49,9 @@ module __fakeDrive2(){
 
 module fakeDrive(){
     translate([40,68,0])__fakeDrive();
-    translate([40,40])__fakeDrive2();
+    translate([40,40,0])__fakeDrive2();
     translate([40,-68,0])__fakeDrive();
-    translate([40,-40])__fakeDrive2();
+    translate([40,-40,0])__fakeDrive2();
 }fakeDrive();
 
 module fakeRev(){
@@ -90,12 +87,67 @@ module fakeStopper(){
     }
 }fakeStopper();
 
+module skelA1(){
+    //right side of drive connector
+    difference(){
+        union(){
+            translate([80,0,10])cube([55,77,14]);
+            translate([80,0,10])cube([55,10,50]);
+            translate([80,0,10])cube([10,25,50]);
+        }
+        translate([35,59,10])linear_extrude(14)baseHoles();
+        translate([35,31,10])linear_extrude(14)baseHoles();
+        
+        translate([80+10+5,0,24+5])rotate([-90,0,0])
+        cylinder(r=2.25,h=10,$fn=25);
+        translate([135-5,0,24+5])rotate([-90,0,0])
+        cylinder(r=2.25,h=10,$fn=25);
+        translate([80+10+5,0,60-5])rotate([-90,0,0])
+        cylinder(r=2.25,h=10,$fn=25);
+        translate([135-5,0,60-5])rotate([-90,0,0])
+        cylinder(r=2.25,h=10,$fn=25);
+        
+        translate([80,20,24+5])rotate([0,90,0])
+        cylinder(r=2.25,h=10,$fn=25);
+        translate([80,20,60-5])rotate([0,90,0])
+        cylinder(r=2.25,h=10,$fn=25);
+    }
+}skelA1();
 
+module skelB1(){
+    mirror([0,1,0])skelA1();
+}skelB1();
 
+module skelC(){
+    //connects top parts
+    translate([0,0,193-5.2])difference(){
+        union(){
+            translate([8.5,-93,0])cube([40,160,5]);
+            //translate([35.5+5,-20,-40])cube([8,40,40]);
+        }
+        //rev holder
+        translate([22-6.5,8.75,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([22-6.5,-8.75,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([42-6.5,8.75,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([42-6.5,-8.75,0])cylinder(r=2.25,h=5,$fn=20);
+        //motor holder
+        translate([13.5,-30,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([13.5,-88,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([27.5,-30,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([27.5,-88,0])cylinder(r=2.25,h=5,$fn=20);
+        //platform holder
+        translate([13.5,30,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([13.5,62,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([13.5,30,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([13.5,62,0])cylinder(r=2.25,h=5,$fn=20);
+        //connector holes
+        //translate([
+    }
+}skelC();
 
-
-
-
+module skelD(){
+    //attaches drive to claw
+}
 
 
 

@@ -52,3 +52,6 @@ module dmotorHole(x=0.1){
         translate([3.4-2+x,-2.5])square([3,5]);
     }
 }
+module blt(h){
+    cylinder(r=2.25,h=h,$fn=25);
+}
