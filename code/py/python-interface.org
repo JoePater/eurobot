@@ -1,11 +1,11 @@
-* Python interface for robot v0.3
+* Python interface for robot v0.4
 ** Modules
 *** move
-**** move.drive(speed,t=-1,sync=False)
-Moves in a straight line for ~t~ seconds.
-~speed~ is from -100 (backwards at full speed) to 100 (forwards at full
-speed). A negative value of ~t~ results in movement without a time
-limit.
+**** move.drive(left,right,t=-1,sync=False)
+Moves in a straight line for ~t~ seconds.  ~left~ and ~right~ are from
+-100 (backwards at full speed) to 100 (forwards at full speed), and
+control the left and right wheels respectively. A negative value of
+~t~ results in movement without a time limit.
 
 When ~sync~ is false, the function runs asynchronously, meaning it
 returns immediately and finishes the time delay in another
@@ -35,6 +35,8 @@ Returns number of free slots in revolver
 Returns number of red buoys in revolver
 **** revolver.greenCount()
 Returns number of green buoys in revolver
+**** revolver.count()
+Returns total number of buoys in revolver
 **** revolver.isFull()
 True if the revolver is full
 **** revolver.isEmpty()
@@ -123,8 +125,8 @@ way up.
 **** claw.liftHalfway(sync=False)
 Lifts claw part way up. This is useful for rotating a buoy, which
 can't be done when fully down (since the buoy would scrape along the
-floor) and can't be done when fully up (since the claw can't be
-rotated when fully up as it would hit the revolver).
+floor) and can't be done when fully up (since the claw would hit the
+revolver).
 **** claw.release(sync=False)
 Releases claw.
 **** claw.isLifting()
@@ -146,7 +148,7 @@ Returns true if any part of the claw is moving.
 Returns once the claw has finished moving.
 *** flag
 **** flag.raise(delay=-1)
-Raises the flag after ~delay~ seconds
+Raises the flag after ~delay~ seconds asynchronously
 *** location
 **** location.position()
 Returns tuple of (x,y) coordinates of robot in mm, with (0,0) as top
@@ -154,19 +156,13 @@ left of diagram.
 **** location.bearing()
 Returns bearing in degrees of robot, with North as pointing towards
 big beacon tower (top of diagram).
-**** location.object(obj)
-Returns an (x,y) tuple containing the coordinates of the object given
-by the string ~obj~. The possible values for ~obj~ are:
 **** location.team()
 Returns the team for the current match - 0 for yellow, 1 for blue
 *** route
 **** route.goto(target,sync=True)
-Goes to the coordinates specified by the tuple target, which should
-contain ~(x,y)~. If ~sync~ is True, the function will only
-return once it has finished following the route. Else, it will
-continue in a background thread. Calling ~route.goto()~ while a
-previous asynchronous ~route.goto()~ is still running will discard the
-previous route.
+Goes straight to the coordinates specified by the ~Pt~ ~target~. If
+~sync~ is True, the function will only return once it has reached the
+point. Else, it will continue in a background thread.
 
 Returns false if there is no route or there was a problem.
 **** route.arrived()
