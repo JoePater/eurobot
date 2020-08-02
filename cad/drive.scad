@@ -1,13 +1,13 @@
 use <utils.scad>
 use <gear.scad>
 
-d=38;
-rd = 22;
-mh = 12.5 + 2.5;
-wh = 6;
-md = sqrt(d*d - pow(mh-wh,2));
-l = md*4;
-wd = 25;
+d=38; //distance between motor and wheel
+rd = 22; //distance between re and wheel
+mh = 12.5 + 2.5; //motor height
+wh = 6; //wheel height
+md = sqrt(d*d - pow(mh-wh,2)); //horizontal motor distance
+l = md*4; //length of long holder
+wd = 25; //wheel depth
 fr = true;
 if(!fr){
     l = md*2+40;
@@ -46,7 +46,11 @@ module baseA(front=true){
 module baseB(front=true){
     //second layer
     if(front){
-        translate([l/2-8,0,5])cube([16,18,rd-7.5-6.2]);
+        difference(){
+            translate([l/2-8,3,5])cube([16,18-3,rd-7.5]);
+            translate([l/2,0,rd-2.5])rotate([-90,0,0])
+            cylinder(r=3.3,h=18,$fn=40);
+        }
     }
     difference(){
         union(){
@@ -65,15 +69,22 @@ module baseC(front=true){
     //rotary holder
     if(front){
         difference(){
-            translate([l/2-19.5,0,0])cube([39,18,wh+rd+6.2-8.5-5+3]);
+            union(){
+                translate([l/2-19.5,0,0])
+                cube([10,18,3]);//wh+rd+6.2-8.5-5+3]);
+                translate([l/2+19.5-10,0,0])
+                cube([10,18,3]);
+                translate([l/2-11.5,3,0])cube([23,18-3,20]);
+            }
             
-            translate([l/2-8.5,0,0])cube([17,18,rd-7.5+6.2]);
-            translate([l/2-19.5,0,3])cube([11-3,18,30]);
-            translate([l/2+19.5-8,0,3])cube([11-3,18,30]);
+            translate([l/2-8.5,0,0])cube([17,18,rd-7.5]);
+            translate([l/2,0,rd-7.5])rotate([-90,0,0])
+            cylinder(r=3.3,h=18,$fn=40);
+
             linear_extrude(3)baseHoles();
         }
     }
-}//translate([0,0,5.2])baseC(fr);
+}translate([0,0,5.2])baseC(fr);
 
 module baseD(){
     //clamps wheel from other side
@@ -102,7 +113,7 @@ module wheel(){
         translate([0,0,19])cylinder(r=8.05,h=5,$fn=50);
         translate([0,0,5])cylinder(r1=8,r2=0,h=8,$fn=50);
     }
-}translate([l/2,18+25,0])rotate([90,0,0])wheel();
+}//translate([l/2,18+25,0])rotate([90,0,0])wheel();
 
 module motorGear(){
     difference(){
