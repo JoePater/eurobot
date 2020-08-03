@@ -1,4 +1,4 @@
-* Python interface for robot v0.4
+* Python interface for robot v0.5
 ** Modules
 *** move
 **** move.drive(left,right,t=-1,sync=False)
@@ -107,6 +107,10 @@ Makes the claw grab. Returns False on failure, otherwise True.
 **** claw.color()
 Tests the color of the RGB sensor. "red" indicates a red buoy, "green"
 indicates a green buoy and "blue" indicates empty.
+
+When the team is yellow, "red" and "green" are automatically
+swapped. This allows you to program positions of fairways as though
+for the blue team, and they will work for the yellow team.
 **** claw.turnRightWayUp(sync=False)
 Turns the claw the right way up, ready to grab stray buoys.
 
@@ -173,4 +177,33 @@ Returns once the route currently being followed has finished. Returns
 true on success and false on failure.
 **** route.orientation(bearing,sync=True)
 Makes robot rotate to ~bearing~
+**** route.rotateAngle(angle,sync=True)
+Makes robot rotate by ~angle~ anticlockwise
+*** maths
+Module containing useful maths functions
+**** maths.{sin,cos,tan,asin,acos,atan}
+Trig functions in degrees
+**** maths.correctBearing(x)
+Takes a bearing specified for the blue team and flips it to work for
+either team.
+**** maths.correctAngle(x)
+Takes a angle to rotate by specified for the blue team and flips it to
+work for either team.
+** Classes
+*** Pt
+The ~Pt~ class represents a coordinate on the map. It has two
+attributes: x and y. Its constructor is of the form
+Pt(x,y,correctSide=False), where ~x~ and ~y~ are the x and y
+coordinates of the point.
+
+~correctSide~ determines whether the function will correct the
+coordinate based on the team colour of the robot. If this is True and
+the team colour is yellow, it will flip the coordinates over. This
+allows you to specify a point that will work regardless of the
+starting side.
+
+This class supports additions and subtractions.
+**** Pt.dist(p)
+Returns distance between points ~Pt~ and ~p~
+
 
