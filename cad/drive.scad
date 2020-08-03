@@ -8,7 +8,7 @@ wh = 6; //wheel height
 md = sqrt(d*d - pow(mh-wh,2)); //horizontal motor distance
 l = md*4; //length of long holder
 wd = 25; //wheel depth
-fr = true;
+fr = false;
 if(!fr){
     l = md*2+40;
 }
@@ -28,7 +28,11 @@ module baseHoles(){
 module baseA(front=true){
     //base layer
     difference(){
-        cube([l,18,8.5]);
+        if(!front){
+            translate([l/2-50,0,0])cube([100,18,8.5]);
+        }else{
+            cube([l,18,8.5]);
+        }
         translate([l/2-md,0,mh])rotate([-90,0,0])
         cylinder(r=12.5,h=18,$fn=70);
         translate([l/2+md,0,mh])rotate([-90,0,0])
@@ -113,7 +117,7 @@ module wheel(){
         translate([0,0,19])cylinder(r=8.05,h=5,$fn=50);
         translate([0,0,5])cylinder(r1=8,r2=0,h=8,$fn=50);
     }
-}//translate([l/2,18+25,0])rotate([90,0,0])wheel();
+}translate([l/2,18+25,0])rotate([90,0,0])wheel();
 
 module motorGear(){
     difference(){
@@ -133,7 +137,7 @@ module rotaryGear(){
             translate([1.6,-3,0])cube([2,6,5]);
         }
     }
-}translate([rd,0,0])rotaryGear();
+}//translate([rd,0,0])rotaryGear();
 
 
 

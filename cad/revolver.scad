@@ -41,7 +41,7 @@ module photoB(){
         translate([5,5,0])cylinder(r=2.25,h=12.5,$fn=25);
         translate([5,20,0])cylinder(r=2.25,h=12.5,$fn=25);
     }
-}photoB();
+}//photoB();
 
 module photoC(){
     //clamp
