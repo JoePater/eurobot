@@ -184,7 +184,7 @@ module skelE(){
         translate([8,-36,53])rotate([0,90,0])blt(8);
         translate([8,-36,83])rotate([0,90,0])blt(8);
     }
-}skelE();
+}//skelE();
 
 module skelF(){
     //connects drive to front
@@ -214,12 +214,64 @@ module skelF(){
         translate([0,10,78])rotate([0,90,0])
         cylinder(r=2.25,h=8,$fn=20);
     }
-}skelF();
+}//skelF();
 
+module skelG1(){
+    //holds servo for flag
+    d=40;
+    difference(){
+        union(){
+            cylinder(r=5,h=10,$fn=40);
+            translate([-3.5,0,0])cube([3,15,10]);
+            cube([5,d,10]);
+            translate([0,40,0])cube([20,45,3]);
+        }
+        //rod
+        cylinder(r=6.3/2,h=10,$fn=40);
+        //gap
+        translate([-0.5,0,0])cube([0.5,15,10]);
+        translate([-3.5,10,5])rotate([0,90,0])
+        cylinder(r=2.25,h=3.5+5,$fn=25);
+        //servo
+        translate([5,d+5,0])cylinder(r=2.25,h=3,$fn=25);
+        translate([5,d+45-5,0])cylinder(r=2.25,h=3,$fn=25);
+    }
+}skelG1();
 
+module skelG2(){
+    difference(){
+        cube([20,45,3]);
+        translate([5,5,0])cylinder(r=2.25,h=3,$fn=25);
+        translate([5,40,0])cylinder(r=2.25,h=3,$fn=25);
+    }
+}!skelG2();
 
+module flagA(){
+    //flags
+    w=22;
+    l=3200/w;
+    h=150;
+    difference(){
+        union(){
+            translate([h,0,0])cube([w+2+w,5,3]);
+            translate([h,-l,0])cube([w,l,1]);
+            translate([h+w+2,-l,0])cube([w,l,1]);
+        }
+        translate([h,0,3/2])cube([10,5,3/2]);
+    }
+}//flagA();
 
-
-
-
-
+module flagB(){
+    //flag pole
+    w=22;
+    l=3200/w;
+    h=150;
+    difference(){
+        union(){
+            translate([0,5/2,0])cylinder(r=5,h=3,$fn=30);
+            cube([h,5,3]);
+            translate([h,0,3/2])cube([10,5,3/2]);
+        }
+        //TODO: hole for servo
+    }
+}//flagB();

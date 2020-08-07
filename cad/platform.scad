@@ -31,27 +31,35 @@ module cameraConnector(){
     }
 }
 module partP1(){
-    //embedded beacon platform base
+    //main platform
+    l=85;
     difference(){
         union(){
-            cube([30,50,5]);
-            translate([0,50/2-20/2,5])cube([30,20,30]);
+            cube([l,l,3]);
+            translate([l/2,l/2,3])cylinder(r=8,h=12,$fn=40);
+            translate([l/2-3,l/2-18,3])cube([3,36,12]);
         }
-        translate([5,5,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([30-5,5,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([5,50-5,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([30-5,50-5,0])cylinder(r=2.25,h=5,$fn=20);
-        
-        translate([30/2,50/2,5])cylinder(r=6.5/2+0.15,h=40,$fn=30);
+        translate([l/2,l/2-8,3])cube([8,16,12]);
+        translate([l/2,l/2,3])cylinder(r=6.3/2,h=12,$fn=40);
+        translate([l/2-3,l/2-13,8])rotate([0,90,0])
+        cylinder(r=2.25,h=3,$fn=25);
+        translate([l/2-3,l/2+13,8])rotate([0,90,0])
+        cylinder(r=2.25,h=3,$fn=25);
     }
-}
+}//partP1();
 module partP2(){
-    //embedded beacon platform top
+    //platform clamp
+    l=85;
     difference(){
         union(){
-            translate([15,15,3])cylinder(r=8,h=10,$fn=40);
-            cube([30,30,3]);
+            translate([l/2,l/2,3])cylinder(r=8,h=12,$fn=40);
+            translate([l/2,l/2-18,3])cube([3,36,12]);
         }
-        translate([15,15,2])cylinder(r=6.5/2+0.15,h=12,$fn=40);
+        translate([l/2-8,l/2-8,3])cube([8,16,12]);
+        translate([l/2,l/2,3])cylinder(r=6.3/2,h=12,$fn=40);
+        translate([l/2,l/2-13,8])rotate([0,90,0])
+        cylinder(r=2.25,h=3,$fn=25);
+        translate([l/2,l/2+13,8])rotate([0,90,0])
+        cylinder(r=2.25,h=3,$fn=25);
     }
-}
+}partP2();

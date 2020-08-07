@@ -35,7 +35,7 @@ module partK1a(h=92,mh=42){
         translate([h+10-6,50,0])cube([4,3,5]);
         translate([35+2,40,0])cube([4,3,5]);
     }
-}!partK1a();
+}//partK1a();
 module partK1b(h=92,mh=42){
     //middle layer of arm
     w=4;
@@ -269,7 +269,7 @@ module partI5(){
         translate([23-8,-7,0])cylinder(r=5.2,h=20-1,$fn=50);
         translate([23+8,-7,0])cylinder(r=5.2,h=20-1,$fn=50);
     }
-}partI5();
+}//partI5();
 module partI6(){
     //cap for holding motor and rotating pivot (v2)
     difference(){
@@ -289,7 +289,7 @@ module partI6(){
         
         translate([21.5,-3,0])cube([3,3,3]);
     }
-}translate([33.2,0,29])rotate([0,-90,0])
+}//translate([33.2,0,29])rotate([0,-90,0])
 partI6();
 
 module partJ(){

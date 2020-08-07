@@ -117,7 +117,7 @@ module wheel(){
         translate([0,0,19])cylinder(r=8.05,h=5,$fn=50);
         translate([0,0,5])cylinder(r1=8,r2=0,h=8,$fn=50);
     }
-}translate([l/2,18+25,0])rotate([90,0,0])wheel();
+}//translate([l/2,18+25,0])rotate([90,0,0])wheel();
 
 module motorGear(){
     difference(){
@@ -137,7 +137,7 @@ module rotaryGear(){
             translate([1.6,-3,0])cube([2,6,5]);
         }
     }
-}//translate([rd,0,0])rotaryGear();
+}translate([rd,0,0])rotaryGear();
 
 
 
