@@ -1,0 +1,26 @@
+* Revolver servo code
+** I2C interface
+*** Write
+Writes always sets the values of the servos
+Each bit sets a servo:
+-bits 0:3 set the revolver servos (1=grabbed)
+-bit 5 sets the flag servo (1=up)
+*** Read
+Reads return the equivalent to what was written.
+** Timers
+Timer 1 is used for timing the servo
+Runs at 2MHz,overflows at 40,000
+1ms = 2000
+1.5ms = 3000
+2ms = 4000
+The CCP in compare mode generates an interrupt at each significant
+event, which will set the value for the next compare to the next
+value.
+** Pins
+*** PORTC
+RCx - servo x
+*** PORTA
+RA4 - i2c SCL
+RA5 - i2c SDA
+
+
