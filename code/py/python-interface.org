@@ -180,7 +180,7 @@ Makes robot rotate to ~bearing~
 **** route.rotateAngle(angle,sync=True)
 Makes robot rotate by ~angle~ anticlockwise
 *** maths
-Module containing useful maths functions
+Module containing useful maths functions, as well as Pt class
 **** maths.{sin,cos,tan,asin,acos,atan}
 Trig functions in degrees
 **** maths.correctBearing(x)
