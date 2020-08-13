@@ -243,39 +243,39 @@ module partI5(){
     cube([12,10,33]);
     difference(){
         union(){
-            translate([0,0,29])cube([23,33,40]);
-            translate([0,0,0])cube([25+12,20,8]);
-            translate([0,-15,-8+39-19])cube([40,15,8]);
+            translate([0,0,29])cube([18,33,40]);
+            translate([0,0,0])cube([20+12,20,8]);
+            translate([0,-15,-8+39-19-1])cube([35,15,8]);
         }
         
-        translate([23,0,39])rotate([-90,0,0])
+        translate([18,0,39])rotate([-90,0,0])
         cylinder(r=4.5,h=33,$fn=40);
-        translate([23,4,39])rotate([-90,0,0])
+        translate([18,4,39])rotate([-90,0,0])
         cylinder(r=8,h=5.2,$fn=40);
-        translate([23,17,39])rotate([-90,0,0])
+        translate([18,17,39])rotate([-90,0,0])
         cylinder(r=8,h=5.2,$fn=40);
         
-        translate([23-10,0,39+d-6.2])cube([10,33,12.4]);
+        translate([18-10,0,39+d-6.2])cube([10,33,12.4]);
         
         translate([0,13.1,47])rotate([0,90,0])
-        cylinder(r=2.25,h=37,$fn=25);
+        cylinder(r=2.25,h=32,$fn=25);
         translate([0,26,47])rotate([0,90,0])
-        cylinder(r=2.25,h=37,$fn=25);
+        cylinder(r=2.25,h=32,$fn=25);
         
-        translate([12,15,0])cylinder(r=2.25,h=8,$fn=20);
-        translate([20+12,5,0])cylinder(r=2.25,h=8,$fn=20);
-        translate([20+12,15,0])cylinder(r=2.25,h=8,$fn=20);
+        translate([7,15,0])cylinder(r=2.25,h=8,$fn=20);
+        translate([15+12,5,0])cylinder(r=2.25,h=8,$fn=20);
+        translate([15+12,15,0])cylinder(r=2.25,h=8,$fn=20);
         
-        translate([23-8,-7,0])cylinder(r=5.2,h=20-1,$fn=50);
-        translate([23+8,-7,0])cylinder(r=5.2,h=20-1,$fn=50);
+        translate([18-8,-7,0])cylinder(r=5.2,h=20-1-1,$fn=50);
+        translate([18+8,-7,0])cylinder(r=5.2,h=20-1-1,$fn=50);
     }
-}//partI5();
+}!partI5();
 module partI6(){
     //cap for holding motor and rotating pivot (v2)
     difference(){
         union(){
             cube([40,33,10]);
-            translate([20,-4.5,0])cube([6,4.5,3]);
+            translate([20,33,0])cube([6,4.5,3]);
         }
         translate([18,13.1,0])cylinder(r=2.25,h=10,$fn=25);
         translate([18,26,0])cylinder(r=2.25,h=10,$fn=25);
@@ -287,7 +287,7 @@ module partI6(){
         translate([10,17,10])rotate([-90,0,0])
         cylinder(r=8,h=5.2,$fn=40);
         
-        translate([21.5,-3,0])cube([3,3,3]);
+        translate([21.5,33,0])cube([3,3,3]);
     }
 }//translate([33.2,0,29])rotate([0,-90,0])
 partI6();

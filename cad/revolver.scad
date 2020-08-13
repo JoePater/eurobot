@@ -313,25 +313,25 @@ module stopperA(){
     //base
     difference(){
         union(){
-            cube([45,30,4]);
+            cube([35,30,6]);
             cube([8,30,45]);
             //translate([0,15-2,0])cube([25,4,45]);
         }
         translate([0,15-10,32])cube([8,20,8]);
         
-        translate([13,5-2.25,0])cube([27,4.5,h]);
-        translate([13,25-2.25,0])cube([27,4.5,h]);
-        translate([13,5,0])cylinder(r=2.25,h=4,$fn=25);
-        translate([40,5,0])cylinder(r=2.25,h=4,$fn=25);
-        translate([13,25,0])cylinder(r=2.25,h=4,$fn=25);
-        translate([40,25,0])cylinder(r=2.25,h=4,$fn=25);
+        translate([13,5-2.25,0])cube([17,4.5,6]);
+        translate([13,25-2.25,0])cube([17,4.5,6]);
+        translate([13,5,0])cylinder(r=2.25,h=6,$fn=25);
+        translate([30,5,0])cylinder(r=2.25,h=6,$fn=25);
+        translate([13,25,0])cylinder(r=2.25,h=6,$fn=25);
+        translate([30,25,0])cylinder(r=2.25,h=6,$fn=25);
         
         translate([0,5,25])rotate([0,90,0])
         cylinder(r=2.25,h=8,$fn=25);
         translate([0,25,25])rotate([0,90,0])
         cylinder(r=2.25,h=8,$fn=25);
     }
-}//stopperA();
+}stopperA();
 
 module stopperB(){
     //underside of base

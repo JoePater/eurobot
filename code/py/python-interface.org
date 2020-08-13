@@ -163,18 +163,12 @@ big beacon tower (top of diagram).
 **** location.team()
 Returns the team for the current match - 0 for yellow, 1 for blue
 *** route
-**** route.goto(target,sync=True)
+**** route.goto(target)
 Goes straight to the coordinates specified by the ~Pt~ ~target~. If
 ~sync~ is True, the function will only return once it has reached the
 point. Else, it will continue in a background thread.
 
 Returns false if there is no route or there was a problem.
-**** route.arrived()
-Returns true if the route currently being followed has finished, else
-returns false.
-**** route.waitArrived()
-Returns once the route currently being followed has finished. Returns
-true on success and false on failure.
 **** route.orientation(bearing,sync=True)
 Makes robot rotate to ~bearing~
 **** route.rotateAngle(angle,sync=True)

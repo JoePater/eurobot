@@ -114,11 +114,11 @@ module skelA1(){
         translate([40,20,60-5])rotate([0,90,0])
         cylinder(r=2.25,h=10,$fn=25);
     }
-}skelA1();
+}//skelA1();
 
 module skelB1(){
     mirror([0,1,0])skelA1();
-}skelB1();
+}//skelB1();
 
 module skelC(){
     //connects top parts
@@ -151,7 +151,7 @@ module skelC(){
         translate([22+5,35,10])rotate([-90,0,0])
         cylinder(r=2.25,h=10,$fn=30);
     }
-}skelC();
+}//skelC();
 
 module skelD(){
     //clamps platform
@@ -163,7 +163,7 @@ module skelD(){
         translate([5,0,10])rotate([-90,0,0])
         cylinder(r=2.25,h=10,$fn=25);
     }
-}translate([22,35+10.2,193-5.2])skelD();
+}//translate([22,35+10.2,193-5.2])skelD();
 
 module skelE(){
     //connects top layer to skelF
@@ -196,9 +196,13 @@ module skelF(){
         }
         //holes for drive
         translate([40-10.2,20,24+5])rotate([0,90,0])
-        cylinder(r=2.25,h=10,$fn=25);
+        cylinder(r=2.25,h=10.2,$fn=25);
         translate([40-10.2,20,60-5])rotate([0,90,0])
-        cylinder(r=2.25,h=10,$fn=25);
+        cylinder(r=2.25,h=10.2,$fn=25);
+        translate([40-10.2,-20,24+5])rotate([0,90,0])
+        cylinder(r=2.25,h=10.2,$fn=25);
+        translate([40-10.2,-20,60-5])rotate([0,90,0])
+        cylinder(r=2.25,h=10.2,$fn=25);
         //holes for claw
         translate([0,-76,53])rotate([0,90,0])blt(8);
         translate([0,-76,83])rotate([0,90,0])blt(8);
@@ -236,7 +240,7 @@ module skelG1(){
         translate([5,d+5,0])cylinder(r=2.25,h=3,$fn=25);
         translate([5,d+45-5,0])cylinder(r=2.25,h=3,$fn=25);
     }
-}skelG1();
+}//skelG1();
 
 module skelG2(){
     difference(){
@@ -244,7 +248,7 @@ module skelG2(){
         translate([5,5,0])cylinder(r=2.25,h=3,$fn=25);
         translate([5,40,0])cylinder(r=2.25,h=3,$fn=25);
     }
-}!skelG2();
+}skelG2();
 
 module flagA(){
     //flags
