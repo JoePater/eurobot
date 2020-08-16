@@ -223,7 +223,7 @@ module holderD(){
     rotate([0,0,0])difference(){
         scale([1,0.5,1])translate([4,0,0])
         cylinder(r=12,h=6,$fn=40);
-        cylinder(r=2.3,h=6,$fn=30);
+        cylinder(r=2.4,h=6,$fn=30);
         translate([8,0,0])cylinder(r=1,h=6,$fn=25);
         translate([8,0,0])cylinder(r=2,h=3,$fn=30);
     }
@@ -331,7 +331,7 @@ module stopperA(){
         translate([0,25,25])rotate([0,90,0])
         cylinder(r=2.25,h=8,$fn=25);
     }
-}stopperA();
+}//stopperA();
 
 module stopperB(){
     //underside of base

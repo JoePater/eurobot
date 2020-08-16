@@ -40,13 +40,13 @@ module partP1(){
             translate([l/2-3,l/2-18,3])cube([3,36,12]);
         }
         translate([l/2,l/2-8,3])cube([8,16,12]);
-        translate([l/2,l/2,3])cylinder(r=6.3/2,h=12,$fn=40);
+        translate([l/2,l/2,3])cylinder(r=6.4/2,h=12,$fn=40);
         translate([l/2-3,l/2-13,8])rotate([0,90,0])
         cylinder(r=2.25,h=3,$fn=25);
         translate([l/2-3,l/2+13,8])rotate([0,90,0])
         cylinder(r=2.25,h=3,$fn=25);
     }
-}//partP1();
+}partP1();
 module partP2(){
     //platform clamp
     l=85;
@@ -56,10 +56,10 @@ module partP2(){
             translate([l/2,l/2-18,3])cube([3,36,12]);
         }
         translate([l/2-8,l/2-8,3])cube([8,16,12]);
-        translate([l/2,l/2,3])cylinder(r=6.3/2,h=12,$fn=40);
+        translate([l/2,l/2,3])cylinder(r=6.4/2,h=12,$fn=40);
         translate([l/2,l/2-13,8])rotate([0,90,0])
         cylinder(r=2.25,h=3,$fn=25);
         translate([l/2,l/2+13,8])rotate([0,90,0])
         cylinder(r=2.25,h=3,$fn=25);
     }
-}partP2();
+}//partP2();

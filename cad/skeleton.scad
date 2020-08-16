@@ -145,7 +145,7 @@ module skelC(){
         translate([15.5,32+7.5,0])cylinder(r=2.25,h=5,$fn=20);
         translate([15.5,32-7.5,0])cylinder(r=2.25,h=5,$fn=20);
         //platform
-        translate([22+26.5/2,45,0])cylinder(r=3.15,h=25,$fn=40);
+        translate([22+26.5/2,45,0])cylinder(r=3.2,h=25,$fn=40);
         translate([40+8.5-5,35,10])rotate([-90,0,0])
         cylinder(r=2.25,h=10,$fn=30);
         translate([22+5,35,10])rotate([-90,0,0])
@@ -157,13 +157,13 @@ module skelD(){
     //clamps platform
     difference(){
         cube([26.5,10,25]);
-        translate([26.5/2,0,0])cylinder(r=3.15,h=25,$fn=40);
+        translate([26.5/2,0,0])cylinder(r=3.2,h=25,$fn=40);
         translate([26.5-5,0,10])rotate([-90,0,0])
         cylinder(r=2.25,h=10,$fn=25);
         translate([5,0,10])rotate([-90,0,0])
         cylinder(r=2.25,h=10,$fn=25);
     }
-}//translate([22,35+10.2,193-5.2])skelD();
+}translate([22,35+10.2,193-5.2])skelD();
 
 module skelE(){
     //connects top layer to skelF
@@ -225,15 +225,15 @@ module skelG1(){
     d=40;
     difference(){
         union(){
-            cylinder(r=5,h=10,$fn=40);
+            cylinder(r=6,h=10,$fn=40);
             translate([-3.5,0,0])cube([3,15,10]);
             cube([5,d,10]);
             translate([0,40,0])cube([20,45,3]);
         }
         //rod
-        cylinder(r=6.3/2,h=10,$fn=40);
+        cylinder(r=6.5/2,h=10,$fn=40);
         //gap
-        translate([-0.5,0,0])cube([0.5,15,10]);
+        translate([-1.5,0,0])cube([1.5,15,10]);
         translate([-3.5,10,5])rotate([0,90,0])
         cylinder(r=2.25,h=3.5+5,$fn=25);
         //servo
@@ -248,7 +248,7 @@ module skelG2(){
         translate([5,5,0])cylinder(r=2.25,h=3,$fn=25);
         translate([5,40,0])cylinder(r=2.25,h=3,$fn=25);
     }
-}skelG2();
+}//skelG2();
 
 module flagA(){
     //flags
@@ -276,6 +276,6 @@ module flagB(){
             cube([h,5,3]);
             translate([h,0,3/2])cube([10,5,3/2]);
         }
-        //TODO: hole for servo
+        translate([0,5/2,0])cylinder(r=2.4,h=3,$fn=40);
     }
 }//flagB();
