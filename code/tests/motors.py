@@ -1,7 +1,5 @@
-from smbus2 import SMBus
+from bus import bus
 import time
-
-bus = SMBus(1)
 
 board_enables = [[0,0,0,0]
                  [0,0,0,0]]
