@@ -313,11 +313,13 @@ module stopperA(){
     //base
     difference(){
         union(){
-            cube([35,30,6]);
-            cube([8,30,45]);
-            //translate([0,15-2,0])cube([25,4,45]);
+            cube([35+22,30,6]);
+            translate([0,7.5,0])cube([10,15,16]);
+            translate([35,30,6])rotate([90,0,0])
+            linear_extrude(30)polygon(points=[
+                [0,0],[22,0],[11,11]]);
         }
-        translate([0,15-10,32])cube([8,20,8]);
+        //translate([0,15-10,32])cube([8,20,8]);
         
         translate([13,5-2.25,0])cube([17,4.5,6]);
         translate([13,25-2.25,0])cube([17,4.5,6]);
@@ -326,18 +328,24 @@ module stopperA(){
         translate([13,25,0])cylinder(r=2.25,h=6,$fn=25);
         translate([30,25,0])cylinder(r=2.25,h=6,$fn=25);
         
-        translate([0,5,25])rotate([0,90,0])
-        cylinder(r=2.25,h=8,$fn=25);
-        translate([0,25,25])rotate([0,90,0])
-        cylinder(r=2.25,h=8,$fn=25);
+        translate([5,7.5,11])rotate([-90,0,0])
+        cylinder(r=2.25,h=15,$fn=25);
+        //translate([0,25,25])rotate([0,90,0])
+        //cylinder(r=2.25,h=8,$fn=25);
     }
-}//stopperA();
+}stopperA();
 
 module stopperB(){
     //underside of base
     h = 20;
     //translate([16,15,3])cylinder(r1=6,r2=0,h=6,$fn=30);
     difference(){
+        union(){
+            rotate([-90,0,0])cylinder(r=4.8,h=30,$fn=40);
+            !translate([0,30,0])rotate([90,0,0])
+            linear_extrude(10)polygon(points=[
+                [0,-4.8],[10,-4.8],[30,15.2],[-4.8,50],[-4.8,0]]);
+        }
         cube([25,30,h+3]);
         translate([10,0,3])cube([15,30,h]);
         translate([5,5,0])cylinder(r=2.25,h=30,$fn=25);
@@ -345,7 +353,7 @@ module stopperB(){
         translate([16,15,0])cylinder(r=2.25,h=3,$fn=25);
     }
 }//translate([23+8.2,0,20])rotate([0,-90,0])
-//stopperB();
+stopperB();
 
 module stopperC(){
     //moving bit

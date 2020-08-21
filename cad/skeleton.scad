@@ -122,33 +122,34 @@ module skelB1(){
 
 module skelC(){
     //connects top parts
-    translate([0,0,193-5.2])difference(){
+    translate([0,0,193-10.2])difference(){
         union(){
-            translate([8.5,-93,0])cube([40,138,5]);
+            translate([8.5,-93,0])cube([40,138,10]);
             //translate([35.5+5,-20,-40])cube([8,40,40]);
             translate([22,45-10,5])cube([40-22+8.5,10,20]);
+            translate([8.5-10,20,0])cube([10,25,10]);
            
         }
         //rev holder
-        translate([22-6.5,8.75,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([22-6.5,-8.75,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([42-6.5,8.75,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([42-6.5,-8.75,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([22-6.5,8.75,0])cylinder(r=2.25,h=10,$fn=20);
+        translate([22-6.5,-8.75,0])cylinder(r=2.25,h=10,$fn=20);
+        translate([42-6.5,8.75,0])cylinder(r=2.25,h=10,$fn=20);
+        translate([42-6.5,-8.75,0])cylinder(r=2.25,h=10,$fn=20);
         //motor holder
-        translate([13.5,-30,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([13.5,-88,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([27.5,-30,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([27.5,-88,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([13.5,-30+3,0])cylinder(r=2.25,h=10,$fn=20);
+        translate([13.5,-88+3,0])cylinder(r=2.25,h=10,$fn=20);
+        translate([27.5,-30+3,0])cylinder(r=2.25,h=10,$fn=20);
+        translate([27.5,-88+3,0])cylinder(r=2.25,h=10,$fn=20);
         //connector holes
         //translate([
         //photointerrupter holes
-        translate([15.5,32+7.5,0])cylinder(r=2.25,h=5,$fn=20);
-        translate([15.5,32-7.5,0])cylinder(r=2.25,h=5,$fn=20);
+        translate([3.5,32+7.5,0])cylinder(r=2.25,h=10,$fn=20);
+        translate([3.5,32-7.5,0])cylinder(r=2.25,h=10,$fn=20);
         //platform
         translate([22+26.5/2,45,0])cylinder(r=3.2,h=25,$fn=40);
-        translate([40+8.5-5,35,10])rotate([-90,0,0])
+        translate([40+8.5-5,35,15])rotate([-90,0,0])
         cylinder(r=2.25,h=10,$fn=30);
-        translate([22+5,35,10])rotate([-90,0,0])
+        translate([22+5,35,15])rotate([-90,0,0])
         cylinder(r=2.25,h=10,$fn=30);
     }
 }//skelC();
@@ -163,28 +164,28 @@ module skelD(){
         translate([5,0,10])rotate([-90,0,0])
         cylinder(r=2.25,h=10,$fn=25);
     }
-}translate([22,35+10.2,193-5.2])skelD();
+}//translate([22,35+10.2,193-5.2])skelD();
 
 module skelE(){
     //connects top layer to skelF
     difference(){
         union(){
-            translate([8,-93,193-5.2-5.2])cube([24,68,5]);
-            translate([8,-59-10,42])cube([24,20,193-5.2-5.2-42]);
+            translate([8,-90,193-10.2-5.2])cube([24,68,5]);
+            translate([8,-59-10,42])cube([24,20,193-10.2-5.2-42]);
             translate([8,-81,42])cube([8,50,88-42]);
         }
         //rev holder
-        translate([13.5,-30,193-5.2-5.2])cylinder(r=2.25,h=5,$fn=20);
-        translate([13.5,-88,193-5.2-5.2])cylinder(r=2.25,h=5,$fn=20);
-        translate([27.5,-30,193-5.2-5.2])cylinder(r=2.25,h=5,$fn=20);
-        translate([27.5,-88,193-5.2-5.2])cylinder(r=2.25,h=5,$fn=20);
+        translate([13.5,-30+3,193-10.2-5.2])cylinder(r=2.25,h=5,$fn=20);
+        translate([13.5,-88+3,193-10.2-5.2])cylinder(r=2.25,h=5,$fn=20);
+        translate([27.5,-30+3,193-10.2-5.2])cylinder(r=2.25,h=5,$fn=20);
+        translate([27.5,-88+3,193-10.2-5.2])cylinder(r=2.25,h=5,$fn=20);
         //holes for claw
         translate([8,-76,53])rotate([0,90,0])blt(8);
         translate([8,-76,83])rotate([0,90,0])blt(8);
         translate([8,-36,53])rotate([0,90,0])blt(8);
         translate([8,-36,83])rotate([0,90,0])blt(8);
     }
-}//skelE();
+}skelE();
 
 module skelF(){
     //connects drive to front

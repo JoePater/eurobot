@@ -43,7 +43,7 @@ True if the revolver is full
 True if the revolver is empty
 **** revolver.currentFull()
 True if the current revolver slot is full
-**** revolver.goToFreeSpace(sync=False)
+**** revolver.goToFreeSpace()
 Rotates the revolver towards a free space, returning True if free
 spaces were found and False if there were no free spaces.
 
@@ -78,6 +78,7 @@ previous function.
 NOTE: The current slot should either be empty, or the claw should be
 the RIGHT WAY UP, LIFTED UP and CLAMPED to ensure that a buoy isn't
 dropped.
+
 **** revolver.finishedRotating()
 True if rotating has finished
 **** revolver.waitRotate()

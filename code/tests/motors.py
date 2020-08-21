@@ -63,5 +63,9 @@ def turnMotor(motor,clockwise=True,speed=25,t=1):
     time.sleep(t)
     setSpeed(motor,0)
 
+# turns the revolver passed 'steps' slots
+# negative means opposite direction
+def turnRevolver(steps):
+    pass
     
         
