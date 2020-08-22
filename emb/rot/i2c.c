@@ -35,11 +35,12 @@ void i2c_isr()
 static void handle_read()
 {
      unsigned char buf = SSP1BUF;
-     if(!SSP1STATbits.D_nA){
-	  buf = SSP1BUF;
-     }else if(SSP1CON2bits.ACKSTAT){
-	  return; /* return if last data wasn't acknowledged */
-     }
+     //if(!SSP1STATbits.D_nA){
+       //SSP1CONbits.CKP = 1; /* release clock */
+     //}else if(SSP1CON2bits.ACKSTAT){
+       //SSP1CONbits.CKP = 1; /* release clock */
+	  //return; /* return if last data wasn't acknowledged */
+     //}
      buf = ticks[curr_re];
      ticks[curr_re] = 0;
      curr_re = curr_re+1;

@@ -10,7 +10,7 @@ void config_us()
      TRISC = 0b1010;
      LATC = 0x00;
      ANSELC = 0x00;
-     WPUC = 0b1010;
+     WPUC |= 0b1010;
 
      CCPR1L = TIMER_PULSE_STOP & 0xFF;
      CCPR1H = TIMER_PULSE_STOP >> 8;
@@ -58,7 +58,7 @@ static unsigned short get_timer()
 	  high = TMR1H;
 	  low = TMR1L;
      }
-     return high << 8 + low;
+     return (high << 8) + low;
 }
 
 static void set_timer(unsigned short x)
