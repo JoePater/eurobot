@@ -1,4 +1,5 @@
 #include "i2c.h"
+#include "rot.h"
 
 extern char ticks[NUM_ROT_ENC];
 char curr_re = 0;
@@ -16,7 +17,7 @@ void config_i2c()
      SSPCLKPPS = 0b00100;
      SSPDATPPS = 0b00101;
      
-     PIE1.SSP1IE = 1;
+     PIE1 |= 1 << 3;
 
      SSP1ADD = i2c_slave_addr << 1;
      SSP1CON1 = 0b00110110; /* enable, mode */
@@ -26,19 +27,20 @@ void config_i2c()
 
 void i2c_isr()
 {
-     PIR1.SSP1IF = 0;
-     if(SSP1STATbits.R) handle_read();
+     PIR1 &= ~(1 << 3);
+     if(SSP1STATbits.R_nW) handle_read();
      else handle_write();
 }
 
 static void handle_read()
 {
-     if(!SSP1STATbits.D){
-	  u8 buf = SSP1BUF;
+     unsigned char buf = SSP1BUF;
+     if(!SSP1STATbits.D_nA){
+	  buf = SSP1BUF;
      }else if(SSP1CON2bits.ACKSTAT){
 	  return; /* return if last data wasn't acknowledged */
      }
-     u8 buf = ticks[curr_re];
+     buf = ticks[curr_re];
      ticks[curr_re] = 0;
      curr_re = curr_re+1;
      if(curr_re >= NUM_ROT_ENC)curr_re = 0;
@@ -48,8 +50,8 @@ static void handle_read()
 
 static void handle_write()
 {
-     u8 buf = SSP1BUF;
-     if(!SSP1STATbits.D){
+     unsigned char buf = SSP1BUF;
+     if(!SSP1STATbits.D_nA){
 	  return;
      }
      curr_re = buf < NUM_ROT_ENC ? buf : 0;

@@ -38,12 +38,13 @@ static char getB(char re)
      return 0;
 }
 
-int getNext(char a, char b, char isA, char isCW) 
+static int getNext(char a, char b, char isA, char isCW) 
 {
     if(isA && isCW) return b;
     if(!isA && isCW) return !a;
     if(isA && !isCW) return !b;
     if(!isA && !isCW) return a;
+    return 0;
 }
 
 void update_re(char re)
@@ -53,9 +54,9 @@ void update_re(char re)
      char na = getA(re);
      char nb = getB(re);
      if (na==getNext(a,b,1,1) && nb==getNext(a,b,0,1))
-         tick += 1;         
-     if (na==getNext(a,b 1, 0) && nb==getNext(a,b, 0, 0))
-         tick -= 1;
+         ticks[re] += 1;         
+     if (na==getNext(a,b,1, 0) && nb==getNext(a,b, 0, 0))
+         ticks[re] -= 1;
      old_a[re] = na;
      old_b[re] = nb;
 }

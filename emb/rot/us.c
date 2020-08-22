@@ -3,11 +3,11 @@
 #define TIMER_PULSE_STOP 1
 #define TIMER_RESET 500
 
-u8 dist[NUM_US] = {0xFF,0xFF};
+unsigned char dist[NUM_US] = {0xFF,0xFF};
 
 void config_us()
 {
-     TRISC = 0x1010;
+     TRISC = 0b1010;
      LATC = 0x00;
      ANSELC = 0x00;
      WPUC = 0b1010;
@@ -43,16 +43,17 @@ static char get_echo_pin(char us)
 {
      switch(us){
      case 0:
-	  return PORTCbits.RA1;
+	  return PORTCbits.RC1;
      case 1:
-	  return PORTCbits.RA3;
+	  return PORTCbits.RC3;
      }
+     return 0;
 }
 
 static unsigned short get_timer()
 {
-     u8 high = TMR1H;
-     u8 low = TMR1L
+     unsigned char high = TMR1H;
+     unsigned char low = TMR1L;
      while(high != TMR1H){
 	  high = TMR1H;
 	  low = TMR1L;

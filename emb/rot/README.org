@@ -8,6 +8,8 @@ increments the current rotary encoder
 ** RE numbers
 0 is the left wheel
 1 is the right wheel
+2 is US 1
+3 is US 2
 ** Timers
 Timer 1 is used for ultrasound.  To start US: 
 
