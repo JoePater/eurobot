@@ -1,7 +1,7 @@
 from bus import bus
 import time
 
-rot_addr = 50
+rot_addr = 40
 
 def readRotary(n):
     bus.write_byte(rot_addr,n)

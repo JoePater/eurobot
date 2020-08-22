@@ -10,7 +10,7 @@ void config_rot()
      TRISA = 0x0F;
      LATA = 0x00;
      ANSELA = 0x00;
-     WPUA = 0x0F;
+     WPUA = 0b00111111;
 
      IOCAP = 0x0F;
      IOCAN = 0x0F;

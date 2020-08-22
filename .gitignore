@@ -1,2 +1,4 @@
 *.o
 *~
+/emb/rot/build/
+/emb/rot/dist/
