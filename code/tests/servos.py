@@ -5,6 +5,7 @@ servos_addr = 41
 current_byte = 0
 
 def setServo(num,x):
+    global current_byte
     if x:
         current_byte |= 1 << num
     else:

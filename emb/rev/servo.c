@@ -29,13 +29,13 @@ char time_ind = 0;
 
 static unsigned short get_timer1()
 {
-     u8 high = TMR1H;
-     u8 low = TMR1L
+     unsigned char high = TMR1H;
+     unsigned char low = TMR1L;
      while(high != TMR1H){
 	  high = TMR1H;
 	  low = TMR1L;
      }
-     return high << 8 + low;
+     return (high << 8) + low;
 }
 
 static void set_timer1(unsigned short x)
@@ -48,33 +48,51 @@ static void set_timer1(unsigned short x)
 
 static void set_int_ticks(unsigned short ticks)
 {
-
+     CCPR1H = ticks >> 8;
+     CCPR1L = ticks & 0xFF;
 }
 
 void config_servo()
 {
-
+     TRISC = 0;
+     WPUC = 0;
+     ANSELC = 0;
+     LATC = 0;
+     
+     set_int_ticks(interrupt_times[time_ind]);
+     CCP1CON = 0b1010; /* Compare mode with interrupt */
+     set_timer1(0);
+     T1CON = 0b00100001; /* 4* prescaler */
+     PIE1bits.CCP1IE = 1;
 }
 
 void servo_isr()
 {
-     //clear flag
-     
-     for(char i=0;i<NUM_SERVOS;++i){
-	  if(servos[i].ticks[servos[i].stat] > get_timer1()){
-	       LATC &= ~(1 << servos[i].latc_bit);
-	  }
-     }
+     if(servos[0].ticks[servos[0].stat] < get_timer1()){
+	       LATC &= ~(1 << servos[0].latc_bit);
+	}
+     if(servos[1].ticks[servos[1].stat] < get_timer1()){
+	       LATC &= ~(1 << servos[1].latc_bit);
+	}
+     if(servos[2].ticks[servos[2].stat] < get_timer1()){
+	       LATC &= ~(1 << servos[2].latc_bit);
+	}
+     if(servos[3].ticks[servos[3].stat] < get_timer1()){
+	       LATC &= ~(1 << servos[3].latc_bit);
+	}
      if(++time_ind >= NUM_INT_TIMERS){
 	  //reset index,load stat buffer,clear timer,set pins
 	  time_ind = 0;
-	  for(char i=0;i<NUM_SERVOS;++i){
-	       servos[i].stat = ((stat_buf >> i) & 1);
-	  }
+	  
+	  servos[0].stat = ((stat_buf >> 0) & 1);
+       servos[1].stat = ((stat_buf >> 1) & 1);
+       servos[2].stat = ((stat_buf >> 2) & 1);
+       servos[3].stat = ((stat_buf >> 3) & 1);
+       
 	  set_timer1(0);
 	  LATC |= 0b111111;
      }
-     set_int_ticks(interrupt_timers[time_ind]);
+     set_int_ticks(interrupt_times[time_ind]);
 }
 
 void set_servos(unsigned char x)
