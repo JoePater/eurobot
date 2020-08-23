@@ -8,13 +8,18 @@ static void handle_write();
 
 void config_i2c()
 {
+     TRISA = 0x3F;
+     LATA = 0x00;
+     ANSELA = 0x00;
+     WPUA = 0b00111111;
+     
      RA4PPS = 0b10000;
      RA5PPS = 0b10001;
 
      SSPCLKPPS = 0b00100;
      SSPDATPPS = 0b00101;
      
-     PIE1bits.SSP1IE = 1;
+     PIE1 |= 1 << 3;
 
      SSP1ADD = i2c_slave_addr << 1;
      SSP1CON1 = 0b00110110; /* enable, mode */
@@ -24,7 +29,7 @@ void config_i2c()
 
 void i2c_isr()
 {
-     PIR1bits.SSP1IF = 0;
+     PIR1 &= ~(1 << 3);
      if(SSP1STATbits.R_nW) handle_read();
      else handle_write();
 }

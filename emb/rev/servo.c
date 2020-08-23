@@ -12,19 +12,19 @@ struct servo {
 };
 
 struct servo servos[NUM_SERVOS] = {
-     SERVO_INIT(0,1000,2000,0),
-     SERVO_INIT(1,1000,2000,1),
-     SERVO_INIT(2,1000,2000,2),
-     SERVO_INIT(3,1000,2000,3),
-     SERVO_INIT(4,1000,2000,4),
-     SERVO_INIT(5,2000,3000,5)
+     SERVO_INIT(0,4500,800,0),
+     SERVO_INIT(1,4500,800,1),
+     SERVO_INIT(2,4500,800,2),
+     SERVO_INIT(3,4500,800,3),
+     SERVO_INIT(4,4000,4500,4),
+     SERVO_INIT(5,3000,1000,5)
 };
 
 unsigned char stat_buf = 0;
 
-#define NUM_INT_TIMERS 4
+#define NUM_INT_TIMERS 8
 
-unsigned short interrupt_times[NUM_INT_TIMERS] = {1000,2000,3000,40000};
+unsigned short interrupt_times[NUM_INT_TIMERS] = {1000,2000,3000,3500,4000,4500,5000,40000};
 char time_ind = 0;
 
 static unsigned short get_timer1()
@@ -62,7 +62,7 @@ void config_servo()
      set_int_ticks(interrupt_times[time_ind]);
      CCP1CON = 0b1010; /* Compare mode with interrupt */
      set_timer1(0);
-     T1CON = 0b00100001; /* 4* prescaler */
+     T1CON = 0b00000001; /* 4* prescaler */
      PIE1bits.CCP1IE = 1;
 }
 
@@ -80,6 +80,12 @@ void servo_isr()
      if(servos[3].ticks[servos[3].stat] < get_timer1()){
 	       LATC &= ~(1 << servos[3].latc_bit);
 	}
+     if(servos[4].ticks[servos[4].stat] < get_timer1()){
+	       LATC &= ~(1 << servos[4].latc_bit);
+	}
+     if(servos[5].ticks[servos[5].stat] < get_timer1()){
+	       LATC &= ~(1 << servos[5].latc_bit);
+	}
      if(++time_ind >= NUM_INT_TIMERS){
 	  //reset index,load stat buffer,clear timer,set pins
 	  time_ind = 0;
@@ -88,6 +94,8 @@ void servo_isr()
        servos[1].stat = ((stat_buf >> 1) & 1);
        servos[2].stat = ((stat_buf >> 2) & 1);
        servos[3].stat = ((stat_buf >> 3) & 1);
+       servos[4].stat = ((stat_buf >> 4) & 1);
+       servos[5].stat = ((stat_buf >> 5) & 1);
        
 	  set_timer1(0);
 	  LATC |= 0b111111;
