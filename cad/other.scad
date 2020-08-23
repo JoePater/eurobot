@@ -61,7 +61,7 @@ module partT3(){
         }
         linear_extrude(12)dmotorHole();
     }
-}partT3();
+}//partT3();
 module partT4(){
     //motor holder for drive
     difference(){
@@ -80,8 +80,39 @@ module partT4(){
     }
 }
 
+module sideMarkerA(){
+    //base of marker for sides
+    difference(){
+        union(){
+            cube([3,50,20]);
+            cube([80,3,20]);
+        }
+        translate([0,40,10])rotate([0,90,0])
+        cylinder(r=2.75,h=3,$fn=40);
+        translate([0,20,10])rotate([0,90,0])
+        cylinder(r=2.75,h=3,$fn=40);
+        
+        translate([75,0,10])rotate([-90,0,0])
+        cylinder(r=2.25,h=3,$fn=40);
+        translate([60,0,10])rotate([-90,0,0])
+        cylinder(r=2.25,h=3,$fn=40);
+    }
+}sideMarkerA();
 
-
+module sideMarkerB(){
+    //marker back
+    difference(){
+        union(){
+            cube([70,70,1.5]);
+            translate([-25,35-5,0])cube([25,10,1.5]);
+        }
+        translate([10,10,0])cube([20,50,1.5]);
+        translate([40,10,0])cube([20,50,1.5]);
+        
+        translate([-5,35,0])cylinder(r=2.25,h=1.5,$fn=30);
+        translate([-20,35,0])cylinder(r=2.25,h=1.5,$fn=30);
+    }
+}//sideMarkerB();
 
 
 
