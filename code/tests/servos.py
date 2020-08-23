@@ -1,6 +1,6 @@
 from bus import bus
 
-servos_addr = 125
+servos_addr = 41
 
 current_byte = 0
 
