@@ -36,7 +36,7 @@ def isFull():
     return (count() == 4)
 
 def isEmpty():
-    if Count() == 0:
+    if count() == 0:
         return True
     return False
 
@@ -70,48 +70,27 @@ def goToFreeSpace():
         return False
     setHolder(i,"RELEASED")
     goToIndex(i)
-
-
-def holderFull(i):
-    if holders[i] == "" or holders[i] == "OPEN":
-        return False
     return True
-
-
-def findFreeSpace():
-    if isFull() == True:
-        return None
-    if currentFull() == False:
-        return current
-    if not holderFull((current+1) % 4):
-        return (current+1) % 4
-    if not holderFull((current-1) % 4):
-        return (current-1) % 4
-    return (current+2) % 4
-
-def goToFreeSpace():
-    i = findFreeSpace()
-    if i is None:
-        return False
-    goToIndex(i)
 
 def goToColour(colour):
     for x in range(len(holder)):
         if holders[x] == colour:
             goToIndex(x)
+            return True
+    return False
 
 
 def goToGreen():
-    goToColour("GREEN")
+    return goToColour("GREEN")
 
 def goToRed():
-    gotToColour("RED")
+    return goToColour("RED")
 
 def release():
-    setHolder(current, "RELEASE")
+    servos.setHolder(current, "RELEASE")
 
 def grab(isRed):
-    setHolder(current, "GRABBED")
+    servos.setHolder(current, "GRABBED")
     if isRed is None:
         holders[current] = ""
     elif isRed:
