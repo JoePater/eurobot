@@ -333,7 +333,7 @@ module stopperA(){
         //translate([0,25,25])rotate([0,90,0])
         //cylinder(r=2.25,h=8,$fn=25);
     }
-}stopperA();
+}//stopperA();
 
 module stopperB(){
     //underside of base
@@ -353,7 +353,7 @@ module stopperB(){
         translate([16,15,0])cylinder(r=2.25,h=3,$fn=25);
     }
 }//translate([23+8.2,0,20])rotate([0,-90,0])
-stopperB();
+//stopperB();
 
 module stopperC(){
     //moving bit
@@ -374,11 +374,6 @@ module stopperC(){
     }
 }//translate([0,5.1+19.8,32.1])rotate([0,0,180])
 //stopperC();
-
-
-
-
-
 
 
 

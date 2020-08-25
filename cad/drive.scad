@@ -8,7 +8,7 @@ wh = 6; //wheel height
 md = sqrt(d*d - pow(mh-wh,2)); //horizontal motor distance
 l = md*4; //length of long holder
 wd = 25; //wheel depth
-fr = false;
+fr = true;
 if(!fr){
     l = md*2+40;
 }
@@ -45,7 +45,7 @@ module baseA(front=true){
         translate([l/2,18,wh])rotate([-90,0,0])
         cylinder(r=2.5,h=4.5,$fn=40);
     }
-}//translate([0,0,-8.7])baseA(fr);
+}translate([0,0,-8.7])baseA(fr);
 
 module baseB(front=true){
     //second layer
@@ -104,8 +104,21 @@ module baseD(){
         cylinder(r=2.5,h=4.5,$fn=40);
         translate([l/2-3,18+wd-4.5,-2])cube([6,4.5,2]);
     }
-}//translate([0,0,-4])baseD();
-    
+}translate([0,0,-4])baseD();
+
+module baseE(){
+    //holds castor wheel
+    //48mm
+    difference(){
+        union(){
+            cube([25,18,42]);
+            translate([-45,0,48-18])cube([45,18,12]);
+        }
+        translate([13,0,6])cube([12,18,14.5]);
+        translate([13,0,26.5])cube([12,18,15.5]);
+    }
+}!baseE();
+
 module wheel(){
     difference(){
         union(){
@@ -137,7 +150,7 @@ module rotaryGear(){
             translate([1.6,-3,0])cube([2,6,5]);
         }
     }
-}translate([rd,0,0])rotaryGear();
+}//translate([rd,0,0])rotaryGear();
 
 
 

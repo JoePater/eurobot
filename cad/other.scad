@@ -97,7 +97,7 @@ module sideMarkerA(){
         translate([60,0,10])rotate([-90,0,0])
         cylinder(r=2.25,h=3,$fn=40);
     }
-}sideMarkerA();
+}//sideMarkerA();
 
 module sideMarkerB(){
     //marker back
@@ -114,5 +114,11 @@ module sideMarkerB(){
     }
 }//sideMarkerB();
 
-
+module embBeacon(){
+    //embedded beacon
+    difference(){
+        cube([90,90,75]);
+        translate([2,2,2])cube([86,86,73]);
+    }
+}embBeacon();
 
