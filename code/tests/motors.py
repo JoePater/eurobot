@@ -17,7 +17,7 @@ def updateEnables(motor):
     m = motor_dict[motor]
 
     en = board_enables[m[0]]
-    byte = 8*en[0] + 4*en[1] + 2*en[2] + en[3]
+    byte = 128*en[3] + 64*en[2] + 32*en[1] + 16*en[0]
 
     bus.write_byte_data(board_addr[m[0]],0,byte)
 
