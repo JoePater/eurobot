@@ -37,7 +37,7 @@ def setSpeed(motor,speed):
     if speed < 0:
         speed = 0
 
-    x = 255 * speed / 100
+    x = round(255 * speed / 100)
 
     m = motor_dict[motor]
     addr = board_addr[m[0]]
