@@ -23,12 +23,12 @@ def updateEnables(motor):
 
 def enableMotor(motor):
     m = motor_dict[motor]
-    board_enables[m[0]][m[1]] = 1
+    board_enables[m[0]][m[1]-1] = 1
     updateEnables(motor)
 
 def disableMotor(motor):
     m = motor_dict[motor]
-    board_enables[m[0]][m[1]] = 0
+    board_enables[m[0]][m[1]-1] = 0
     updateEnables(motor)
 
 def setSpeed(motor,speed):
