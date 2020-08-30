@@ -4,7 +4,7 @@ import time
 board_enables = [[0,0,0,0]
                  [0,0,0,0]]
 
-board_addr = [123,124]
+board_addr = [0x29,124]
 
 motor_dict = {"LIFT":(0,1),
               "ROTATE":(0,2),
