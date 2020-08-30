@@ -1,7 +1,7 @@
 from bus import bus
 import time
 
-board_enables = [[0,0,0,0]
+board_enables = [[0,0,0,0],
                  [0,0,0,0]]
 
 board_addr = [0x29,124]
