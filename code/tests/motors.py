@@ -43,7 +43,7 @@ def setSpeed(motor,speed):
     addr = board_addr[m[0]]
     reg = m[1] * 2
 
-    bus.write_bus_data(addr,reg,x)
+    bus.write_byte_data(addr,reg,x)
 
 def setDirection(motor,clockwise=True):
     x = 1
@@ -54,7 +54,7 @@ def setDirection(motor,clockwise=True):
     addr = board_addr[m[0]]
     reg = m[1] * 2 - 1
 
-    bus.write_bus_data(addr,reg,x)
+    bus.write_byte_data(addr,reg,x)
 
 def turnMotor(motor,clockwise=True,speed=25,t=1):
     enableMotor(motor)
