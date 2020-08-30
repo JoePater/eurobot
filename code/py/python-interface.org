@@ -71,8 +71,8 @@ buoy has just been dropped, you need to reverse a bit to ensure that
 it isn't in the way.
 **** claw.grab()
 Makes the claw grab. Returns False on failure, otherwise True.
-**** claw.color()
-Tests the color of the RGB sensor. "red" indicates a red buoy, "green"
+**** claw.colour()
+Tests the colour of the RGB sensor. "red" indicates a red buoy, "green"
 indicates a green buoy and "blue" indicates empty.
 
 When the team is yellow, "red" and "green" are automatically
