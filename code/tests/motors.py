@@ -66,6 +66,19 @@ def turnMotor(motor,clockwise=True,speed=25,t=1):
 # turns the revolver passed 'steps' slots
 # negative means opposite direction
 def turnRevolver(steps):
-    pass
-    
+    if steps == 0:
+        return
+    if steps < 0:
+        setDirection("REVOLVER",False)
+        steps = -steps
+    else:
+        setDirection("REVOLVER",True)
+    setSpeed("REVOLVER",60)
+    enableMotor("REVOLVER")
+    bus.write_byte_data(board_addr[0],9,steps)
+    while 1:
+        s = bus.read_byte_data(board_addr[0],9)
+        if s == 0:
+            return
+        time.sleep(0.1)
         
