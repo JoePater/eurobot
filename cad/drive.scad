@@ -45,7 +45,7 @@ module baseA(front=true){
         translate([l/2,18,wh])rotate([-90,0,0])
         cylinder(r=2.5,h=4.5,$fn=40);
     }
-}translate([0,0,-8.7])baseA(fr);
+}//translate([0,0,-8.7])baseA(fr);
 
 module baseB(front=true){
     //second layer
@@ -104,7 +104,7 @@ module baseD(){
         cylinder(r=2.5,h=4.5,$fn=40);
         translate([l/2-3,18+wd-4.5,-2])cube([6,4.5,2]);
     }
-}translate([0,0,-4])baseD();
+}//translate([0,0,-4])baseD();
 
 module baseE(){
     //holds castor wheel
@@ -116,8 +116,45 @@ module baseE(){
         }
         translate([13,0,6])cube([12,18,14.5]);
         translate([13,0,26.5])cube([12,18,15.5]);
+        
+        translate([19,5,0])cylinder(r=2.25,h=42,$fn=25);
+        translate([19,13,0])cylinder(r=2.25,h=42,$fn=25);
+        
+        translate([-36,9,30])cylinder(r=3.9,h=12,$fn=50);
     }
-}!baseE();
+}//baseE();
+
+module baseF1(){
+    //holds aluminium pole
+    difference(){
+        union(){
+            cube([11.8,3+18,8]);
+            translate([-10,3-11,0])cube([30,11-3,25]);
+        }
+        translate([-5,3-11,15])rotate([-90,0,0])
+        cylinder(r=2.25,h=11-3,$fn=25);
+        translate([15,3-11,15])rotate([-90,0,0])
+        cylinder(r=2.25,h=11-3,$fn=25);
+        
+        translate([5.8,3+5,0])cylinder(r=2.25,h=8,$fn=25);
+        translate([5.8,3+13,0])cylinder(r=2.25,h=8,$fn=25);
+        
+        translate([2,3-11,0])cylinder(r=6.4/2,h=25,$fn=50);
+    }
+}//baseF1();
+
+module baseF2(){
+    //clamp for pole
+    difference(){
+        cube([30,6,25]);
+        translate([10+2,6,0])cylinder(r=6.4/2,h=25,$fn=50);
+        
+        translate([5,0,15])rotate([-90,0,0])
+        cylinder(r=2.25,h=6,$fn=25);
+        translate([25,0,15])rotate([-90,0,0])
+        cylinder(r=2.25,h=6,$fn=25);
+    }
+}//translate([-10,-8.2-6,0])baseF2();
 
 module wheel(){
     difference(){
@@ -152,6 +189,12 @@ module rotaryGear(){
     }
 }//translate([rd,0,0])rotaryGear();
 
-
+module castorRaiser(){
+    //disc to raise castor wheels
+    difference(){
+        cylinder(r=8,h=0.6,$fn=50);
+        cylinder(r=3.9,h=0.6,$fn=50);
+    }
+}//castorRaiser();
 
 
