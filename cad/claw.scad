@@ -245,7 +245,7 @@ module partI5(){
         union(){
             translate([0,0,29])cube([18,33,40]);
             translate([0,0,0])cube([20+12,20,8]);
-            translate([0,-15,-8+39-19-1])cube([35,15,8]);
+            translate([0,-20,-8+39-19-1])cube([35,20,8]);
         }
         
         translate([18,0,39])rotate([-90,0,0])
@@ -266,10 +266,10 @@ module partI5(){
         translate([15+12,5,0])cylinder(r=2.25,h=8,$fn=20);
         translate([15+12,15,0])cylinder(r=2.25,h=8,$fn=20);
         
-        translate([18-8,-7,0])cylinder(r=5.2,h=20-1-1,$fn=50);
-        translate([18+8,-7,0])cylinder(r=5.2,h=20-1-1,$fn=50);
+        translate([18-8,-5-7,0])cylinder(r=5.2,h=20-1-1,$fn=50);
+        translate([18+8,-5-7,0])cylinder(r=5.2,h=20-1-1,$fn=50);
     }
-}!partI5();
+}partI5();
 module partI6(){
     //cap for holding motor and rotating pivot (v2)
     difference(){
@@ -290,7 +290,7 @@ module partI6(){
         translate([21.5,33,0])cube([3,3,3]);
     }
 }//translate([33.2,0,29])rotate([0,-90,0])
-partI6();
+//partI6();
 
 module partJ(){
     //little gear for cup rotater
