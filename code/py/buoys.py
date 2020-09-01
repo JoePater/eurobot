@@ -8,6 +8,22 @@ All functions will leave the claw down and open, and expect the
 claw to be down and open when they are called. 
 """
 
+approach_speed = 25
+approach_grab_delay = 0.2
+approach_timeout = 5
+
+def approachBuoy():
+    move.drive(approach_speed,approach_speed)
+
+    start = time.time()
+    
+    while time.time() - start < approach_timeout:
+        if claw.colour() != "blue":
+            time.sleep(0.2)
+            move.drive(0,0)
+            return True
+    return False
+
 """
 The claw needs to be in the following state:
 down,right way up,open
