@@ -1,0 +1,507 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1773 ]
+[d frameptr 6 ]
+"10 /opt/microchip/xc8/v2.10/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 /opt/microchip/xc8/v2.10/pic/sources/c99/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"48 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+[v _config_i2c config_i2c `(v  1 e 1 0 ]
+"68
+[v _i2c_isr i2c_isr `(v  1 e 1 0 ]
+"76
+[v _handle_read handle_read `(v  1 s 1 handle_read ]
+"84
+[v _handle_write handle_write `(v  1 s 1 handle_write ]
+"100
+[v _write_register write_register `(v  1 s 1 write_register ]
+"111
+[v _read_register read_register `(uc  1 s 1 read_register ]
+"3 /home/joe/pro/ebot/emb/4dc/code/io.c
+[v _config_io config_io `(v  1 e 1 0 ]
+"18 /home/joe/pro/ebot/emb/4dc/code/main.c
+[v _config_cpu config_cpu `(v  1 e 1 0 ]
+"25
+[v _main main `(i  1 e 2 0 ]
+"6 /home/joe/pro/ebot/emb/4dc/code/motors.c
+[v _set_motor set_motor `(v  1 e 1 0 ]
+"30
+[v _update_ctl update_ctl `(v  1 s 1 update_ctl ]
+"42
+[v _update_motors update_motors `(v  1 e 1 0 ]
+"12 /home/joe/pro/ebot/emb/4dc/code/pwm.c
+[v _set_pwms_dc set_pwms_dc `(v  1 s 1 set_pwms_dc ]
+"28
+[v _config_pwm config_pwm `(v  1 e 1 0 ]
+"66
+[v _get_a_val get_a_val `(uc  1 s 1 get_a_val ]
+"81
+[v _get_b_val get_b_val `(uc  1 s 1 get_b_val ]
+"98
+[v _set_motor_pps set_motor_pps `(v  1 s 1 set_motor_pps ]
+"141
+[v _set_pwm_mode set_pwm_mode `(v  1 e 1 0 ]
+"148
+[v _set_pwm set_pwm `(v  1 e 1 0 ]
+"6 /home/joe/pro/ebot/emb/4dc/code/rev.c
+[v _config_rev config_rev `(v  1 e 1 0 ]
+"14
+[v _get_timer get_timer `(s  1 s 2 get_timer ]
+"23
+[v _reset_timer reset_timer `(v  1 s 1 reset_timer ]
+"29
+[v _stop_timer stop_timer `(v  1 s 1 stop_timer ]
+"33
+[v _start_timer start_timer `(v  1 s 1 start_timer ]
+"38
+[v _update_rev update_rev `(v  1 e 1 0 ]
+"351 /opt/microchip/xc8/v2.10/pic/include/pic16f1773.h
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+[s S473 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"508
+[u S482 . 1 `S473 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES482  1 e 1 @13 ]
+[s S62 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"657
+[s S71 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CCPIF 1 0 :1:2 
+]
+[u S74 . 1 `S62 1 . 1 0 `S71 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES74  1 e 1 @17 ]
+"1308
+[v _TMR3L TMR3L `VEuc  1 e 1 @28 ]
+"1328
+[v _TMR3H TMR3H `VEuc  1 e 1 @29 ]
+"1348
+[v _T3CON T3CON `VEuc  1 e 1 @30 ]
+[s S404 . 1 `uc 1 ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 nSYNC 1 0 :1:2 
+`uc 1 OSCEN 1 0 :1:3 
+`uc 1 CKPS 1 0 :2:4 
+`uc 1 CS 1 0 :2:6 
+]
+"1390
+[s S411 . 1 `uc 1 TMRON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 SYNC 1 0 :1:2 
+`uc 1 SOSCEN 1 0 :1:3 
+`uc 1 CKPS0 1 0 :1:4 
+`uc 1 CKPS1 1 0 :1:5 
+`uc 1 CS0 1 0 :1:6 
+`uc 1 CS1 1 0 :1:7 
+]
+[s S420 . 1 `uc 1 TMR3ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 nT3SYNC 1 0 :1:2 
+`uc 1 T3OSCEN 1 0 :1:3 
+`uc 1 . 1 0 :2:4 
+`uc 1 T3CS0 1 0 :1:6 
+`uc 1 T3CS1 1 0 :1:7 
+]
+[s S428 . 1 `uc 1 T3ON 1 0 :1:0 
+`uc 1 . 1 0 :3:1 
+`uc 1 T3CKPS0 1 0 :1:4 
+`uc 1 T3CKPS1 1 0 :1:5 
+`uc 1 TMR3CS0 1 0 :1:6 
+`uc 1 TMR3CS1 1 0 :1:7 
+]
+[u S435 . 1 `S404 1 . 1 0 `S411 1 . 1 0 `S420 1 . 1 0 `S428 1 . 1 0 ]
+[v _T3CONbits T3CONbits `VES435  1 e 1 @30 ]
+"1635
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1697
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1759
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S26 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1863
+[s S35 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CCPIE 1 0 :1:2 
+]
+[u S38 . 1 `S26 1 . 1 0 `S35 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES38  1 e 1 @145 ]
+"2153
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @151 ]
+"2410
+[v _OSCCON OSCCON `VEuc  1 e 1 @155 ]
+"2673
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2735
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2797
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+"3722
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3772
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3822
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"4914
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"4976
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
+"5038
+[v _WPUC WPUC `VEuc  1 e 1 @526 ]
+"5100
+[v _WPUE WPUE `VEuc  1 e 1 @528 ]
+"5121
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
+"5375
+[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @530 ]
+[s S90 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"5905
+[u S99 . 1 `S90 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES99  1 e 1 @532 ]
+"6005
+[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
+[s S119 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"6225
+[s S125 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S130 . 1 `S119 1 . 1 0 `S125 1 . 1 0 ]
+[v _SSP1CONbits SSP1CONbits `VES130  1 e 1 @533 ]
+"6275
+[v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @534 ]
+"6397
+[v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @535 ]
+"11511
+[v _T2PR T2PR `VEuc  1 e 1 @1172 ]
+"11565
+[v _T2CON T2CON `VEuc  1 e 1 @1173 ]
+"11839
+[v _T2CLKCON T2CLKCON `VEuc  1 e 1 @1175 ]
+"18029
+[v _PWM3DCL PWM3DCL `VEuc  1 e 1 @1556 ]
+"18095
+[v _PWM3DCH PWM3DCH `VEuc  1 e 1 @1557 ]
+"18265
+[v _PWM3CON PWM3CON `VEuc  1 e 1 @1558 ]
+"18328
+[v _PWM4DCL PWM4DCL `VEuc  1 e 1 @1559 ]
+"18394
+[v _PWM4DCH PWM4DCH `VEuc  1 e 1 @1560 ]
+"18564
+[v _PWM4CON PWM4CON `VEuc  1 e 1 @1561 ]
+"18627
+[v _PWM9DCL PWM9DCL `VEuc  1 e 1 @1562 ]
+"18693
+[v _PWM9DCH PWM9DCH `VEuc  1 e 1 @1563 ]
+"18863
+[v _PWM9CON PWM9CON `VEuc  1 e 1 @1564 ]
+"27349
+[v _PWM5PHL PWM5PHL `VEuc  1 e 1 @3473 ]
+"27427
+[v _PWM5PHH PWM5PHH `VEuc  1 e 1 @3474 ]
+"27512
+[v _PWM5DCL PWM5DCL `VEuc  1 e 1 @3475 ]
+"27590
+[v _PWM5DCH PWM5DCH `VEuc  1 e 1 @3476 ]
+"27675
+[v _PWM5PRL PWM5PRL `VEuc  1 e 1 @3477 ]
+"27753
+[v _PWM5PRH PWM5PRH `VEuc  1 e 1 @3478 ]
+"28157
+[v _PWM5CON PWM5CON `VEuc  1 e 1 @3483 ]
+"28507
+[v _PWM5CLKCON PWM5CLKCON `VEuc  1 e 1 @3486 ]
+"28627
+[v _PWM5LDCON PWM5LDCON `VEuc  1 e 1 @3487 ]
+[s S294 . 1 `uc 1 LDS 1 0 :2:0 
+`uc 1 . 1 0 :4:2 
+`uc 1 LDT 1 0 :1:6 
+`uc 1 LDA 1 0 :1:7 
+]
+"28654
+[s S299 . 1 `uc 1 PWM5LDS0 1 0 :1:0 
+`uc 1 PWM5LDS1 1 0 :1:1 
+]
+[s S302 . 1 `uc 1 PWM5LDS 1 0 :2:0 
+`uc 1 . 1 0 :4:2 
+`uc 1 PWM5LDM 1 0 :1:6 
+`uc 1 PWM5LD 1 0 :1:7 
+]
+[s S307 . 1 `uc 1 LDS0 1 0 :1:0 
+`uc 1 LDS1 1 0 :1:1 
+]
+[u S310 . 1 `S294 1 . 1 0 `S299 1 . 1 0 `S302 1 . 1 0 `S307 1 . 1 0 ]
+[v _PWM5LDCONbits PWM5LDCONbits `VES310  1 e 1 @3487 ]
+"32683
+[v _SSPCLKPPS SSPCLKPPS `VEuc  1 e 1 @3642 ]
+"32703
+[v _SSPDATPPS SSPDATPPS `VEuc  1 e 1 @3643 ]
+"32783
+[v _RA0PPS RA0PPS `VEuc  1 e 1 @3728 ]
+"32803
+[v _RA1PPS RA1PPS `VEuc  1 e 1 @3729 ]
+"32823
+[v _RA2PPS RA2PPS `VEuc  1 e 1 @3730 ]
+"32843
+[v _RA3PPS RA3PPS `VEuc  1 e 1 @3731 ]
+"32863
+[v _RA4PPS RA4PPS `VEuc  1 e 1 @3732 ]
+"32883
+[v _RA5PPS RA5PPS `VEuc  1 e 1 @3733 ]
+"32903
+[v _RA6PPS RA6PPS `VEuc  1 e 1 @3734 ]
+"32923
+[v _RA7PPS RA7PPS `VEuc  1 e 1 @3735 ]
+"33143
+[v _RC2PPS RC2PPS `VEuc  1 e 1 @3746 ]
+"33163
+[v _RC3PPS RC3PPS `VEuc  1 e 1 @3747 ]
+"34 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+[v _current_reg current_reg `uc  1 e 1 0 ]
+"35
+[v _first_write first_write `uc  1 e 1 0 ]
+"37
+[v _i2c_registers i2c_registers `[10]uc  1 e 10 0 ]
+"38
+[v _writeable_reg writeable_reg `[10]uc  1 e 10 0 ]
+"96 /home/joe/pro/ebot/emb/4dc/code/pwm.c
+[v _pps_pwm_vals pps_pwm_vals `[4]uc  1 e 4 0 ]
+"37 /home/joe/pro/ebot/emb/4dc/code/rev.c
+[v _prev_steps prev_steps `uc  1 e 1 0 ]
+"25 /home/joe/pro/ebot/emb/4dc/code/main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"42
+} 0
+"38 /home/joe/pro/ebot/emb/4dc/code/rev.c
+[v _update_rev update_rev `(v  1 e 1 0 ]
+{
+"42
+[v update_rev@t t `s  1 a 2 10 ]
+"39
+[v update_rev@steps_buf steps_buf `uc  1 a 1 12 ]
+"59
+} 0
+"29
+[v _stop_timer stop_timer `(v  1 s 1 stop_timer ]
+{
+"31
+} 0
+"33
+[v _start_timer start_timer `(v  1 s 1 start_timer ]
+{
+"35
+} 0
+"23
+[v _reset_timer reset_timer `(v  1 s 1 reset_timer ]
+{
+"27
+} 0
+"14
+[v _get_timer get_timer `(s  1 s 2 get_timer ]
+{
+"15
+[v get_timer@h h `uc  1 a 1 8 ]
+[v get_timer@l l `uc  1 a 1 7 ]
+"21
+} 0
+"42 /home/joe/pro/ebot/emb/4dc/code/motors.c
+[v _update_motors update_motors `(v  1 e 1 0 ]
+{
+"51
+} 0
+"30
+[v _update_ctl update_ctl `(v  1 s 1 update_ctl ]
+{
+"33
+[v update_ctl@i i `uc  1 a 1 15 ]
+"32
+[v update_ctl@c c `uc  1 a 1 14 ]
+"40
+} 0
+"6
+[v _set_motor set_motor `(v  1 e 1 0 ]
+{
+[v set_motor@motor motor `uc  1 a 1 wreg ]
+[v set_motor@motor motor `uc  1 a 1 wreg ]
+[v set_motor@dir dir `uc  1 p 1 10 ]
+[v set_motor@pwm pwm `uc  1 p 1 11 ]
+[v set_motor@motor motor `uc  1 a 1 13 ]
+"28
+} 0
+"141 /home/joe/pro/ebot/emb/4dc/code/pwm.c
+[v _set_pwm_mode set_pwm_mode `(v  1 e 1 0 ]
+{
+[v set_pwm_mode@motor motor `uc  1 a 1 wreg ]
+"144
+[v set_pwm_mode@b b `uc  1 a 1 10 ]
+"143
+[v set_pwm_mode@a a `uc  1 a 1 9 ]
+"141
+[v set_pwm_mode@motor motor `uc  1 a 1 wreg ]
+[v set_pwm_mode@mode mode `uc  1 p 1 5 ]
+"143
+[v set_pwm_mode@motor motor `uc  1 a 1 8 ]
+"146
+} 0
+"81
+[v _get_b_val get_b_val `(uc  1 s 1 get_b_val ]
+{
+[v get_b_val@mode mode `uc  1 a 1 wreg ]
+[v get_b_val@mode mode `uc  1 a 1 wreg ]
+[v get_b_val@mode mode `uc  1 a 1 2 ]
+"94
+} 0
+"66
+[v _get_a_val get_a_val `(uc  1 s 1 get_a_val ]
+{
+[v get_a_val@mode mode `uc  1 a 1 wreg ]
+[v get_a_val@mode mode `uc  1 a 1 wreg ]
+[v get_a_val@mode mode `uc  1 a 1 2 ]
+"79
+} 0
+"148
+[v _set_pwm set_pwm `(v  1 e 1 0 ]
+{
+[v set_pwm@motor motor `uc  1 a 1 wreg ]
+[v set_pwm@motor motor `uc  1 a 1 wreg ]
+[v set_pwm@pwm pwm `uc  1 p 1 0 ]
+[v set_pwm@motor motor `uc  1 a 1 3 ]
+"169
+} 0
+"68 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+[v _i2c_isr i2c_isr `(v  1 e 1 0 ]
+{
+"74
+} 0
+"84
+[v _handle_write handle_write `(v  1 s 1 handle_write ]
+{
+"86
+[v handle_write@buf buf `uc  1 a 1 5 ]
+"98
+} 0
+"100
+[v _write_register write_register `(v  1 s 1 write_register ]
+{
+[v write_register@reg reg `uc  1 a 1 wreg ]
+"103
+[v write_register@msk msk `uc  1 a 1 2 ]
+"100
+[v write_register@reg reg `uc  1 a 1 wreg ]
+[v write_register@val val `uc  1 p 1 0 ]
+"102
+[v write_register@reg reg `uc  1 a 1 3 ]
+"109
+} 0
+"76
+[v _handle_read handle_read `(v  1 s 1 handle_read ]
+{
+"79
+[v handle_read@buf buf `uc  1 a 1 3 ]
+"82
+} 0
+"111
+[v _read_register read_register `(uc  1 s 1 read_register ]
+{
+[v read_register@reg reg `uc  1 a 1 wreg ]
+[v read_register@reg reg `uc  1 a 1 wreg ]
+"113
+[v read_register@reg reg `uc  1 a 1 0 ]
+"115
+} 0
+"6 /home/joe/pro/ebot/emb/4dc/code/rev.c
+[v _config_rev config_rev `(v  1 e 1 0 ]
+{
+"12
+} 0
+"28 /home/joe/pro/ebot/emb/4dc/code/pwm.c
+[v _config_pwm config_pwm `(v  1 e 1 0 ]
+{
+"56
+} 0
+"12
+[v _set_pwms_dc set_pwms_dc `(v  1 s 1 set_pwms_dc ]
+{
+[v set_pwms_dc@m3 m3 `uc  1 a 1 wreg ]
+[v set_pwms_dc@m3 m3 `uc  1 a 1 wreg ]
+[v set_pwms_dc@m4 m4 `uc  1 p 1 0 ]
+[v set_pwms_dc@m9 m9 `uc  1 p 1 1 ]
+[v set_pwms_dc@m5 m5 `uc  1 p 1 2 ]
+"14
+[v set_pwms_dc@m3 m3 `uc  1 a 1 4 ]
+"26
+} 0
+"98
+[v _set_motor_pps set_motor_pps `(v  1 s 1 set_motor_pps ]
+{
+[v set_motor_pps@motor motor `uc  1 a 1 wreg ]
+"104
+[v set_motor_pps@x x `uc  1 a 1 9 ]
+"103
+[v set_motor_pps@lat_b lat_b `uc  1 a 1 8 ]
+"102
+[v set_motor_pps@lat_a lat_a `uc  1 a 1 7 ]
+"101
+[v set_motor_pps@pps_b pps_b `uc  1 a 1 6 ]
+"100
+[v set_motor_pps@pps_a pps_a `uc  1 a 1 5 ]
+"98
+[v set_motor_pps@motor motor `uc  1 a 1 wreg ]
+[v set_motor_pps@a_mode a_mode `uc  1 p 1 0 ]
+[v set_motor_pps@b_mode b_mode `uc  1 p 1 1 ]
+"100
+[v set_motor_pps@motor motor `uc  1 a 1 4 ]
+"139
+} 0
+"3 /home/joe/pro/ebot/emb/4dc/code/io.c
+[v _config_io config_io `(v  1 e 1 0 ]
+{
+"17
+} 0
+"48 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+[v _config_i2c config_i2c `(v  1 e 1 0 ]
+{
+"66
+} 0
+"18 /home/joe/pro/ebot/emb/4dc/code/main.c
+[v _config_cpu config_cpu `(v  1 e 1 0 ]
+{
+"23
+} 0

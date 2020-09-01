@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name 4dc-rescue)(type Legacy)(uri ${KIPRJMOD}/4dc-rescue.lib)(options "")(descr ""))
+)

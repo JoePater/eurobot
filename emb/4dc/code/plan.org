@@ -1,0 +1,24 @@
+* I2C registers
+** 0x00 - setup
+*** bit 7-4 = enable/disable
+**** bit 4=md1, bit7=md4
+** 0x01,0x03,0x05,0x07 - MD1,MD2,MD3,MD4 direction
+*** 0=off,1=clockwise,2=anticlockwise
+** 0x02,0x04,0x06,0x08 - MD1,MD2,MD3,MD4 speed
+*** 8 bit pwm (255=max speed)
+* Data structures
+** PWM
+*** global array of 4 shorts called pwm_motors
+* Functions
+** Config
+*** void config_cpu()
+*** void config_io()
+*** void config_i2c()
+*** void config_reg()
+** PWM
+*** bool valid_pwm(short) - true if pwm value is valid
+*** void set_pwm(motor,pwm)
+*** void update_pwm() - updates the outputs with the values in the registers
+** Motors
+*** void update_dir(motor,dir) - update direction of motor
+*** void update_motors() - update all motors from registers
