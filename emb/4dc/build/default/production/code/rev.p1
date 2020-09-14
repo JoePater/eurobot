@@ -1750,172 +1750,174 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _config_rev ]
 [f ]
 "8
-[; ;code/rev.c: 8:      LATB = 0b000100;
-[e = _LATB -> -> 4 `i `uc ]
+[; ;code/rev.c: 8:      LATB = 0;
+[e = _LATB -> -> 0 `i `uc ]
 "9
-[; ;code/rev.c: 9:      TRISB = 0b000010;
-[e = _TRISB -> -> 2 `i `uc ]
-"11
-[; ;code/rev.c: 11:      T3CON = 0b11110000;
-[e = _T3CON -> -> 240 `i `uc ]
+[; ;code/rev.c: 9:      TRISB = 0b11001000;
+[e = _TRISB -> -> 200 `i `uc ]
 "12
-[; ;code/rev.c: 12: }
+[; ;code/rev.c: 12:      T3CON = 0b11110000;
+[e = _T3CON -> -> 240 `i `uc ]
+"13
+[; ;code/rev.c: 13: }
 [e :UE 1731 ]
 }
-"14
-[; ;code/rev.c: 14: static short get_timer(){
+"15
+[; ;code/rev.c: 15: static short get_timer(){
 [v _get_timer `(s ~T0 @X0 1 sf ]
 {
 [e :U _get_timer ]
 [f ]
-"15
-[; ;code/rev.c: 15:      u8 h,l;
+"16
+[; ;code/rev.c: 16:      u8 h,l;
 [v _h `uc ~T0 @X0 1 a ]
 [v _l `uc ~T0 @X0 1 a ]
-"16
-[; ;code/rev.c: 16:      do{
+"17
+[; ;code/rev.c: 17:      do{
 [e :U 1735 ]
 {
-"17
-[; ;code/rev.c: 17:           h = TMR3H;
-[e = _h _TMR3H ]
 "18
-[; ;code/rev.c: 18:           l = TMR3L;
-[e = _l _TMR3L ]
+[; ;code/rev.c: 18:           h = TMR3H;
+[e = _h _TMR3H ]
 "19
-[; ;code/rev.c: 19:      }while(h != TMR3H);
+[; ;code/rev.c: 19:           l = TMR3L;
+[e = _l _TMR3L ]
+"20
+[; ;code/rev.c: 20:      }while(h != TMR3H);
 }
 [e $ != -> _h `i -> _TMR3H `i 1735  ]
 [e :U 1734 ]
-"20
-[; ;code/rev.c: 20:      return (h<<8) + l;
+"21
+[; ;code/rev.c: 21:      return (h<<8) + l;
 [e ) -> + << -> _h `i -> 8 `i -> _l `i `s ]
 [e $UE 1732  ]
-"21
-[; ;code/rev.c: 21: }
+"22
+[; ;code/rev.c: 22: }
 [e :UE 1732 ]
 }
-"23
-[; ;code/rev.c: 23: static void reset_timer(){
+"24
+[; ;code/rev.c: 24: static void reset_timer(){
 [v _reset_timer `(v ~T0 @X0 1 sf ]
 {
 [e :U _reset_timer ]
 [f ]
-"24
-[; ;code/rev.c: 24:      TMR3L = 0;
-[e = _TMR3L -> -> 0 `i `uc ]
 "25
-[; ;code/rev.c: 25:      TMR3H = 0;
-[e = _TMR3H -> -> 0 `i `uc ]
-"26
-[; ;code/rev.c: 26:      TMR3L = 0;
+[; ;code/rev.c: 25:      TMR3L = 0;
 [e = _TMR3L -> -> 0 `i `uc ]
+"26
+[; ;code/rev.c: 26:      TMR3H = 0;
+[e = _TMR3H -> -> 0 `i `uc ]
 "27
-[; ;code/rev.c: 27: }
+[; ;code/rev.c: 27:      TMR3L = 0;
+[e = _TMR3L -> -> 0 `i `uc ]
+"28
+[; ;code/rev.c: 28: }
 [e :UE 1736 ]
 }
-"29
-[; ;code/rev.c: 29: static void stop_timer(){
+"30
+[; ;code/rev.c: 30: static void stop_timer(){
 [v _stop_timer `(v ~T0 @X0 1 sf ]
 {
 [e :U _stop_timer ]
 [f ]
-"30
-[; ;code/rev.c: 30:      T3CONbits.ON = 0;
-[e = . . _T3CONbits 0 0 -> -> 0 `i `uc ]
 "31
-[; ;code/rev.c: 31: }
+[; ;code/rev.c: 31:      T3CONbits.ON = 0;
+[e = . . _T3CONbits 0 0 -> -> 0 `i `uc ]
+"32
+[; ;code/rev.c: 32: }
 [e :UE 1737 ]
 }
-"33
-[; ;code/rev.c: 33: static void start_timer(){
+"34
+[; ;code/rev.c: 34: static void start_timer(){
 [v _start_timer `(v ~T0 @X0 1 sf ]
 {
 [e :U _start_timer ]
 [f ]
-"34
-[; ;code/rev.c: 34:      T3CONbits.ON = 1;
-[e = . . _T3CONbits 0 0 -> -> 1 `i `uc ]
 "35
-[; ;code/rev.c: 35: }
+[; ;code/rev.c: 35:      T3CONbits.ON = 1;
+[e = . . _T3CONbits 0 0 -> -> 1 `i `uc ]
+"36
+[; ;code/rev.c: 36: }
 [e :UE 1738 ]
 }
-"37
-[; ;code/rev.c: 37: u8 prev_steps = 0;
+"38
+[; ;code/rev.c: 38: u8 prev_steps = 0;
 [v _prev_steps `uc ~T0 @X0 1 e ]
 [i _prev_steps
 -> -> 0 `i `uc
 ]
-"38
-[; ;code/rev.c: 38: void update_rev(){
+"39
+[; ;code/rev.c: 39: void update_rev(){
 [v _update_rev `(v ~T0 @X0 1 ef ]
 {
 [e :U _update_rev ]
 [f ]
-"39
-[; ;code/rev.c: 39:      u8 steps_buf = i2c_registers[9];
+"40
+[; ;code/rev.c: 40:      u8 steps_buf = i2c_registers[9];
 [v _steps_buf `uc ~T0 @X0 1 a ]
 [e = _steps_buf *U + &U _i2c_registers * -> -> -> 9 `i `ui `ux -> -> # *U &U _i2c_registers `ui `ux ]
-"41
-[; ;code/rev.c: 41:      if(PORTBbits.RB1){
-[e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 1740  ]
-{
 "42
-[; ;code/rev.c: 42:           short t = get_timer();
+[; ;code/rev.c: 42:      if(PORTBbits.RB3){
+[e $ ! != -> . . _PORTBbits 0 3 `i -> 0 `i 1740  ]
+{
+"43
+[; ;code/rev.c: 43:           short t = get_timer();
 [v _t `s ~T0 @X0 1 a ]
 [e = _t ( _get_timer ..  ]
-"43
-[; ;code/rev.c: 43:           if(t >= int_time_delay){
+"44
+[; ;code/rev.c: 44:           if(t >= int_time_delay){
 [e $ ! >= -> _t `i -> _int_time_delay `i 1741  ]
 {
-"44
-[; ;code/rev.c: 44:                i2c_registers[9] -= 1;
-[e =- *U + &U _i2c_registers * -> -> -> 9 `i `ui `ux -> -> # *U &U _i2c_registers `ui `ux -> -> 1 `i `uc ]
 "45
-[; ;code/rev.c: 45:           }
+[; ;code/rev.c: 45:                if(i2c_registers[9])i2c_registers[9] -= 1;
+[e $ ! != -> *U + &U _i2c_registers * -> -> -> 9 `i `ui `ux -> -> # *U &U _i2c_registers `ui `ux `i -> 0 `i 1742  ]
+[e =- *U + &U _i2c_registers * -> -> -> 9 `i `ui `ux -> -> # *U &U _i2c_registers `ui `ux -> -> 1 `i `uc ]
+[e :U 1742 ]
+"46
+[; ;code/rev.c: 46:           }
 }
 [e :U 1741 ]
-"46
-[; ;code/rev.c: 46:           reset_timer();
-[e ( _reset_timer ..  ]
 "47
-[; ;code/rev.c: 47:      }
+[; ;code/rev.c: 47:           reset_timer();
+[e ( _reset_timer ..  ]
+"48
+[; ;code/rev.c: 48:      }
 }
 [e :U 1740 ]
-"50
-[; ;code/rev.c: 50:      if(!steps_buf && prev_steps){
-[e $ ! && ! != -> _steps_buf `i -> 0 `i != -> _prev_steps `i -> 0 `i 1742  ]
-{
 "51
-[; ;code/rev.c: 51:           i2c_registers[8] = 0;
-[e = *U + &U _i2c_registers * -> -> -> 8 `i `ui `ux -> -> # *U &U _i2c_registers `ui `ux -> -> 0 `i `uc ]
-"52
-[; ;code/rev.c: 52:           stop_timer();
-[e ( _stop_timer ..  ]
-"53
-[; ;code/rev.c: 53:      }
-}
-[e $U 1743  ]
-"54
-[; ;code/rev.c: 54:      else if(steps_buf > prev_steps){
-[e :U 1742 ]
-[e $ ! > -> _steps_buf `i -> _prev_steps `i 1744  ]
+[; ;code/rev.c: 51:      if(!steps_buf && prev_steps){
+[e $ ! && ! != -> _steps_buf `i -> 0 `i != -> _prev_steps `i -> 0 `i 1743  ]
 {
-"55
-[; ;code/rev.c: 55:           start_timer();
-[e ( _start_timer ..  ]
-"56
-[; ;code/rev.c: 56:           reset_timer();
-[e ( _reset_timer ..  ]
-"57
-[; ;code/rev.c: 57:      }
+"52
+[; ;code/rev.c: 52:           i2c_registers[8] = 0;
+[e = *U + &U _i2c_registers * -> -> -> 8 `i `ui `ux -> -> # *U &U _i2c_registers `ui `ux -> -> 0 `i `uc ]
+"53
+[; ;code/rev.c: 53:           stop_timer();
+[e ( _stop_timer ..  ]
+"54
+[; ;code/rev.c: 54:      }
 }
-[e :U 1744 ]
+[e $U 1744  ]
+"55
+[; ;code/rev.c: 55:      else if(steps_buf > prev_steps){
 [e :U 1743 ]
+[e $ ! > -> _steps_buf `i -> _prev_steps `i 1745  ]
+{
+"56
+[; ;code/rev.c: 56:           start_timer();
+[e ( _start_timer ..  ]
+"57
+[; ;code/rev.c: 57:           reset_timer();
+[e ( _reset_timer ..  ]
 "58
-[; ;code/rev.c: 58:      prev_steps = steps_buf;
-[e = _prev_steps _steps_buf ]
+[; ;code/rev.c: 58:      }
+}
+[e :U 1745 ]
+[e :U 1744 ]
 "59
-[; ;code/rev.c: 59: }
+[; ;code/rev.c: 59:      prev_steps = steps_buf;
+[e = _prev_steps _steps_buf ]
+"60
+[; ;code/rev.c: 60: }
 [e :UE 1739 ]
 }

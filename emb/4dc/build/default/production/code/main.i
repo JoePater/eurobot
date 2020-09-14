@@ -19416,7 +19416,17 @@ void config_io();
 void config_rev();
 void update_rev();
 # 7 "code/main.c" 2
-# 18 "code/main.c"
+
+
+
+void __attribute__((picinterrupt(("")))) isr()
+{
+     if(PIR1bits.SSP1IF){
+   PIR1bits.SSP1IF = 0;
+   i2c_isr();
+     }
+}
+
 void config_cpu()
 {
      OSCCON = 0b11110010;

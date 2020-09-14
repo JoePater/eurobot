@@ -5,8 +5,9 @@ const short int_time_delay = 1000;
 
 void config_rev(){
      /* Set up IO, timer */
-     LATB = 0b000100; /* RB2=3V3,RB1=in,RB0=GND */
-     TRISB = 0b000010;
+     LATB = 0;
+     TRISB = 0b11001000;/* RB3=in */
+     //INLVLB = 0b10;
      
      T3CON = 0b11110000; /* ~4kHz */
 }
@@ -38,10 +39,10 @@ u8 prev_steps = 0;
 void update_rev(){
      u8 steps_buf = i2c_registers[9];
      
-     if(PORTBbits.RB1){ /* interrupted */
+     if(PORTBbits.RB3){ /* interrupted */
           short t = get_timer();
           if(t >= int_time_delay){
-               i2c_registers[9] -= 1;
+               if(i2c_registers[9])i2c_registers[9] -= 1;
           }
           reset_timer();
      }

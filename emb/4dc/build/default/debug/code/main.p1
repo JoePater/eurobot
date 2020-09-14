@@ -1,4 +1,24 @@
 Version 4.0 HI-TECH Software Intermediate Code
+[t ~ __interrupt . k ]
+[t T1 __interrupt ]
+"642 /opt/microchip/xc8/v2.10/pic/include/pic16f1773.h
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 642:     struct {
+[s S42 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S42 . TMR1IF TMR2IF CCP1IF SSP1IF TXIF RCIF ADIF TMR1GIF ]
+"652
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 652:     struct {
+[s S43 :2 `uc 1 :1 `uc 1 ]
+[n S43 . . CCPIF ]
+"641
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 641: typedef union {
+[u S41 `S42 1 `S43 1 ]
+[n S41 . . . ]
+"657
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 657: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x011)));
+[v _PIR1bits `VS41 ~T0 @X0 0 e@17 ]
+"10 code/i2c.h
+[; ;code/i2c.h: 10: void i2c_isr();
+[v _i2c_isr `(v ~T0 @X0 0 e? ]
 "2410 /opt/microchip/xc8/v2.10/pic/include/pic16f1773.h
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 2410: extern volatile unsigned char OSCCON __attribute__((address(0x09B)));
 [v _OSCCON `Vuc ~T0 @X0 0 e@155 ]
@@ -24,24 +44,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6 code/motors.h
 [; ;code/motors.h: 6: void update_motors();
 [v _update_motors `(v ~T0 @X0 0 e? ]
-"642 /opt/microchip/xc8/v2.10/pic/include/pic16f1773.h
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 642:     struct {
-[s S42 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S42 . TMR1IF TMR2IF CCP1IF SSP1IF TXIF RCIF ADIF TMR1GIF ]
-"652
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 652:     struct {
-[s S43 :2 `uc 1 :1 `uc 1 ]
-[n S43 . . CCPIF ]
-"641
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 641: typedef union {
-[u S41 `S42 1 `S43 1 ]
-[n S41 . . . ]
-"657
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 657: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x011)));
-[v _PIR1bits `VS41 ~T0 @X0 0 e@17 ]
-"10 code/i2c.h
-[; ;code/i2c.h: 10: void i2c_isr();
-[v _i2c_isr `(v ~T0 @X0 0 e? ]
 "8 code/rev.h
 [; ;code/rev.h: 8: void update_rev();
 [v _update_rev `(v ~T0 @X0 0 e? ]
@@ -1731,7 +1733,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37755
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 37755: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"18 code/main.c
+[v $root$_isr `(v ~T0 @X0 0 e ]
+"10 code/main.c
+[; ;code/main.c: 10: void __attribute__((picinterrupt(("")))) isr()
+[v _isr `(v ~T1 @X0 1 ef ]
+"11
+[; ;code/main.c: 11: {
+{
+[e :U _isr ]
+[f ]
+"12
+[; ;code/main.c: 12:      if(PIR1bits.SSP1IF){
+[e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 1732  ]
+{
+"13
+[; ;code/main.c: 13:    PIR1bits.SSP1IF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"14
+[; ;code/main.c: 14:    i2c_isr();
+[e ( _i2c_isr ..  ]
+"15
+[; ;code/main.c: 15:      }
+}
+[e :U 1732 ]
+"16
+[; ;code/main.c: 16: }
+[e :UE 1731 ]
+}
+"18
 [; ;code/main.c: 18: void config_cpu()
 [v _config_cpu `(v ~T0 @X0 1 ef ]
 "19
@@ -1750,7 +1779,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _OPTION_REG -> -> 0 `i `uc ]
 "23
 [; ;code/main.c: 23: }
-[e :UE 1731 ]
+[e :UE 1733 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
 "25
@@ -1778,14 +1807,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _config_rev ..  ]
 "33
 [; ;code/main.c: 33:      while(1){
-[e :U 1734 ]
+[e :U 1736 ]
 {
 "34
 [; ;code/main.c: 34:           update_motors();
 [e ( _update_motors ..  ]
 "35
 [; ;code/main.c: 35:           if(PIR1bits.SSP1IF){
-[e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 1736  ]
+[e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 1738  ]
 {
 "36
 [; ;code/main.c: 36:                PIR1bits.SSP1IF = 0;
@@ -1796,21 +1825,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;code/main.c: 38:           }
 }
-[e :U 1736 ]
+[e :U 1738 ]
 "39
 [; ;code/main.c: 39:           update_rev();
 [e ( _update_rev ..  ]
 "40
 [; ;code/main.c: 40:      }
 }
-[e :U 1733 ]
-[e $U 1734  ]
 [e :U 1735 ]
+[e $U 1736  ]
+[e :U 1737 ]
 "41
 [; ;code/main.c: 41:      return 0;
 [e ) -> 0 `i ]
-[e $UE 1732  ]
+[e $UE 1734  ]
 "42
 [; ;code/main.c: 42: }
-[e :UE 1732 ]
+[e :UE 1734 ]
 }

@@ -7,13 +7,13 @@
 
 #include <xc.h>
 
-/*void __interrupt() isr()
+void __interrupt() isr()
 {
      if(PIR1bits.SSP1IF){
 	  PIR1bits.SSP1IF = 0;
 	  i2c_isr();
      }
-}*/
+}
 
 void config_cpu()
 {

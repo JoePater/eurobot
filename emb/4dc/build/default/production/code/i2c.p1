@@ -1911,8 +1911,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;code/i2c.c: 59:      SSP1CON2 = 0b00000000;
 [e = _SSP1CON2 -> -> 0 `i `uc ]
 "60
-[; ;code/i2c.c: 60:      SSP1CON3 = 0b00001010;
-[e = _SSP1CON3 -> -> 10 `i `uc ]
+[; ;code/i2c.c: 60:      SSP1CON3 = 0b00001011;
+[e = _SSP1CON3 -> -> 11 `i `uc ]
 "62
 [; ;code/i2c.c: 62:      SSPCLKPPS = 0b00010010;
 [e = _SSPCLKPPS -> -> 18 `i `uc ]

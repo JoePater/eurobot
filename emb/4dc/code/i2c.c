@@ -57,7 +57,7 @@ void config_i2c()
 
      SSP1CON1 = 0b00110110; /* enable, mode */
      SSP1CON2 = 0b00000000; /* general call, clk stretch */
-     SSP1CON3 = 0b00001010; /* interrupts, clk holding */
+     SSP1CON3 = 0b00001011; /* interrupts, clk holding */
 
      SSPCLKPPS = 0b00010010; /* RC2 */
      SSPDATPPS = 0b00010011; /* RC3 */
