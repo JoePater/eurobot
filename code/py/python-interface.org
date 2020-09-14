@@ -113,6 +113,8 @@ Returns ~Pt~ of robot in arena, with (0,0) as top left of diagram.
 **** location.bearing()
 Returns bearing in degrees of robot, with North as pointing towards
 big beacon tower (top of diagram).
+**** location.opposition()
+Returns ~Pt~ of opponent in arena.
 **** location.team()
 Returns the team for the current match - 0 for yellow, 1 for blue
 *** route
