@@ -96,7 +96,3 @@ static PyObject* get_bearing(PyObject* self,PyObject* args)
 }
 
 
-int main(){
-     while(1);
-     return 0;
-}
