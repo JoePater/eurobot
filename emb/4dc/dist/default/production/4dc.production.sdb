@@ -7,7 +7,7 @@
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 /opt/microchip/xc8/v2.10/pic/sources/c99/common/Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"48 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+"48 /hdd/joe/pro/ebot/emb/4dc/code/i2c.c
 [v _config_i2c config_i2c `(v  1 e 1 0 ]
 "68
 [v _i2c_isr i2c_isr `(v  1 e 1 0 ]
@@ -24,21 +24,21 @@
 "111
 [v _read_register read_register `(uc  1 s 1 read_register ]
 [v i1_read_register read_register `(uc  1 s 1 i1_read_register ]
-"3 /home/joe/pro/ebot/emb/4dc/code/io.c
+"3 /hdd/joe/pro/ebot/emb/4dc/code/io.c
 [v _config_io config_io `(v  1 e 1 0 ]
-"10 /home/joe/pro/ebot/emb/4dc/code/main.c
+"10 /hdd/joe/pro/ebot/emb/4dc/code/main.c
 [v _isr isr `II(v  1 e 1 0 ]
 "18
 [v _config_cpu config_cpu `(v  1 e 1 0 ]
 "25
 [v _main main `(i  1 e 2 0 ]
-"6 /home/joe/pro/ebot/emb/4dc/code/motors.c
+"6 /hdd/joe/pro/ebot/emb/4dc/code/motors.c
 [v _set_motor set_motor `(v  1 e 1 0 ]
 "30
 [v _update_ctl update_ctl `(v  1 s 1 update_ctl ]
 "42
 [v _update_motors update_motors `(v  1 e 1 0 ]
-"12 /home/joe/pro/ebot/emb/4dc/code/pwm.c
+"12 /hdd/joe/pro/ebot/emb/4dc/code/pwm.c
 [v _set_pwms_dc set_pwms_dc `(v  1 s 1 set_pwms_dc ]
 "28
 [v _config_pwm config_pwm `(v  1 e 1 0 ]
@@ -52,7 +52,7 @@
 [v _set_pwm_mode set_pwm_mode `(v  1 e 1 0 ]
 "148
 [v _set_pwm set_pwm `(v  1 e 1 0 ]
-"6 /home/joe/pro/ebot/emb/4dc/code/rev.c
+"6 /hdd/joe/pro/ebot/emb/4dc/code/rev.c
 [v _config_rev config_rev `(v  1 e 1 0 ]
 "15
 [v _get_timer get_timer `(s  1 s 2 get_timer ]
@@ -66,7 +66,7 @@
 [v _update_rev update_rev `(v  1 e 1 0 ]
 "351 /opt/microchip/xc8/v2.10/pic/include/pic16f1773.h
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-[s S478 . 1 `uc 1 RB0 1 0 :1:0 
+[s S480 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -76,8 +76,8 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "508
-[u S487 . 1 `S478 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES487  1 e 1 @13 ]
+[u S489 . 1 `S480 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES489  1 e 1 @13 ]
 [s S62 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
@@ -99,7 +99,7 @@
 [v _TMR3H TMR3H `VEuc  1 e 1 @29 ]
 "1348
 [v _T3CON T3CON `VEuc  1 e 1 @30 ]
-[s S409 . 1 `uc 1 ON 1 0 :1:0 
+[s S411 . 1 `uc 1 ON 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 nSYNC 1 0 :1:2 
 `uc 1 OSCEN 1 0 :1:3 
@@ -107,7 +107,7 @@
 `uc 1 CS 1 0 :2:6 
 ]
 "1390
-[s S416 . 1 `uc 1 TMRON 1 0 :1:0 
+[s S418 . 1 `uc 1 TMRON 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 SYNC 1 0 :1:2 
 `uc 1 SOSCEN 1 0 :1:3 
@@ -116,7 +116,7 @@
 `uc 1 CS0 1 0 :1:6 
 `uc 1 CS1 1 0 :1:7 
 ]
-[s S425 . 1 `uc 1 TMR3ON 1 0 :1:0 
+[s S427 . 1 `uc 1 TMR3ON 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 nT3SYNC 1 0 :1:2 
 `uc 1 T3OSCEN 1 0 :1:3 
@@ -124,15 +124,15 @@
 `uc 1 T3CS0 1 0 :1:6 
 `uc 1 T3CS1 1 0 :1:7 
 ]
-[s S433 . 1 `uc 1 T3ON 1 0 :1:0 
+[s S435 . 1 `uc 1 T3ON 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 T3CKPS0 1 0 :1:4 
 `uc 1 T3CKPS1 1 0 :1:5 
 `uc 1 TMR3CS0 1 0 :1:6 
 `uc 1 TMR3CS1 1 0 :1:7 
 ]
-[u S440 . 1 `S409 1 . 1 0 `S416 1 . 1 0 `S425 1 . 1 0 `S433 1 . 1 0 ]
-[v _T3CONbits T3CONbits `VES440  1 e 1 @30 ]
+[u S442 . 1 `S411 1 . 1 0 `S418 1 . 1 0 `S427 1 . 1 0 `S435 1 . 1 0 ]
+[v _T3CONbits T3CONbits `VES442  1 e 1 @30 ]
 "1635
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1697
@@ -196,6 +196,8 @@
 [v _SSP1STATbits SSP1STATbits `VES99  1 e 1 @532 ]
 "6005
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
+"6018
+[v _SSP1CON SSP1CON `VEuc  1 e 1 @533 ]
 [s S119 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
@@ -256,25 +258,25 @@
 [v _PWM5CLKCON PWM5CLKCON `VEuc  1 e 1 @3486 ]
 "28627
 [v _PWM5LDCON PWM5LDCON `VEuc  1 e 1 @3487 ]
-[s S299 . 1 `uc 1 LDS 1 0 :2:0 
+[s S301 . 1 `uc 1 LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 LDT 1 0 :1:6 
 `uc 1 LDA 1 0 :1:7 
 ]
 "28654
-[s S304 . 1 `uc 1 PWM5LDS0 1 0 :1:0 
+[s S306 . 1 `uc 1 PWM5LDS0 1 0 :1:0 
 `uc 1 PWM5LDS1 1 0 :1:1 
 ]
-[s S307 . 1 `uc 1 PWM5LDS 1 0 :2:0 
+[s S309 . 1 `uc 1 PWM5LDS 1 0 :2:0 
 `uc 1 . 1 0 :4:2 
 `uc 1 PWM5LDM 1 0 :1:6 
 `uc 1 PWM5LD 1 0 :1:7 
 ]
-[s S312 . 1 `uc 1 LDS0 1 0 :1:0 
+[s S314 . 1 `uc 1 LDS0 1 0 :1:0 
 `uc 1 LDS1 1 0 :1:1 
 ]
-[u S315 . 1 `S299 1 . 1 0 `S304 1 . 1 0 `S307 1 . 1 0 `S312 1 . 1 0 ]
-[v _PWM5LDCONbits PWM5LDCONbits `VES315  1 e 1 @3487 ]
+[u S317 . 1 `S301 1 . 1 0 `S306 1 . 1 0 `S309 1 . 1 0 `S314 1 . 1 0 ]
+[v _PWM5LDCONbits PWM5LDCONbits `VES317  1 e 1 @3487 ]
 "32683
 [v _SSPCLKPPS SSPCLKPPS `VEuc  1 e 1 @3642 ]
 "32703
@@ -299,7 +301,7 @@
 [v _RC2PPS RC2PPS `VEuc  1 e 1 @3746 ]
 "33163
 [v _RC3PPS RC3PPS `VEuc  1 e 1 @3747 ]
-"34 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+"34 /hdd/joe/pro/ebot/emb/4dc/code/i2c.c
 [v _current_reg current_reg `uc  1 e 1 0 ]
 "35
 [v _first_write first_write `uc  1 e 1 0 ]
@@ -307,16 +309,16 @@
 [v _i2c_registers i2c_registers `[10]uc  1 e 10 0 ]
 "38
 [v _writeable_reg writeable_reg `[10]uc  1 e 10 0 ]
-"96 /home/joe/pro/ebot/emb/4dc/code/pwm.c
+"96 /hdd/joe/pro/ebot/emb/4dc/code/pwm.c
 [v _pps_pwm_vals pps_pwm_vals `[4]uc  1 e 4 0 ]
-"38 /home/joe/pro/ebot/emb/4dc/code/rev.c
+"38 /hdd/joe/pro/ebot/emb/4dc/code/rev.c
 [v _prev_steps prev_steps `uc  1 e 1 0 ]
-"25 /home/joe/pro/ebot/emb/4dc/code/main.c
+"25 /hdd/joe/pro/ebot/emb/4dc/code/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"42
+"43
 } 0
-"39 /home/joe/pro/ebot/emb/4dc/code/rev.c
+"39 /hdd/joe/pro/ebot/emb/4dc/code/rev.c
 [v _update_rev update_rev `(v  1 e 1 0 ]
 {
 "43
@@ -348,7 +350,7 @@
 [v get_timer@l l `uc  1 a 1 7 ]
 "22
 } 0
-"42 /home/joe/pro/ebot/emb/4dc/code/motors.c
+"42 /hdd/joe/pro/ebot/emb/4dc/code/motors.c
 [v _update_motors update_motors `(v  1 e 1 0 ]
 {
 "51
@@ -372,7 +374,7 @@
 [v set_motor@motor motor `uc  1 a 1 25 ]
 "28
 } 0
-"141 /home/joe/pro/ebot/emb/4dc/code/pwm.c
+"141 /hdd/joe/pro/ebot/emb/4dc/code/pwm.c
 [v _set_pwm_mode set_pwm_mode `(v  1 e 1 0 ]
 {
 [v set_pwm_mode@motor motor `uc  1 a 1 wreg ]
@@ -412,7 +414,7 @@
 [v set_pwm@motor motor `uc  1 a 1 3 ]
 "169
 } 0
-"68 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+"68 /hdd/joe/pro/ebot/emb/4dc/code/i2c.c
 [v _i2c_isr i2c_isr `(v  1 e 1 0 ]
 {
 "74
@@ -453,12 +455,12 @@
 [v read_register@reg reg `uc  1 a 1 0 ]
 "115
 } 0
-"6 /home/joe/pro/ebot/emb/4dc/code/rev.c
+"6 /hdd/joe/pro/ebot/emb/4dc/code/rev.c
 [v _config_rev config_rev `(v  1 e 1 0 ]
 {
 "13
 } 0
-"28 /home/joe/pro/ebot/emb/4dc/code/pwm.c
+"28 /hdd/joe/pro/ebot/emb/4dc/code/pwm.c
 [v _config_pwm config_pwm `(v  1 e 1 0 ]
 {
 "56
@@ -497,17 +499,17 @@
 [v set_motor_pps@motor motor `uc  1 a 1 9 ]
 "139
 } 0
-"3 /home/joe/pro/ebot/emb/4dc/code/io.c
+"3 /hdd/joe/pro/ebot/emb/4dc/code/io.c
 [v _config_io config_io `(v  1 e 1 0 ]
 {
 "17
 } 0
-"48 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+"48 /hdd/joe/pro/ebot/emb/4dc/code/i2c.c
 [v _config_i2c config_i2c `(v  1 e 1 0 ]
 {
 "66
 } 0
-"18 /home/joe/pro/ebot/emb/4dc/code/main.c
+"18 /hdd/joe/pro/ebot/emb/4dc/code/main.c
 [v _config_cpu config_cpu `(v  1 e 1 0 ]
 {
 "23
@@ -517,7 +519,7 @@
 {
 "16
 } 0
-"68 /home/joe/pro/ebot/emb/4dc/code/i2c.c
+"68 /hdd/joe/pro/ebot/emb/4dc/code/i2c.c
 [v i1_i2c_isr i2c_isr `(v  1 e 1 0 ]
 {
 "74

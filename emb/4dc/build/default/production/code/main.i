@@ -19436,6 +19436,7 @@ void config_cpu()
 
 int main()
 {
+     unsigned char *ptr = &SSP1CON;
      config_cpu();
      config_io();
      config_pwm();

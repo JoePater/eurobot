@@ -29,6 +29,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 2153: extern volatile unsigned char OPTION_REG __attribute__((address(0x097)));
 [v _OPTION_REG `Vuc ~T0 @X0 0 e@151 ]
 [p mainexit ]
+"6018
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic16f1773.h: 6018: extern volatile unsigned char SSP1CON __attribute__((address(0x215)));
+[v _SSP1CON `Vuc ~T0 @X0 0 e@533 ]
 "6 code/io.h
 [; ;code/io.h: 6: void config_io();
 [v _config_io `(v ~T0 @X0 0 e? ]
@@ -1791,55 +1794,59 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "27
-[; ;code/main.c: 27:      config_cpu();
-[e ( _config_cpu ..  ]
+[; ;code/main.c: 27:      unsigned char *ptr = &SSP1CON;
+[v _ptr `*uc ~T0 @X0 1 a ]
+[e = _ptr -> &U _SSP1CON `*uc ]
 "28
-[; ;code/main.c: 28:      config_io();
-[e ( _config_io ..  ]
+[; ;code/main.c: 28:      config_cpu();
+[e ( _config_cpu ..  ]
 "29
-[; ;code/main.c: 29:      config_pwm();
-[e ( _config_pwm ..  ]
+[; ;code/main.c: 29:      config_io();
+[e ( _config_io ..  ]
 "30
-[; ;code/main.c: 30:      config_i2c();
-[e ( _config_i2c ..  ]
+[; ;code/main.c: 30:      config_pwm();
+[e ( _config_pwm ..  ]
 "31
-[; ;code/main.c: 31:      config_rev();
+[; ;code/main.c: 31:      config_i2c();
+[e ( _config_i2c ..  ]
+"32
+[; ;code/main.c: 32:      config_rev();
 [e ( _config_rev ..  ]
-"33
-[; ;code/main.c: 33:      while(1){
+"34
+[; ;code/main.c: 34:      while(1){
 [e :U 1736 ]
 {
-"34
-[; ;code/main.c: 34:           update_motors();
-[e ( _update_motors ..  ]
 "35
-[; ;code/main.c: 35:           if(PIR1bits.SSP1IF){
+[; ;code/main.c: 35:           update_motors();
+[e ( _update_motors ..  ]
+"36
+[; ;code/main.c: 36:           if(PIR1bits.SSP1IF){
 [e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 1738  ]
 {
-"36
-[; ;code/main.c: 36:                PIR1bits.SSP1IF = 0;
-[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
 "37
-[; ;code/main.c: 37:                i2c_isr();
-[e ( _i2c_isr ..  ]
+[; ;code/main.c: 37:                PIR1bits.SSP1IF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
 "38
-[; ;code/main.c: 38:           }
+[; ;code/main.c: 38:                i2c_isr();
+[e ( _i2c_isr ..  ]
+"39
+[; ;code/main.c: 39:           }
 }
 [e :U 1738 ]
-"39
-[; ;code/main.c: 39:           update_rev();
-[e ( _update_rev ..  ]
 "40
-[; ;code/main.c: 40:      }
+[; ;code/main.c: 40:           update_rev();
+[e ( _update_rev ..  ]
+"41
+[; ;code/main.c: 41:      }
 }
 [e :U 1735 ]
 [e $U 1736  ]
 [e :U 1737 ]
-"41
-[; ;code/main.c: 41:      return 0;
+"42
+[; ;code/main.c: 42:      return 0;
 [e ) -> 0 `i ]
 [e $UE 1734  ]
-"42
-[; ;code/main.c: 42: }
+"43
+[; ;code/main.c: 43: }
 [e :UE 1734 ]
 }
