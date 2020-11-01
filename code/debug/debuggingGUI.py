@@ -1,4 +1,5 @@
 from tkinter import *
+import time
 
 root = Tk()
 
@@ -34,12 +35,31 @@ class RobotLabel():
         self.Rtext = self.getAttribute()
         self.newLabel.delete('0.0',END)
         self.newLabel.insert('0.0',self.Rtext)
-    
 
-BClawUp = RobotButton(root, "Claw up", clawUp)
-BRGB = RobotLabel(root, getRGB)
-BClawUp.newButton.pack()
-BRGB.newLabel.pack()
+
+class RobotLabels():
+    def __init__(self):
+        self.label = Text(root)
+        self.label.pack()
+
+    def update(self, dictionary):
+        string = ""
+        for i in dictionary:
+            string += i + ": " + str(dictionary[i]) +"\n"
+        self.label.delete('0.0',END)
+        self.label.insert('0.0',string)
+
+
+dictionary1 = {"abc":"xyz","123":"789"}
+dictionary2 = {"qwe":"bnm","456":"012","joe":"naeem"}
+
+robotStats = RobotLabels()
+
 while True:
     root.update()
-    BRGB.update()
+    time.sleep(1)
+    robotStats.update(dictionary1)
+    root.update()
+    time.sleep(1)
+    robotStats.update(dictionary2)
+    
