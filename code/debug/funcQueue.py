@@ -1,5 +1,6 @@
 import threading
 import time
+import variableTracker
 
 """
 A class for queuing and running functions in a producer/consumer
@@ -8,12 +9,17 @@ to add a function to the queue. Call kill() to end the consumer
 thread.
 """
 class FunctionQueue:
-    def __init__(self):
+    """
+    vt: list of VariableTracker objects to update after calling function
+    """
+    def __init__(self,vt):
         self.queue = []
         self.queue_cond = threading.Condition()
 
         self.killed = True
         self.killed_lock = threading.Lock()
+
+        self.variables = vt
 
         """
         queue_cond must be held
@@ -26,13 +32,15 @@ class FunctionQueue:
         f = self.queue.pop(0) #get item from queue
         
         self.queue_cond.release() #release lock during call
-        print("Function returned:",f())
+        print("Function returned: ",f())
         self.queue_cond.acquire()
+
+        for v in self.variables:
+            v.update()
         
         return True #success
 
     def __consumer(self):
-        dead = False
         while True:            
             self.queue_cond.acquire()
 
