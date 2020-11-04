@@ -45,7 +45,7 @@ class FunctionQueue:
             self.queue_cond.acquire()
 
             if len(self.queue): #only one at a time to avoid kill being starved
-                self.pop_func()
+                self.__pop_func()
             else:
                 self.queue_cond.wait() #wait for new item
             
@@ -67,7 +67,7 @@ class FunctionQueue:
             
         self.killed_lock.release()
     
-        thr = threading.Thread(target=self.consumer)
+        thr = threading.Thread(target=self.__consumer)
         thr.start()
 
     def kill(self):

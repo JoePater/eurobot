@@ -41,5 +41,5 @@ BRGB = RobotLabel(root, getRGB)
 BClawUp.newButton.pack()
 BRGB.newLabel.pack()
 while True:
-    root.update()
+    #root.update()
     BRGB.update()
