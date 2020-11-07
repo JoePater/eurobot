@@ -4,4 +4,4 @@
 /emb/rot/dist/
 /emb/rev/build/
 /emb/rev/dist/
-*/__pycache__/*
+__pycache__/
