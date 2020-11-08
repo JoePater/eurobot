@@ -10,13 +10,17 @@ class SingleCodeRunner:
 
         self.entry.grid(row=0,column=0)
         self.button.grid(row=0,column=1)
-
-        self.frame.pack()
         
     def run(self):
         t = self.entry.get()
         f = lambda: exec(t)
         self.fq.add(f)
+
+    def pack():
+        self.frame.pack()
+
+    def grid(row=0,column=0):
+        self.frame.grid(row=row,column=column)
         
 class CodeRunner:
     def __init__(self,parent,fq,n):
@@ -25,9 +29,15 @@ class CodeRunner:
         
         self.runners = []
         for i in range(n):
-            self.runners.append(SingleCodeRunner(self.frame,self.fq))
+            scr = SingleCodeRunner(self.frame,self.fq)
+            scr.pack()
+            self.runners.append(scr)
 
+    def pack():
         self.frame.pack()
+
+    def grid(row=0,column=0):
+        self.frame.grid(row=row,column=column)
 
 root = Tk()
     
