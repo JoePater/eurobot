@@ -30,16 +30,25 @@ class RobotLabels():
 
 
 class RobotSlider():
-    def __init__(self, buttonName, buttonFunction, lowerBound, upperBound, FQ):
+    def __init__(self, parent, buttonName, buttonFunction, lowerBound, upperBound, FQ):
+        self.frame = Frame(parent)
         self.buttonName = buttonName
-        self.slider = Scale(root, from_ = lowerBound, to = upperBound, orient = HORIZONTAL)
+        self.slider = Scale(self.frame, from_ = lowerBound, to = upperBound, orient = HORIZONTAL)
         self.buttonFunction = buttonFunction
-        self.slideButton = Button(root, text = buttonName, command = self.runFunction)
+        self.slideButton = Button(self.frame, text = buttonName, command = self.runFunction)
         self.FQ = FQ
+
+        self.slider.pack()
+        self.slideButton.pack()
 
     def runFunction(self):
         self.FQ.add(lambda: self.buttonFunction(self.slider.get()))
 
+    def pack():
+        self.frame.pack()
+
+    def grid(column=0,row=0):
+        self.frame.grid(column=column,row=row)
 
 #-------------------------TESTING STUFF-------------------------
 
