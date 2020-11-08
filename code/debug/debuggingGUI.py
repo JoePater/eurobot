@@ -3,16 +3,6 @@ import time
 
 root = Tk()
 
-
-fuQ = []
-
-def clawUp():
-    print("up")
-
-def getRGB():
-    RGB = input("Enter RGB: ")
-    return RGB
-
 class RobotButton():
     def __init__(self, Rwindow, Rtext, Rfunction):
         self.Rwindow = Rwindow
@@ -49,10 +39,39 @@ class RobotLabels():
         self.label.delete('0.0',END)
         self.label.insert('0.0',string)
 
+class RobotSlider():
+    def __init__(self, buttonName, buttonFunction, lowerBound, upperBound):
+        self.buttonName = buttonName
+        self.slider = Scale(root, from_ = lowerBound, to = upperBound, orient = HORIZONTAL)
+        self.buttonFunction = buttonFunction
+        self.slideButton = Button(root, text = buttonName, command = self.runFunction)
 
+    def runFunction(self):
+        self.buttonFunction(self.slider.get())
+
+
+#-------------------------TESTING STUFF-------------------------
+
+#slider test
+def printNum(num):
+    print(num)
+sli = RobotSlider("yes", printNum, 0, 100)
+sli.slider.pack()
+sli.slideButton.pack()
+
+'''
+#button tests
+def clawUp():
+    print("up")
+
+def getRGB():
+    RGB = input("Enter RGB: ")
+    return RGB
+
+
+#labels tests
 dictionary1 = {"abc":"xyz","123":"789"}
 dictionary2 = {"qwe":"bnm","456":"012","joe":"naeem"}
-
 robotStats = RobotLabels()
 
 while True:
@@ -62,4 +81,4 @@ while True:
     root.update()
     time.sleep(1)
     robotStats.update(dictionary2)
-    
+'''
