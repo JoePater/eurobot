@@ -82,3 +82,4 @@ while True:
     time.sleep(1)
     robotStats.update(dictionary2)
 '''
+

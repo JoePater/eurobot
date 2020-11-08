@@ -1,4 +1,5 @@
 import threading
+import copy
 
 class VariableTracker:
     """
@@ -15,8 +16,15 @@ value of the variable corresponding to the string is value
 
         self.update()
 
+    def add_variable(self,name,func):
+        self.lock.acquire()
+        self.funcs[name] = func
+        self.lock.release()
+
+        self.update()
+        
     """
-    Should only be called from thread that owns the variables
+    Should only be called from thread that owns the variables (ie consumer)
     """
     def update(self):
         self.lock.acquire()
@@ -32,11 +40,17 @@ value of the variable corresponding to the string is value
     """
     def get_variables(self):
         self.lock.acquire()
-
-        vars_copy = {}
-        for v in self.variables:
-            vars_copy[v] = self.variables[v]
-
+        vars_copy = copy.deepcopy(self.variables[v])
         self.lock.release()
 
         return vars_copy
+
+    """
+    Can be called from either thread
+    """
+    def get_variable(self,name):
+        self.lock.acquire()
+        var = copy.deepcopy(self.variables[name])
+        self.lock.release()
+
+        return var
