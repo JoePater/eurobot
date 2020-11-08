@@ -201,5 +201,5 @@ def test_func_queue():
 
     fq.kill()
 
-test_func_queue()
+#test_func_queue()
     

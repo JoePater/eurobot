@@ -1,30 +1,19 @@
 from tkinter import *
 import time
+import funcQueue
 
 root = Tk()
 
 class RobotButton():
-    def __init__(self, Rwindow, Rtext, Rfunction):
+    def __init__(self, Rwindow, Rtext, Rfunction, FQ):
         self.Rwindow = Rwindow
         self.Rtext = Rtext
         self.Rfunction = Rfunction
         self.newButton = Button(Rwindow, text = Rtext, command=self.runFunction)
+        self.FQ = FQ
 
     def runFunction(self):
-        self.Rfunction()
-
-
-class RobotLabel():
-    def __init__(self, Rwindow, Rfunction):
-        self.Rwindow = Rwindow
-        self.getAttribute = Rfunction
-        self.newLabel = Text(Rwindow)
-        self.update()
-
-    def update(self):
-        self.Rtext = self.getAttribute()
-        self.newLabel.delete('0.0',END)
-        self.newLabel.insert('0.0',self.Rtext)
+        self.FQ.add(self.Rfunction)
 
 
 class RobotLabels():
@@ -39,25 +28,32 @@ class RobotLabels():
         self.label.delete('0.0',END)
         self.label.insert('0.0',string)
 
+
 class RobotSlider():
-    def __init__(self, buttonName, buttonFunction, lowerBound, upperBound):
+    def __init__(self, buttonName, buttonFunction, lowerBound, upperBound, FQ):
         self.buttonName = buttonName
         self.slider = Scale(root, from_ = lowerBound, to = upperBound, orient = HORIZONTAL)
         self.buttonFunction = buttonFunction
         self.slideButton = Button(root, text = buttonName, command = self.runFunction)
+        self.FQ = FQ
 
     def runFunction(self):
-        self.buttonFunction(self.slider.get())
+        self.FQ.add(lambda: self.buttonFunction(self.slider.get()))
 
 
 #-------------------------TESTING STUFF-------------------------
 
+FQ = funcQueue.FunctionQueue([])
+
 #slider test
 def printNum(num):
-    print(num)
-sli = RobotSlider("yes", printNum, 0, 100)
+    print(num + 10)
+sli = RobotSlider("yes", printNum, 0, 100, FQ)
 sli.slider.pack()
 sli.slideButton.pack()
+
+FQ.start()
+root.mainloop()
 
 '''
 #button tests
