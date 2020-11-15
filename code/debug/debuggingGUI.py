@@ -11,15 +11,22 @@ class RobotButton():
         self.Rfunction = Rfunction
         self.newButton = Button(Rwindow, text = Rtext, command=self.runFunction)
         self.FQ = FQ
+        self.frame = Frame(parent)
 
     def runFunction(self):
         self.FQ.add(self.Rfunction)
 
+    def pack():
+        self.frame.pack()
+
+    def grid(row=0, column=0):
+        self.frame.grid(column=column,row=row)
+
 
 class RobotLabels():
-    def __init__(self):
+    def __init__(self, parent):
         self.label = Text(root)
-        self.label.pack()
+        self.frame = Frame(parent)
 
     def update(self, dictionary):
         string = ""
@@ -27,6 +34,12 @@ class RobotLabels():
             string += i + ": " + str(dictionary[i]) +"\n"
         self.label.delete('0.0',END)
         self.label.insert('0.0',string)
+
+    def pack():
+        self.frame.pack()
+
+    def grid(row=0, column=0):
+        self.frame.grid(column=column,row=row)
 
 
 class RobotSlider():
