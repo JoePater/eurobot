@@ -1,5 +1,5 @@
 import tkinter
-import debuggingGUI,funcQueue,variableTracker,codeRunner
+import debuggingGUI,funcQueue,variableTracker,codeRunner,robotInputs
 
 """
 
@@ -35,7 +35,7 @@ class MainWindow:
 
         self.coderunner = codeRunner.CodeRunner(self.frame,self.fq,total_num_coderunners)
 
-        self.inputs = debuggingGUI.RobotInputs(self.frame,rbuttons + rsliders)
+        self.inputs = robotInputs.RobotInputs(self.frame,rbuttons,rsliders)
 
         self.fq_widget.grid(row=0,column=0)
         self.labels.grid(row=1,column=0)
