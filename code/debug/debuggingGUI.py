@@ -6,13 +6,14 @@ root = Tk()
 
 class RobotButton():
     def __init__(self, Rwindow, Rtext, Rfunction, FQ):
-        self.Rwindow = Rwindow
+        self.frame = Frame(Rwindow)
         self.Rtext = Rtext
         self.Rfunction = Rfunction
-        self.newButton = Button(Rwindow, text = Rtext, command=self.runFunction)
+        self.newButton = Button(self.frame, text = Rtext, command=self.runFunction)
         self.FQ = FQ
-        self.frame = Frame(parent)
 
+        self.newButton.pack()
+        
     def runFunction(self):
         self.FQ.add(self.Rfunction)
 
@@ -25,9 +26,11 @@ class RobotButton():
 
 class RobotLabels():
     def __init__(self, parent):
-        self.label = Text(root)
         self.frame = Frame(parent)
+        self.label = Text(self.frame)
 
+        self.label.pack()
+        
     def update(self, dictionary):
         string = ""
         for i in dictionary:
