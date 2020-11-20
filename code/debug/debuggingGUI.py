@@ -2,14 +2,18 @@ from tkinter import *
 import time
 import funcQueue
 
-root = Tk()
+button_width = 18
+labels_width = 40
+labels_height = 20
 
 class RobotButton():
     def __init__(self, Rwindow, Rtext, Rfunction, FQ):
         self.frame = Frame(Rwindow)
         self.Rtext = Rtext
         self.Rfunction = Rfunction
-        self.newButton = Button(self.frame, text = Rtext, command=self.runFunction)
+        self.newButton = Button(self.frame, text = Rtext,
+                                command=self.runFunction,
+                                width=button_width)
         self.FQ = FQ
 
         self.newButton.pack()
@@ -17,17 +21,18 @@ class RobotButton():
     def runFunction(self):
         self.FQ.add(self.Rfunction)
 
-    def pack():
+    def pack(self):
         self.frame.pack()
 
-    def grid(row=0, column=0):
+    def grid(self,row=0, column=0):
         self.frame.grid(column=column,row=row)
 
 
 class RobotLabels():
     def __init__(self, parent):
         self.frame = Frame(parent)
-        self.label = Text(self.frame)
+        self.label = Text(
+            self.frame,width=labels_width,height=labels_height)
 
         self.label.pack()
         
@@ -38,47 +43,58 @@ class RobotLabels():
         self.label.delete('0.0',END)
         self.label.insert('0.0',string)
 
-    def pack():
+    def pack(self):
         self.frame.pack()
 
-    def grid(row=0, column=0):
-        self.frame.grid(column=column,row=row)
+    def grid(self,row=0, column=0):
+        self.frame.grid(row=row,column=column)
 
 
 class RobotSlider():
-    def __init__(self, parent, buttonName, buttonFunction, lowerBound, upperBound, FQ):
+    def __init__(self, parent, buttonName,
+                 buttonFunction, lowerBound, upperBound, FQ):
         self.frame = Frame(parent)
         self.buttonName = buttonName
-        self.slider = Scale(self.frame, from_ = lowerBound, to = upperBound, orient = HORIZONTAL)
+        self.slider = Scale(self.frame, from_ = lowerBound,
+                            to = upperBound, orient = HORIZONTAL)
         self.buttonFunction = buttonFunction
-        self.slideButton = Button(self.frame, text = buttonName, command = self.runFunction)
+        self.slideButton = Button(self.frame, text = buttonName,
+                                  command = self.runFunction,
+                                  width=button_width)
         self.FQ = FQ
 
         self.slider.pack()
         self.slideButton.pack()
 
     def runFunction(self):
-        self.FQ.add(lambda: self.buttonFunction(self.slider.get()))
+        x = self.slider.get()
+        self.FQ.add(lambda: self.buttonFunction(x))
 
-    def pack():
+    def pack(self):
         self.frame.pack()
 
-    def grid(column=0,row=0):
+    def grid(self,column=0,row=0):
         self.frame.grid(column=column,row=row)
 
 #-------------------------TESTING STUFF-------------------------
+wheels = [0,0]
 
-FQ = funcQueue.FunctionQueue([])
+def set_left_wheel(x):
+    global wheels
+    wheels[0] = x
+    print(f"Setting left wheel to {x}")
 
-#slider test
-def printNum(num):
-    print(num + 10)
-sli = RobotSlider("yes", printNum, 0, 100, FQ)
-sli.slider.pack()
-sli.slideButton.pack()
+def testGUI():
+    root = Tk()
+    FQ = funcQueue.FunctionQueue([])
+    
+    sli = RobotSlider(root,"yes", set_left_wheel, 0, 100, FQ)
+    sli.pack()
+    
+    FQ.start()
+    root.mainloop()
 
-FQ.start()
-root.mainloop()
+#testGUI()
 
 '''
 #button tests
@@ -103,4 +119,3 @@ while True:
     time.sleep(1)
     robotStats.update(dictionary2)
 '''
-
