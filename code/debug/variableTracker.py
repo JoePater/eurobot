@@ -40,7 +40,7 @@ value of the variable corresponding to the string is value
     """
     def get_variables(self):
         self.lock.acquire()
-        vars_copy = copy.deepcopy(self.variables[v])
+        vars_copy = copy.deepcopy(self.variables)
         self.lock.release()
 
         return vars_copy
@@ -50,7 +50,7 @@ value of the variable corresponding to the string is value
     """
     def get_variable(self,name):
         self.lock.acquire()
-        var = copy.deepcopy(self.variables[name])
+        var = copy.deepcopy(self.variables)
         self.lock.release()
 
         return var
