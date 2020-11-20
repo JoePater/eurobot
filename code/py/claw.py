@@ -1,4 +1,4 @@
-import motors
+import motors, buttons
 
 is_up = False
 is_right_way_up = True
@@ -8,8 +8,6 @@ claw_clamp_time = 2
 claw_clamp_off_power = 8
 
 colour_i2c_address = 0x
-
-#buttonPressed("LIFT_UP")
 
 def isUp():
     return is_up
@@ -30,8 +28,8 @@ def goDown():
     motors.setDirection("LIFT",clockwise=False)
     motors.setSpeed("LIFT",25)
 
-    while not buttonPressed("LIFT_DOWN"):
-        pass
+    while not buttons.buttonPressed("LIFT_DOWN"):
+        time.sleep(0.05)
     
     motors.setSpeed("LIFT",0)
     is_up = False
@@ -45,8 +43,8 @@ def lift():
     motors.setDirection("LIFT",clockwise=True)
     motors.setSpeed("LIFT",25)
 
-    while not buttonPressed("LIFT_UP"):
-        pass
+    while not buttons.buttonPressed("LIFT_UP"):
+        time.sleep(0.05)
     
     motors.setSpeed("LIFT",0)
     is_up = True
@@ -68,33 +66,33 @@ def release():
     motors.setDirection("CLAMP",clockwise=True)
     motors.setSpeed("CLAMP",25)
 
-    while not butt
+    while not buttons.buttonPressed("CLAW_OPEN"):
+        time.sleep(0.05)
 
-def colours_init():
-    write_byte_data(colour_i2c_address, 0x00, 0b11)
-    
-def get_red():
-    l = read_byte_data(colour_i2c_address, 0x16)
-    h = read_byte_data(colour_i2c_address, 0x17)
-    return (h << 8) + l
+    motors.setSpeed("CLAMP",0)
+    is_grabbed = False
 
-def get_green():
-    l = read_byte_data(colour_i2c_address, 0x18)
-    h = read_byte_data(colour_i2c_address, 0x19)
-    return (h << 8) + l
-    
-def get_blue():
-    l = read_byte_data(colour_i2c_address, 0x20)
-    h = read_byte_data(colour_i2c_address, 0x21)
-    return (h << 8) + l
+def turnRightWayUp():
+    global is_right_way_up
 
+    motors.setDirection("ROTATE",clockwise=False)
+    motors.setSpeed("ROTATE",25)
+
+    while not buttons.buttonPressed("RIGHT_WAY_UP"):
+        time.sleep(0.05)
+
+    motors.setSpeed("ROTATE",0)
+    is_right_way_up = True
+
+def turnUpsideDown():
+    global is_right_way_up
+
+    motors.setDirection("ROTATE",clockwise=True)
+    motors.setSpeed("ROTATE",25)
+
+    while not buttons.buttonPressed("UPSIDE_DOWN"):
+        time.sleep(0.05)
+
+    motors.setSpeed("ROTATE",0)
+    is_right_way_up = False
     
-def get_colour():
-    blue = get_blue()
-    green = get_green()
-    red = get_red()
-    if blue > green and blue > red:
-        return "blue"
-    if red > blue and red > green:
-        return "red"
-    return "green"

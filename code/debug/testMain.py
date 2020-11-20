@@ -1,3 +1,5 @@
+#!/bin/python
+
 import mainWindow
 from tkinter import *
 import time
@@ -43,6 +45,10 @@ def set_right_wheel(x):
     global wheels
     wheels[1] = x
 
+def set_wheels(x):
+    set_left_wheel(x)
+    set_right_wheel(x)
+
 rgb = "RED"
 
 def set_rgb(x):
@@ -62,8 +68,9 @@ robot_buttons = [
 ]
 
 robot_sliders = [
-    ["Left wheel",set_left_wheel,0,100],
-    ["Right wheel",set_right_wheel,0,100],
+    ["Set left wheel",set_left_wheel,-100,100],
+    ["Set right wheel",set_right_wheel,-100,100],
+    ["Set both wheels",set_wheels,-100,100],
     ["RGB",set_rgb,0,2],
 ]
 
@@ -74,10 +81,9 @@ variable_functions = {
 }
 
 def main():
-    set_left_wheel(39)
     root = Tk()
     m = mainWindow.MainWindow(root,robot_buttons,robot_sliders,
-                              variable_functions)
+                              variable_functions,globals())
     m.pack()
 
     try:
@@ -90,5 +96,7 @@ def main():
 
     m.fq.kill()
 
-main()
+
+if __name__ == "__main__":
+    main()
 

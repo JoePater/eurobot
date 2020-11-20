@@ -1,5 +1,9 @@
 import motors,servos
 
+"""
+Functions for manipulating revolver
+"""
+
 # Either empty string (empty and closed), "OPEN", "RED" or "GREEN"
 holders = ["","","",""]
 
@@ -40,16 +44,25 @@ def isEmpty():
         return True
     return False
 
+"""
+True if currently active slot has a buoy in it
+"""
 def currentFull():
     if holders[current] == "GREEN" or holders[current] == "RED":
         return True
     return False
 
+"""
+True if holder i has a buoy in it
+"""
 def holderFull(i):
     if holders[i] == "" or holders[i] == "OPEN":
         return False
     return True
 
+"""
+Returns the index of a nearby empty holder, or None if all are full
+"""
 def findFreeSpace():
     if isFull() == True:
         return None
@@ -61,9 +74,17 @@ def findFreeSpace():
         return (current-1) % 4
     return (current+2) % 4
 
+"""
+Rotate to holder i
+"""
 def goToIndex(i):
     turnRevolver(i - current)
 
+"""
+Rotates to a nearby free space
+
+True/False on success/failure
+"""
 def goToFreeSpace():
     i = findFreeSpace()
     if i is None:
@@ -72,6 +93,11 @@ def goToFreeSpace():
     goToIndex(i)
     return True
 
+"""
+Rotates to a nearby buoy of the specified colour
+
+True on success, False if there are no buoys of the specified colour
+"""
 def goToColour(colour):
     for x in range(len(holder)):
         if holders[x] == colour:
@@ -79,16 +105,22 @@ def goToColour(colour):
             return True
     return False
 
-
 def goToGreen():
     return goToColour("GREEN")
 
 def goToRed():
     return goToColour("RED")
 
+"""
+release current holder
+"""
 def release():
     servos.setHolder(current, "RELEASE")
 
+"""
+grab the current holder, setting its colour to red if isRed is True,
+green if False, and empty+closed if None
+"""
 def grab(isRed):
     servos.setHolder(current, "GRABBED")
     if isRed is None:

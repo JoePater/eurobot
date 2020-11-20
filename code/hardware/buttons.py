@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+
 GPIO.setmode(GPIO.BCM)
 
 button_pins = {"CLAW_OPEN":1,"RIGHT_WAY_UP":2,"UPSIDE_DOWN":3,

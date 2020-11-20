@@ -5,6 +5,7 @@ import funcQueue
 button_width = 18
 labels_width = 40
 labels_height = 20
+slider_width = 200
 
 class RobotButton():
     def __init__(self, Rwindow, Rtext, Rfunction, FQ):
@@ -56,7 +57,8 @@ class RobotSlider():
         self.frame = Frame(parent)
         self.buttonName = buttonName
         self.slider = Scale(self.frame, from_ = lowerBound,
-                            to = upperBound, orient = HORIZONTAL)
+                            to = upperBound, orient = HORIZONTAL,
+                            length=slider_width)
         self.buttonFunction = buttonFunction
         self.slideButton = Button(self.frame, text = buttonName,
                                   command = self.runFunction,

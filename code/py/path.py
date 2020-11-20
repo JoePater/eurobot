@@ -1,16 +1,23 @@
-import route
-import buoys
+import route, buoys
+
+"""
+Functions for following a list of points leading to a destination
+"""
 
 buoy_path_list = [
     [Pt(0,0),Pt(0,10)],
     [Pt(3,0),Pt(0,3)],
-    ]
+]
     
 buoy_orientation_list = [
     20,40
-    ]
+]
 
-# p = list Pt objects
+"""
+Follow a list of points (p)
+
+True on success, False on failure
+"""
 def followPath(p,orient=None):
     for pt in p:
         if not route.goto(pt):

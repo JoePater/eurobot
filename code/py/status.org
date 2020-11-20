@@ -1,0 +1,127 @@
+File describing status of all code files.
+
+* py
+** buoys.py
+Done
+
+Depends on claw.py, revolver.py
+** claw.py
+Double check directions (esp. rotation)
+
+Depends on motors.py, buttons.py
+** fairways.py
+Write code for red buoys. Also double check logic.
+
+Depends on path.py, revolver.py, buoys.py, maths.py
+** location.py
+Need to interface to cpp code
+
+Depends on buttons.py
+** lighthouse.py
+Unimplemented
+** landing.py
+Unimplemented
+** move.py
+Done
+
+Depends on motors.py
+** path.py
+Decide what to do wrt going to buoys - either as part of path.py, or
+higher up (eg in main code). Probably in main code.
+
+Depends on route.py, [buoys.py]
+** revolver.py
+Done
+
+Depends on motors.py, servos.py
+** route.py
+Mostly done. Check logic.
+
+Depends on maths.py, location.py, move.py
+** windsocks.py
+Unimplemented
+* hardware
+** bus.py
+Done
+
+Depends on nothing
+** buttons.py
+Sort out button pins
+
+Depends on nothing
+** motors.py
+Update for new motor drivers. Check logic with negative speeds. Check
+i2c addresses
+
+Depends on bus.py
+** rotary.py
+Check i2c address
+
+Depends on bus.py
+** servos.py
+Check i2c address
+
+Depends on bus.py
+* vision
+** posmodule.cpp
+Interface with other vision/positioning code. Add update() function to
+update rotary encoder readings.
+
+Depends on rotary.cpp/.hpp, 
+** rotary.cpp/.hpp
+Write code to interface with i2c rotary encoder, and code to adjust
+the position.
+** setup.py
+Done
+** transformations.cpp/.hpp
+Double check marker map, fill in camera positions, sort out camera
+calibration stuff, check positioning logic
+* debug
+** codeRunner.py
+Done
+
+Depends on funcQueue.py
+** debuggingGUI.py
+Done
+
+Depends on funcQueue.py
+** funcQueue.py
+Done
+
+Depends on variableTracker.py
+** mainWindow.py
+Done
+
+Depends on debuggingGUI.py, codeRunner.py, funcQueue.py,
+variableTracker.py, robotInputs.py
+** robotInputs.py
+Done
+
+Depends on debuggingGUI.py
+** testMain.py
+Done
+
+Depends on mainWindow.py
+** variableTracker.py
+Done
+
+Depends on nothing
+* to do
+** TODO Double check claw.py motor directions
+** TODO Write red buoy code + check logic for fairways.py
+** TODO Interface location.py to cpp code
+** TODO Implement lighthouse.py
+** TODO Implement landing.py
+** TODO Decide on path.py
+** TODO Check route.py
+** TODO Implement windsocks.py
+** TODO Set button pin numbers in buttons.py
+** TODO Update motors.py for new motor drivers, check negatives
+** TODO Check all i2c addresses
+** TODO Add update function to posmodule.cpp
+** TODO Interface posmodule with rest of cpp code
+** TODO Write rotary encoder code for rotary.cpp
+** TODO Check marker map
+** TODO Fill in camera positions
+** TODO Calibrate camera
+** TODO Check over positioning code in transformations.cpp/.hpp

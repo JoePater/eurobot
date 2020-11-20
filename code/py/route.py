@@ -1,5 +1,4 @@
-import location
-import move
+import location, move, maths
 
 goto_drive_speed = 50
 goto_max_deviation = 10
@@ -38,6 +37,9 @@ def calculate_differential(target):
     differential = differential_constant * diff / dist
     return differential
 
+"""
+Go to a point in a straight line
+"""
 def goto(target):
     curr = location.position()
     b0 = b = get_bearing(curr,target)
@@ -72,6 +74,9 @@ def rotate_speed(bearing):
 
     return x
 
+"""
+Rotate to a bearing
+"""
 def orientation(bearing):
     curr_b = location.bearing()
     diff = angle_diff(bearing,curr_b)

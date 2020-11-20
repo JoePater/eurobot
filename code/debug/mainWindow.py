@@ -1,5 +1,9 @@
 from tkinter import *
-import debuggingGUI,funcQueue,variableTracker,codeRunner,robotInputs
+from debuggingGUI import RobotButton,RobotSlider,RobotLabels
+from codeRunner import CodeRunner
+from funcQueue import FunctionQueue,FunctionQueueWidget
+from variableTracker import VariableTracker
+from robotInputs import RobotInputs
 
 """
 
@@ -24,20 +28,19 @@ import debuggingGUI,funcQueue,variableTracker,codeRunner,robotInputs
 total_num_coderunners = 8
 
 class MainWindow:
-    def __init__(self,parent,rbuttons,rsliders,varfuncs):
-        self.vt = variableTracker.VariableTracker(varfuncs)
-        self.fq = funcQueue.FunctionQueue([self.vt])
+    def __init__(self,parent,rbuttons,rsliders,varfuncs,globs):
+        self.vt = VariableTracker(varfuncs)
+        self.fq = FunctionQueue([self.vt])
 
         self.frame = Frame(parent)
 
-        self.fq_widget = funcQueue.FunctionQueueWidget(self.frame,self.fq)
-        self.labels = debuggingGUI.RobotLabels(self.frame)
+        self.fq_widget = FunctionQueueWidget(self.frame,self.fq)
+        self.labels = RobotLabels(self.frame)
 
-        self.coderunner = codeRunner.CodeRunner(
-            self.frame,self.fq,total_num_coderunners)
+        self.coderunner = CodeRunner(self.frame,
+                                     self.fq,total_num_coderunners,globs)
 
-        self.inputs = robotInputs.RobotInputs(
-            self.frame,self.fq,rbuttons,rsliders)
+        self.inputs = RobotInputs(self.frame,self.fq,rbuttons,rsliders)
 
         self.fq_widget.grid(row=0,column=0)
         self.labels.grid(row=1,column=0)
@@ -58,7 +61,7 @@ class MainWindow:
 
 def test():
     root = Tk()
-    m = MainWindow(root,[],[],{})
+    m = MainWindow(root,[],[],{},globals())
     m.pack()
     
     try:

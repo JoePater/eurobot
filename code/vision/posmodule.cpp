@@ -11,6 +11,8 @@ int pos_x=5,pos_y=6;
 int opp_x=7,opp_y=8;
 float bearing=1.234;
 
+enum class Teams { YELLOW, BLUE };
+
 Teams team;
 
 static PyObject* set_team(PyObject* self,PyObject* args);

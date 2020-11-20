@@ -1,5 +1,8 @@
+import path, revolver, buoys, maths
 
-
+"""
+This file contains functions to drop off buoys on fairways.
+"""
 
 green_buoy_number = 0
 red_buoy_number = 0
@@ -10,6 +13,10 @@ buoy_diameter = 75
 green_start_location = Pt(510,claw_to_centre + buoy_diameter/2)
 red_start_location = Pt(1080,claw_to_centre + buoy_diameter/2)
 
+"""
+ret_path: a list of points that will get the robot fairly close
+to the fairway. From there, it will work out where to place the buoy.
+"""
 def dropoffGreens(ret_path):
     global green_buoy_number
     

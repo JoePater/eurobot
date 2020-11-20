@@ -1,11 +1,6 @@
-import claw
-import revolver
-
+import claw, move, revolver
 """
 This file contains functions for manipulating buoys with the claw.
-
-All functions will leave the claw down and open, and expect the 
-claw to be down and open when they are called. 
 """
 
 approach_speed = 25
