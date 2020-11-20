@@ -1,5 +1,6 @@
 import funcQueue
 from tkinter import *
+import time
 
 class SingleCodeRunner:
     def __init__(self,parent,fq):
@@ -13,13 +14,13 @@ class SingleCodeRunner:
         
     def run(self):
         t = self.entry.get()
-        f = lambda: exec(t)
+        f = lambda: eval(t)
         self.fq.add(f)
 
-    def pack():
+    def pack(self):
         self.frame.pack()
 
-    def grid(row=0,column=0):
+    def grid(self,row=0,column=0):
         self.frame.grid(row=row,column=column)
         
 class CodeRunner:
@@ -33,19 +34,22 @@ class CodeRunner:
             scr.pack()
             self.runners.append(scr)
 
-    def pack():
+    def pack(self):
         self.frame.pack()
 
-    def grid(row=0,column=0):
-        self.frame.grid(row=row,column=column)
+    def grid(self,row=0,column=0,rowspan=1):
+        self.frame.grid(row=row,column=column,rowspan=rowspan)
 
-root = Tk()
+def testCodeRunner():
+    root = Tk()
     
-fq = funcQueue.FunctionQueue([])
-fq.start()
+    fq = funcQueue.FunctionQueue([])
+    fq.start()
+    
+    cr = CodeRunner(root,fq,10)
+    
+    root.mainloop()
+    
+    fq.kill()
 
-cr = CodeRunner(root,fq,10)
 
-root.mainloop()
-
-fq.kill()
