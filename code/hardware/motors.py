@@ -2,18 +2,20 @@ from bus import bus
 import time
 
 class MotorBoard:
-    def __init__(self,addr):
-        self.addr = addr
-        self.enables = [0,0]
-        self.directions = [0,0]
-        self.shorted = [1,1]
-
     def updateCtrls(self,motor):
         ctrl = (self.enables[motor - 1] << 7) + (self.directions[motor - 1] << 6) \
             + (self.shorted[motor - 1] << 5)
 
         bus.write_byte_data(self.addr,(motor - 1) * 2,ctrl)
 
+    def __init__(self,addr):
+        self.addr = addr
+        self.enables = [0,0]
+        self.directions = [0,0]
+        self.shorted = [1,1]
+        self.updateCtrls(1)
+        self.updateCtrls(2)
+    
     def enable(self,motor):
         self.enables[motor - 1] = 1
         self.updateCtrls(motor)
