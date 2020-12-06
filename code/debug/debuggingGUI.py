@@ -84,7 +84,7 @@ wheels = [0,0]
 def set_left_wheel(x):
     global wheels
     wheels[0] = x
-    print(f"Setting left wheel to {x}")
+    print("Setting left wheel to {}".format(x))
 
 def testGUI():
     root = Tk()
