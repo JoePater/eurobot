@@ -31,8 +31,11 @@ value of the variable corresponding to the string is value
 
         self.variables = {}
         for v in self.funcs:
-            self.variables[v] = self.funcs[v]()
-
+            try:
+                self.variables[v] = self.funcs[v]()
+            except:
+                pass
+            
         self.lock.release()
 
     """
