@@ -44,19 +44,19 @@ class MotorBoard:
 
         bus.write_byte_data(self.addr,motor * 2 - 1,x)
 
-boards = [MotorBoard(0x43)]
+boards = [MotorBoard(0x41),MotorBoard(0x42),MotorBoard(0x43,revolver=1)]
 
 #tuples of (board,motor)
-motor_dict = {"A":(boards[0],1),"B":(boards[0],2)}
+#motor_dict = {"A":(boards[0],1),"B":(boards[0],2)}
 
-"""
-motor_dict = {"LIFT":(0,1),
-              "ROTATE":(0,2),
-              "CLAMP":(0,3),
-              "REVOLVER":(0,4),
-              "LEFT":(1,1),
-              "RIGHT":(1,2)}
-"""
+motor_dict = {
+    "LEFT":(boards[0],1),
+    "RIGHT":(boards[0],2)
+    "CLAMP":(boards[1],1),
+    "ROTATE":(boards[1],2),
+    "REVOLVER":(boards[2],1),
+    "LIFT":(boards[2],2),
+}
 
 #takes string of motor name
 def enableMotor(motor):
