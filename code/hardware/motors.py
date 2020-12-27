@@ -1,6 +1,8 @@
 from bus import bus
 import time
 
+rev_speed = 50
+
 class MotorBoard:
     def updateCtrls(self,motor):
         ctrl = (self.enables[motor - 1] << 7) + (self.directions[motor - 1] << 6) \
@@ -8,13 +10,15 @@ class MotorBoard:
 
         bus.write_byte_data(self.addr,(motor - 1) * 2,ctrl)
 
-    def __init__(self,addr):
+    def __init__(self,addr,revolver=None):
         self.addr = addr
         self.enables = [0,0]
         self.directions = [0,0]
         self.shorted = [1,1]
         self.updateCtrls(1)
         self.updateCtrls(2)
+
+        self.revNum = revolver
     
     def enable(self,motor):
         self.enables[motor - 1] = 1
@@ -43,6 +47,29 @@ class MotorBoard:
         x = round(255 * speed / 100)
 
         bus.write_byte_data(self.addr,motor * 2 - 1,x)
+
+    def startRevolver(self,steps):
+        speed = rev_speed
+
+        if self.revNum is None or self.steps == 0:
+            return
+
+        if self.steps < 0:
+            speed = -speed
+            steps = -steps
+
+        self.disable(self.revNum)
+
+        bus.write_byte_data(self.addr,4,steps)
+
+        self.setSpeed(self.revNum,speed)
+        self.enable(self.revNum)
+
+    def revolverIsDone(self):
+        if self.revNum is None:
+            return 0
+
+        return bus.read_byte_data(self.addr,4) == 0
 
 boards = [MotorBoard(0x41),MotorBoard(0x42),MotorBoard(0x43,revolver=1)]
 
@@ -85,21 +112,11 @@ def turnMotor(motor,clockwise=True,speed=25,t=1):
 # turns the revolver passed 'steps' slots
 # negative means opposite direction
 def turnRevolver(steps):
-    if steps == 0:
-        return
+    tup = motor_dict["REVOLVER"]
 
-    if steps < 0:
-        setDirection("REVOLVER",False)
-        steps = -steps
-    else:
-        setDirection("REVOLVER",True)
+    tup[0].turnRevolver(steps)
 
-    setSpeed("REVOLVER",60)
-    enableMotor("REVOLVER")
-    bus.write_byte_data(board_addr[0],9,steps)
-    while 1:
-        s = bus.read_byte_data(board_addr[0],9)
-        if s == 0:
-            return
+    while not tup[0].revolverIsDone():
         time.sleep(0.1)
+
         
