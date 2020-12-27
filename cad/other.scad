@@ -120,5 +120,15 @@ module embBeacon(){
         cube([90,90,75]);
         translate([2,2,2])cube([86,86,73]);
     }
-}embBeacon();
+}//embBeacon();
+
+module cableHolder(){
+    //attach cable tie to M4 bolt
+    difference(){
+        cube([17,10,6]);
+        translate([0,0,3])cube([10,10,3]);
+        translate([5,5,0])cylinder(r=2.25,h=3,$fn=35);
+        translate([11.5,0,1.5])cube([4,10,3]);
+    }
+}cableHolder();
 

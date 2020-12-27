@@ -142,7 +142,7 @@ module partI1(a=15){
         translate([0,0,-4])cylinder(r=2.15,h=12,$fn=20);
         translate([0,0,-4])cylinder(r=4,h=3.5,$fn=6);
     }
-    translate([10,6.5,-3])cube([5,5,3]);
+    translate([10,6.5,-3])cube([8,5,3]);
     translate([35,17.5,-3])cube([5,5,3]);
     difference(){
         translate([0,0,4])gear(5,55,8,4.5);
@@ -269,7 +269,7 @@ module partI5(){
         translate([18-8,-5-7,0])cylinder(r=5.2,h=20-1-1,$fn=50);
         translate([18+8,-5-7,0])cylinder(r=5.2,h=20-1-1,$fn=50);
     }
-}partI5();
+}//partI5();
 module partI6(){
     //cap for holding motor and rotating pivot (v2)
     difference(){
@@ -379,6 +379,8 @@ module clawR(a=50,b=25){
         translate([-3,38,0])cylinder(r=1.75,h=6,$fn=25);
         translate([-33,0,0])cube([10,20,6]);
         translate([0,22,0])cylinder(r=1.75,h=6,$fn=20);
+        translate([-6.5,8,0])cylinder(r=1.75,h=6,$fn=20);
+        translate([-18.5,4.7,0])cylinder(r=1.75,h=6,$fn=20);
     }
 }//clawR();
 module clawL(a=50,b=25){
@@ -507,6 +509,6 @@ module partX(){
     //spring raiser for claw
     difference(){
         cylinder(r=4,h=1,$fn=30);
-        cylinder(r=2.2,h=1,$fn=30);
+        cylinder(r=2.3,h=1,$fn=30);
     }
-}
+}//partX();

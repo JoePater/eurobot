@@ -375,6 +375,15 @@ module stopperC(){
 }//translate([0,5.1+19.8,32.1])rotate([0,0,180])
 //stopperC();
 
+module circuitHolder(){
+    //holds servo circuit
+    difference(){
+        cube([20,18,2.5]);
+        translate([5,5,0])cylinder(r=2.25,h=2.5,$fn=25);
+        translate([10,9,2])cube([10,9,0.5]);
+    }
+}circuitHolder();
+
 
 
 
