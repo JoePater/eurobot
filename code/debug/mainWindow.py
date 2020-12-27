@@ -55,8 +55,12 @@ class MainWindow:
     def grid(self,row=0,column=0):
         self.frame.grid(row=row,column=column)
         
-    def update(self):
+    def update(self, update_vars=False):
         self.fq_widget.update()
+
+        if update_vars:
+            self.fq.add(lambda: self.vt.update())
+            
         self.labels.update(self.vt.get_variables())
 
 def test():
